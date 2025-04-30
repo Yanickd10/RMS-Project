@@ -702,7 +702,7 @@
 
         <!-- Mission & Vision Section -->
         <section class="section">
-            <h2 class="section-title">Mission and Vision</h2>
+            <h2 class="section-title" id="mission">Mission and Core Values</h2>
             <div class="mission-vision">
                 <div class="mission-box">
                     <div class="box-icon">M</div>
@@ -728,7 +728,7 @@
 
         <!-- Strategic Goals Section -->
         <section class="section">
-            <h2 class="section-title">Strategic Goals</h2>
+            <h2 id="goals" class="section-title">Strategic Goals</h2>
             <div class="goals-container">
                 <div class="goal-item">
                     <div class="goal-number">01</div>
@@ -767,7 +767,7 @@
 
         <!-- Community Engagement Section -->
         <section class="section">
-            <h2 class="section-title">Community Engagement</h2>
+            <h2 id="community" class="section-title">Community Engagement</h2>
             <div class="community-content">
                 <div class="community-image"
                     style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
@@ -805,7 +805,7 @@
 
         <!-- Extracurricular Activities Section -->
         <section class="section">
-            <h2 class="section-title">Extracurricular Activities</h2>
+            <h2 id="activities" class="section-title">Extracurricular Activities</h2>
             <div class="activities-grid">
                 <div class="activity-item"
                     style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
@@ -919,7 +919,7 @@
 
 <div id="searchResults" class="search-results" style="display: none;"></div>
         <section class="news-section">
-            <h2>News & Announcements</h2>
+            <h2 id="news">News & Announcements</h2>
             <div class="news-container">
                 <article class="news-item">
                     <div class="news-date">April 25, 2025</div>

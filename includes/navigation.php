@@ -13,20 +13,20 @@
         <li>
           <a href="/RMS-Project/" class="has-dropdown active">Home</a>
           <ul class="dropdown">
-            <li><a href="#welcome">Welcome Message</a></li>
-            <li><a href="#mission">Mission and Vision</a></li>
-            <li><a href="#goals">Strategic Goals</a></li>
-            <li><a href="#community">Community Engagement</a></li>
-            <li><a href="#extracurricular">Extracurricular Activities</a></li>
-            <li><a href="#news">News & Announcements</a></li>
+            <li><a href="index">Welcome Message</a></li>
+            <li><a href="index" data-scroll-to="mission">Mission and Core Values</a></li>
+            <li><a href="index" data-scroll-to="goals">Strategic Goals</a></li>
+            <li><a href="index" data-scroll-to="community">Community Engagement</a></li>
+            <li><a href="index" data-scroll-to="activities">Extracurricular Activities</a></li>
+            <li><a href="index" data-scroll-to="news">News & Announcements</a></li>
           </ul>
         </li>
         <li>
-          <a href="pages/about" class="has-dropdown">About Us</a>
+          <a href="/RMS-Project/pages/about" class="has-dropdown">About Us</a>
           <ul class="dropdown">
-            <li><a href="about.html#history">School History</a></li>
-            <li><a href="about.html#administration">Administration Team</a></li>
-            <li><a href="about.html#staff">Staff Profiles</a></li>
+            <li><a href="about" data-scroll-to="history">School History</a></li>
+            <li><a href="about" data-scroll-to="administration">Administration Team</a></li>
+            <li><a href="about" data-scroll-to="staff">Staff Profiles</a></li>
           </ul>
         </li>
         <li>

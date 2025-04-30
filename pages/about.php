@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include('../includes/header-links.php');?>
 <link rel="stylesheet" href="/RMS-Project/assets/css/nav.css">
     <title>About Us</title>
     <style>
@@ -110,12 +109,13 @@
         <section class="history-section" id="history">
             <h2 class="section-title">Our School History</h2>
             <div class="history-card">
-                <p>Founded in 1995, Our School has been a beacon of academic excellence for over two decades. 
-                   What started as a small institution with just 50 students has grown into a prestigious 
-                   educational establishment serving over 1,000 students today.</p>
-                <p>Through the years, we have maintained our commitment to providing quality education while 
-                   adapting to modern teaching methodologies and technological advancements.</p>
-            </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit officiis officia numquam error maiores nobis eos minima fuga ipsa mollitia! Voluptatum laudantium blanditiis cupiditate nostrum deserunt, ut distinctio sunt vero!
+                Dolores doloremque quia sapiente fuga recusandae vel sequi eveniet nobis molestias enim, ipsa reiciendis quas. Quas totam, quibusdam, quasi nostrum nemo at, omnis iure enim in ea eum aliquam repellat.
+             <br><br>
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit illum quis nemo impedit nihil id rem, perspiciatis soluta? Tempore voluptatem magnam dicta quo voluptatibus explicabo excepturi totam aliquid exercitationem. Temporibus.
+             Nihil illo a velit dignissimos quidem itaque maxime maiores. Neque, animi ab a, amet odit aliquid qui eum soluta labore beatae aut ex libero aspernatur nulla! Alias dolores id praesentium.
+             Inventore natus soluta eius atque voluptas odit tenetur iusto? Quibusdam, deserunt nesciunt, voluptatem beatae voluptatum officiis repudiandae eum nisi quis eius itaque quos temporibus culpa soluta ducimus odit tenetur provident?
+             </div>
         </section>
 
         <!-- Administration Team Section -->
@@ -123,21 +123,21 @@
             <h2 class="section-title">Administration Team</h2>
             <div class="admin-team">
                 <div class="admin-card">
-                    <img src="assets/images/teacher.jpg" alt="Principal">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Principal">
                     <div class="admin-info">
                     <h3>Admin Name</h3>
                         <p>Principal</p>
                     </div>
                 </div>
                 <div class="admin-card">
-                    <img src="assets/images/teacher.jpg" alt="Vice Principal">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Vice Principal">
                     <div class="admin-info">
                     <h3>Admin Name</h3>
                         <p>Vice Principal</p>
                     </div>
                 </div>
                 <div class="admin-card">
-                    <img src="assets/images/teacher.jpg" alt="Administrative Head">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Administrative Head">
                     <div class="admin-info">
                         <h3>Admin Name</h3>
                         <p>Administrative Head</p>
@@ -151,28 +151,28 @@
             <h2 class="section-title">Our Staff</h2>
             <div class="staff-profiles">
                 <div class="staff-card">
-                    <img src="assets/images/teacher.jpg" alt="Jane Doe">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Jane Doe">
                     <div class="staff-info">
                         <h3>Teache name</h3>
                         <p>Mathematics Teacher</p>
                     </div>
                 </div>
                 <div class="staff-card">
-                    <img src="assets/images/teacher.jpg" alt="Robert Brown">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Robert Brown">
                     <div class="staff-info">
                     <h3>Teache name</h3>
                         <p>Science Teacher</p>
                     </div>
                 </div>
                 <div class="staff-card">
-                    <img src="assets/images/teacher.jpg" alt="Emily White">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Emily White">
                     <div class="staff-info">
                     <h3>Teache name</h3>
                         <p>English Teacher</p>
                     </div>
                 </div>
                 <div class="staff-card">
-                    <img src="assets/images/teacher.jpg" alt="David Clark">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="David Clark">
                     <div class="staff-info">
                     <h3>Teache name</h3>
                         <p>Physical Education</p>
@@ -181,9 +181,11 @@
             </div>
         </section>
     </main>
- <!-- <?php
-  include("includes/footer.php");
-  ?> -->
-  <script src="asstets/js/nav.js"></script>
+  <?php
+  include("../includes/footer.php");
+  ?>  
+  <?php include("../includes/back-to-top.php");?>
+  <script src="assets/js/nav.js"></script>
+  <script src="../assets/js/smooth-scroll.js"></script>
 </body>
 </html>
