@@ -40,7 +40,7 @@
         </li>
         
         <li>
-          <a href="contact.html"  >Contact</a>
+        <a href="index" data-scroll-to="footer">Contact</a>
         </li>
         <li class="portal-links" style="display: none;">
           <a href="student-portal.html">Students Portal</a>

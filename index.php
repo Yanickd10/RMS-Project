@@ -10,5 +10,6 @@
 <?php include("includes/footer.php");?>  
 <?php include("includes/back-to-top.php");?> 
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/smooth-scroll.js"></script>
 </body>
 </html> 

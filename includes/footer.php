@@ -153,7 +153,7 @@
     }
   </style>  
 
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="footer-container">
       <div class="footer-section">
         <h3>About School</h3>
