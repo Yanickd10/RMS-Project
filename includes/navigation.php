@@ -1,10 +1,10 @@
 <nav class="navbar">
     <div class="container">
       <div class="logo">
-        <img src="/api/placeholder/50/50" alt="School Logo">
+        <a href="index"><img src="https://ur.ac.rw/IMG/arton1138.png" alt="Logo"></a>
         <h1>Rukara Model School</h1>
       </div>
-      
+    
       <div class="mobile-menu-btn" onclick="toggleMenu()">
         ☰
       </div>
@@ -38,19 +38,24 @@
             <li><a href="academics.html#calendar">Academic Calendar</a></li>
           </ul>
         </li>
-        
+      
+        <li>
+          <a href="academics.html" class="has-dropdown">Portals</a>
+          <ul class="dropdown">
+          <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html#courses">Courses/Programs Offered</a></li>
+            <li><a href="academics.html#curriculum">Curriculum Outlines</a></li>
+            <li><a href="academics.html#calendar">Academic Calendar</a></li>
+          </ul>
+        </li>
         <li>
         <a href="index" data-scroll-to="footer">Contact</a>
         </li>
-        <li class="portal-links" style="display: none;">
-          <a href="student-portal.html">Students Portal</a>
-          <a href="staff-portal.html">Staff Portal</a>
-        </li>
       </ul>
       
-      <div class="portal-buttons">
+      <!-- <div class="portal-buttons">
         <button class="portal-btn student-portal" onclick="window.location.href='student-portal.html'">Students Portal</button>
         <button class="portal-btn" onclick="window.location.href='staff-portal.html'">Staff Portal</button>
-      </div>
+      </div> -->
     </div>
   </nav>
