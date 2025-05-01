@@ -142,11 +142,12 @@
 
     .box-icon {
         position: absolute;
-        top: -15px;
+        top: -19px;
         left: 50%;
         transform: translateX(-50%);
         width: 50px;
         height: 50px;
+        padding: 10px;
         background-color: #184e77;
         border-radius: 50%;
         display: flex;
@@ -228,6 +229,7 @@
     }
 
     .community-partners {
+        width: 50%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -248,6 +250,7 @@
     .partner-logos
     {
         display: flex;
+        justify-content: space-between
     }
     .partner-logo img {
         max-width: 100%;
@@ -715,8 +718,8 @@
                     </p>
                 </div>
                 <div class="vision-box">
-                    <div class="box-icon">V</div>
-                    <h3 class="box-title">Our Vision</h3>
+                    <div class="box-icon">C</div>
+                    <h3 class="box-title">Core Values</h3>
                     <p class="box-content">
                         To be a leading educational institution where each student develops the knowledge, skills, and
                         character to create their future and shape their world, emerging as compassionate, confident,
