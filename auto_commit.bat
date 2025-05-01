@@ -1,4 +1,4 @@
 git add .
-git commit -m "Yanick-made-new-changes %date% %time%"
+git commit -m "Auto-commit %date% %time%"
 git push
 pause
