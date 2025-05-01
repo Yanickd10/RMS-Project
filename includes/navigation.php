@@ -24,7 +24,7 @@
         <li>
           <a href="/RMS-Project/pages/about" class="has-dropdown">About Us</a>
           <ul class="dropdown">
-            <li><a href="about" data-scroll-to="history">School History</a></li>
+            <li><a href="/RMS-Project/pages/about.php#history">School History</a></li>
             <li><a href="about" data-scroll-to="administration">Administration Team</a></li>
             <li><a href="about" data-scroll-to="staff">Staff Profiles</a></li>
           </ul>
