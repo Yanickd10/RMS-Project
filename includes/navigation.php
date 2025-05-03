@@ -41,7 +41,7 @@
         </ul>
       </li>
       <li>
-        <a href="academics.html" class="has-dropdown">Portals</a>
+        <a href="/RMS-Project/RMS-TEP" class="has-dropdown">Portals</a>
         <ul class="dropdown">
           <li><a href="admissions.html">Admissions</a></li>
           <li><a href="academics.html#courses">Courses/Programs Offered</a></li>
@@ -52,11 +52,6 @@
       <li>
         <a href="index" data-scroll-to="footer">Contact</a>
       </li>
-    </ul>
-
-    <!-- <div class="portal-buttons">
-        <button class="portal-btn student-portal" onclick="window.location.href='student-portal.html'">Students Portal</button>
-        <button class="portal-btn" onclick="window.location.href='staff-portal.html'">Staff Portal</button>
-      </div> -->
+    </ul> 
   </div>
 </nav>
