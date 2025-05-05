@@ -329,19 +329,36 @@
                     <h3>Primary</h3>
                     <ul>
                         <li>Mathematics</li>
-                        <li>English & Kinyarwanda</li>
-                        <li>Science & Social Studies</li>
+                        <li>English</li>
+                        <li>Kinyarwanda</li>
+                        <li>Science</li>
+                        <li>Social Studies</li>
                         <li>ICT</li>
                     </ul>
                     <a class="download-link" href="docs/primary-curriculum.pdf" download>Download Primary Curriculum</a>
                 </div>
                 <div class="course-card">
-                    <h3>Secondary</h3>
+                    <h3>Lower Secondary</h3>
                     <ul>
                         <li>Mathematics</li>
                         <li>Sciences (Biology, Chemistry, Physics)</li>
-                        <li>Languages</li>
-                        <li>ICT & Entrepreneurship</li>
+                        <li>Languages(English, Kinyarwanda)</li>
+                        <li>ICT</li>
+                        <li>History</li>
+                        <li>Geography</li>
+                        <li>Entrepreneurship</li>
+
+                    </ul>
+                    <a class="download-link" href="docs/secondary-curriculum.pdf" download>Download Secondary Curriculum</a>
+                </div>
+                <div class="course-card">
+                    <h3>Upper Secondary</h3>
+                    <ul>
+                        <li>COmb 1</li>
+                        <li>Comb 2</li>
+                        <li>COmb 1</li>
+                        <li>Comb 2</li>
+                        
                     </ul>
                     <a class="download-link" href="docs/secondary-curriculum.pdf" download>Download Secondary Curriculum</a>
                 </div>
@@ -453,13 +470,10 @@
                     <option value="Primary">Primary</option>
                     <option value="Secondary">Secondary</option>
                 </select>
-
                 <label for="documents">Upload Documents (PDF, JPG, PNG, ZIP) *</label>
                 <input type="file" id="documents" name="documents[]" multiple required accept=".pdf,.jpg,.jpeg,.png,.zip">
-
                 <label for="message">Message (optional)</label>
                 <textarea id="message" name="message" rows="3"></textarea>
-
                 <button type="submit">Submit Application</button>
             </form>
         </section>

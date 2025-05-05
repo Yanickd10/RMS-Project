@@ -170,13 +170,13 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="student-portal.html">Student Portal</a></li>
-          <li><a href="staff-portal.html">Staff Portal</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="/RMS-Project/">Home</a></li>
+          <li><a href="/RMS-Project/pages/about">About Us</a></li>
+          <li><a href="academics">Academics</a></li>
+          <li><a href="admissions">Admissions</a></li>
+          <li><a href="student-portal">Student Portal</a></li>
+          <li><a href="staff-portal">Staff Portal</a></li>
+          <li><a href="contact">Contact Us</a></li>
         </ul>
       </div>
       
@@ -184,11 +184,11 @@
         <h3>Contact Info</h3>
         <div class="contact-info">
           <i class="fas fa-map-marker-alt"></i>
-          <span>123 Education Street, School City, 12345</span>
+          <span>123 ,6768</span>
         </div>
         <div class="contact-info">
           <i class="fas fa-phone-alt"></i>
-          <span>+1 (555) 123-4567</span>
+          <span>765456123-4567</span>
         </div>
         <div class="contact-info">
           <i class="fas fa-envelope"></i>
@@ -211,6 +211,6 @@
     </div>
     
     <div class="copyright">
-      <p>&copy; 2025 School Name. All Rights Reserved.</p>
+      <p>&copy; 2025 Rukara Model School. All Rights Reserved.</p>
     </div>
   </footer> 

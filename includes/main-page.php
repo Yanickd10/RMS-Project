@@ -720,11 +720,14 @@
                 <div class="vision-box">
                     <div class="box-icon">C</div>
                     <h3 class="box-title">Core Values</h3>
-                    <p class="box-content">
-                        To be a leading educational institution where each student develops the knowledge, skills, and
-                        character to create their future and shape their world, emerging as compassionate, confident,
-                        and capable citizens with a lifelong passion for learning and leading positive change.
-                    </p>
+                    <p class="box-content"> 
+                        <ul type="square">
+                            <li>Voluptatem minus blanditiis ipsa, maiores repellat et sapiente cupiditate saepe exercitationem id laboriosam, quod architecto non placeat eaque aspernatur fugit qui quae.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A similique deleniti ducimus iste magnam quae, consectetur autem consequatur minus pariatur facere vel necessitatibus veritatis atque repellendus id unde. Nostrum, quia.</li>
+                        </ul>
+                        
+                </p>
                 </div>
             </div>
         </section>

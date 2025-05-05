@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TEP - Teaching Enhancement Program</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -796,8 +798,7 @@
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link">What We Offer</a></li>
                     <li class="nav-item"><a href="#ratings" class="nav-link">Ratings</a></li>
-                    <li class="nav-item"><a href="#success-stories" class="nav-link">Success Stories</a></li>
-                    <li class="nav-item"><a href="#success-stories" class="nav-link">Success Stories</a></li>
+                    <li class="nav-item"><a href="#success-stories" class="nav-link">Success Stories</a></li> 
 
                 </ul>
                 <div class="hamburger">
@@ -816,7 +817,7 @@
                     <h1>Teaching Enhancement Program</h1>
                     <p>Empowering the next generation of educators through excellence, mentorship, and practical
                         experience.</p>
-                    <button class="login-btn">LOG IN</button>
+                    <button type="button" class="btn btn-primary login-btn">LOGIN</button>
                 </div>
             </div>
         </section>
@@ -910,7 +911,6 @@
                     </div>
                     <div class="rating-text">4.6/5 Overall Program Rating</div>
                 </div>
-
                 <div class="rating-bars">
                     <div class="rating-item">
                         <div class="rating-label">
@@ -954,7 +954,8 @@
                 </div>
 
                 <div class="rate-us">
-                    <button class="btn" id="rateBtn">Rate Us</button>
+                    <!-- <button class="btn" id="rateBtn">Rate Us</button> -->
+                    <button type="button" class="btn btn-success" id="rateBtn">Rate us</button>
                 </div>
 
                 <div class="reviews-container">
@@ -1168,10 +1169,10 @@
                     <p>The Teaching Enhancement Program is committed to preparing the next generation of educators
                         through innovative teaching methods, mentorship, and real-world experience.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i style="color: white;" class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i style="color: white;" class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i style="color: white;" class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i style="color: white;" class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -1499,7 +1500,6 @@
         }
         // Call the fetch function on page load
         fetchProgramData();
-
         function showFullStory(element) {
             const storyCard = element.closest('.story-card');
             const fullStory = storyCard.querySelector('.story-quote').innerText;
@@ -1512,6 +1512,15 @@
             // Show modal
             document.getElementById('storyModal').style.display = 'flex';
         }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 </body>
 
