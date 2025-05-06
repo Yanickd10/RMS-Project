@@ -782,12 +782,15 @@
 </head>
 
 <body>
+    <?php
+    // include("includes/navigation.php");
+    ?>
     <!-- Header -->
     <header>
         <div class="container">
             <nav>
                 <div class="logo"> <svg onclick="window.location.href = '/RMS-Project/index'" style="cursor: pointer"
-                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-house-fill" viewBox="0 0 16 16">
                         <path
                             d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
@@ -817,7 +820,7 @@
                     <h1>Teaching Enhancement Program</h1>
                     <p>Empowering the next generation of educators through excellence, mentorship, and practical
                         experience.</p>
-                    <button type="button" class="btn btn-primary login-btn">LOGIN</button>
+                    <button type="button" onclick="window.location.href = '/RMS-Project/login/'" class="btn btn-primary login-btn">LOGIN</button>
                 </div>
             </div>
         </section>

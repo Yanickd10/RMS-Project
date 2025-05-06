@@ -5,7 +5,7 @@
         right: 30px;
         width: 50px;
         height: 50px;
-        background-color: #1a5276;
+        background-color:rgb(12, 40, 57);
         color: white;
         border-radius: 50%;
         display: flex;

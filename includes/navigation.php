@@ -1,14 +1,12 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <a href="index"><img src="https://ur.ac.rw/IMG/arton1138.png" alt="Logo"></a>
+      <a href="/RMS-Project/"><img style=" border-radius: 50%;" src="https://up.yimg.com/ib/th?id=OIP.imw8RAghxpj_jhaiSp9FKQHaHa&pid=Api&rs=1&c=1&qlt=95&w=109&h=109" alt="Logo"></a>
       <h1>Rukara Model School</h1>
     </div>
-
     <div class="mobile-menu-btn" onclick="toggleMenu()">
       ☰
     </div>
-
     <ul class="nav-links" id="navLinks">
       <li>
         <a href="/RMS-Project/" class="has-dropdown active">Home</a>
@@ -18,9 +16,7 @@
           <li><a href="/RMS-Project/index.php#goals">Strategic Goals</a></li>
           <li><a href="/RMS-Project/index.php#community">Community Engagement</a></li>
           <li><a href="/RMS-Project/index.php#activities">Extracurricular Activities</a></li>
-          <li><a href="/RMS-Project/index.php#news">News & Announcements</a></li>
-          <!-- <li><a href="index" data-scroll-to="news">News & Announcements</a></li> -->
-
+          <li><a href="/RMS-Project/index.php#news">News & Announcements</a></li> 
         </ul>
       </li>
       <li>
@@ -32,22 +28,30 @@
         </ul>
       </li>
       <li>
-        <a href="/RMS-Project/academics.php" class="has-dropdown">Academics</a>
+        <a href="/RMS-Project/academics" class="has-dropdown">Academics</a>
         <ul class="dropdown">
-          <li><a href="admissions.php">Admissions</a></li>
+          <li><a href="/RMS-Project/academics#requirements">Admissions</a></li>
           <li><a href="academics.php#courses">Courses/Programs Offered</a></li>
           <li><a href="academics.php#curriculum">Curriculum Outlines</a></li>
           <li><a href="academics.php#calendar">Academic Calendar</a></li>
         </ul>
       </li>
       <li>
-        <a href="/RMS-Project/RMS-TEP" class="has-dropdown">Portals</a>
+        <a href="" class="has-dropdown">Portals</a>
         <ul class="dropdown">
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="academics.html#courses">Courses/Programs Offered</a></li>
-          <li><a href="academics.html#curriculum">Curriculum Outlines</a></li>
-          <li><a href="academics.html#calendar">Academic Calendar</a></li>
+          <li><a href="">Admissions</a></li>
+          <li><a href="">Teacher Portal</a></li>
+          <li><a href="">Student Portal</a></li>
+          <li><a href="">Courses/Programs Offered</a></li>
+          <li><a href="">Curriculum Outlines</a></li>
+          <li><a href="">Academic Calendar</a></li>
         </ul>
+      </li>
+      <li style="display: none;">
+        <a href="/RMS-Project/RMS-TEP">TEP</a>
+      </li>
+      <li>
+        <a href="/RMS-Project/RMS-TEP">Events</a>
       </li>
       <li>
         <a href="index" data-scroll-to="footer">Contact</a>
