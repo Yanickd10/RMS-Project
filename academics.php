@@ -225,6 +225,22 @@
             .section { padding: 0.7rem; }
             .apply-form { padding: 1rem; }
         }
+        .accordion-header
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem;
+            background-color: #eaf6fb;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover{
+            background-color:rgb(143, 175, 219);
+            
+        }
     </style>
 </head>
 <body>
@@ -456,7 +472,7 @@
         <!-- Apply Online Section -->
         <section id="apply" class="section" style="display:none;">
             <h2>Apply Online</h2>
-            <form class="apply-form" id="applyForm" enctype="multipart/form-data" method="post" action="submit-application.php">
+            <form class="apply-form" actions="submit-application.php" id="applyForm" enctype="multipart/form-data" method="post" action="submit-application.php">
                 <label for="fullname">Full Name *</label>
                 <input type="text" id="fullname" name="fullname" required>
 
@@ -481,6 +497,9 @@
             </form>
         </section>
     </div>
+    <?php
+   include('includes/footer.php');
+    ?>
     <script>
         // Responsive nav menu
         const menuToggle = document.getElementById('menuToggle');
@@ -535,5 +554,6 @@
             document.getElementById('apply').style.display = "none";
         }
     </script>
+
 </body>
 </html>

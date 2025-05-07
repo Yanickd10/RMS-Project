@@ -1,9 +1,12 @@
  
   <style> 
-    .footer {
+    .footer {  
+      /* position: sticky; */
       background-color: #1a5276;
       color: white;
       padding: 40px 0 20px;
+      /* width: 100%;
+      bottom: 0; */
     }
     
     .footer-container {
