@@ -500,6 +500,7 @@
     <?php
    include('includes/footer.php');
     ?>
+    <script src="form-validation.js"></script>
     <script>
         // Responsive nav menu
         const menuToggle = document.getElementById('menuToggle');
