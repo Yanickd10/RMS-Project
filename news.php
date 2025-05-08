@@ -234,6 +234,9 @@
             cursor: pointer;
             margin-bottom: 20px
         }
+        .top-bar:hover {
+            background-color:rgb(43, 94, 77); 
+        }
     </style>
 </head>
 

@@ -462,7 +462,7 @@
                         <td>Term 3</td>
                         <td>2025-09-01</td>
                         <td>2025-11-20</td>
-                        <td>Final Exams, Graduation</td>
+                        <td>Final Exams</td>
                     </tr>
                 </tbody>
             </table>
