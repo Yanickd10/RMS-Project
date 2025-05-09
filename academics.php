@@ -246,10 +246,7 @@
 <body>
     <header>
         <h1>Academics</h1>
-    </header>
-    <?php 
-    // include('includes/navigation.php');
-    ?>
+    </header> 
     <nav>
         <div class="nav-container">
             <div class="nav-logo"> <svg onclick="window.location.href = '/RMS-Project/index'" style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
@@ -472,7 +469,7 @@
         <!-- Apply Online Section -->
         <section id="apply" class="section" style="display:none;">
             <h2>Apply Online</h2>
-            <form class="apply-form" actions="submit-application.php" id="applyForm" enctype="multipart/form-data" method="post" action="submit-application.php">
+            <form class="apply-form" action="submit_application" id="applyForm" enctype="multipart/form-data" method="post" action="submit-application.php">
                 <label for="fullname">Full Name *</label>
                 <input type="text" id="fullname" name="fullname" required>
 
@@ -480,7 +477,7 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="phone">Phone *</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required> 
 
                 <label for="level">Applying for *</label>
                 <select id="level" name="level" required>

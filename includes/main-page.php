@@ -201,7 +201,7 @@
         gap: 20px;
     }
 
-    .partner-details{
+    .partner-details {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -247,11 +247,12 @@
         font-size: 12px;
         color: #666;
     }
-    .partner-logos
-    {
+
+    .partner-logos {
         display: flex;
         justify-content: space-between
     }
+
     .partner-logo img {
         max-width: 100%;
         max-height: 100%;
@@ -342,7 +343,8 @@
         border-bottom: 2px solid #184e77;
         color: #184e77;
     }
-    .new-uploads{
+
+    .new-uploads {
         margin-top: 30px;
     }
 
@@ -502,171 +504,171 @@
     /* search styles */
     /* Search bar styles */
     .search-container {
-      position: relative;
-      margin-bottom: 10px;
+        position: relative;
+        margin-bottom: 10px;
     }
-    
+
     .search-bar {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: white;
-      transition: box-shadow 0.2s ease;
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+        transition: box-shadow 0.2s ease;
     }
-    
+
     .search-bar:focus-within {
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-      border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        border-color: #3b82f6;
     }
-    
+
     .search-icon {
-      display: flex;
-      align-items: center;
-      padding-left: 12px;
-      color: #6b7280;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        color: #6b7280;
     }
-    
+
     .search-input {
-      flex: 1;
-      padding: 12px 8px;
-      border: none;
-      outline: none;
-      font-size: 16px;
+        flex: 1;
+        padding: 12px 8px;
+        border: none;
+        outline: none;
+        font-size: 16px;
     }
-    
+
     .clear-button {
-      background: none;
-      border: none;
-      padding: 0 12px;
-      cursor: pointer;
-      color: #6b7280;
+        background: none;
+        border: none;
+        padding: 0 12px;
+        cursor: pointer;
+        color: #6b7280;
     }
-    
+
     .clear-button:hover {
-      color: #4b5563;
+        color: #4b5563;
     }
-    
-    .search-button { 
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      padding:16px 5px 16px 5px;
-      margin-left: -10px;
-      height: 100%;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background-color 0.2s ease;
+
+    .search-button {
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        padding: 16px 5px 16px 5px;
+        margin-left: -10px;
+        height: 100%;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
     }
-    
+
     .search-button:hover {
-      background-color: #2563eb;
+        background-color: #2563eb;
     }
-    
+
     /* Suggestions styles */
     .suggestions-container {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 4px;
-      background-color: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      max-height: 320px;
-      overflow-y: auto;
-      z-index: 10;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 4px;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        max-height: 320px;
+        overflow-y: auto;
+        z-index: 10;
     }
-    
+
     .suggestion-item {
-      padding: 8px 16px;
-      cursor: pointer;
+        padding: 8px 16px;
+        cursor: pointer;
     }
-    
+
     .suggestion-item:hover {
-      background-color: #f3f4f6;
+        background-color: #f3f4f6;
     }
-    
+
     .suggestion-title {
-      font-weight: 500;
+        font-weight: 500;
     }
-    
+
     .suggestion-content {
-      font-size: 14px;
-      color: #6b7280;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+        font-size: 14px;
+        color: #6b7280;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    
+
     .loading-indicator {
-      padding: 8px 16px;
-      text-align: center;
-      color: #6b7280;
+        padding: 8px 16px;
+        text-align: center;
+        color: #6b7280;
     }
-    
+
     /* Search results styles */
     .search-results {
-      margin-top: 24px;
+        margin-top: 24px;
     }
-    
+
     .results-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 16px;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
     }
-    
+
     .result-item {
-      padding: 16px;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      background-color: white;
-      transition: border-color 0.2s ease;
+        padding: 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        background-color: white;
+        transition: border-color 0.2s ease;
     }
-    
+
     .result-item:hover {
-      border-color: #d1d5db;
+        border-color: #d1d5db;
     }
-    
+
     .result-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #2563eb;
+        font-size: 18px;
+        font-weight: 600;
+        color: #2563eb;
     }
-    
+
     .result-title:hover {
-      text-decoration: underline;
+        text-decoration: underline;
     }
-    
+
     .result-content {
-      color: #4b5563;
-      margin-top: 4px;
+        color: #4b5563;
+        margin-top: 4px;
     }
-    
+
     .no-results {
-      padding: 24px;
-      text-align: center;
-      background-color: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
+        padding: 24px;
+        text-align: center;
+        background-color: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
     }
-    
+
     .no-results-message {
-      color: #4b5563;
+        color: #4b5563;
     }
-    
+
     .no-results-suggestion {
-      font-size: 14px;
-      color: #6b7280;
-      margin-top: 8px;
+        font-size: 14px;
+        color: #6b7280;
+        margin-top: 8px;
     }
-    
+
     /* Highlight style */
     .highlight {
-      background-color: #fef08a;
+        background-color: #fef08a;
     }
 </style>
 <div class="main-container">
@@ -720,14 +722,18 @@
                 <div class="vision-box">
                     <div class="box-icon">C</div>
                     <h3 class="box-title">Core Values</h3>
-                    <p class="box-content"> 
+                    <p class="box-content">
                         <ul type="square">
-                            <li>Voluptatem minus blanditiis ipsa, maiores repellat et sapiente cupiditate saepe exercitationem id laboriosam, quod architecto non placeat eaque aspernatur fugit qui quae.</li>
+                            <li>Voluptatem minus blanditiis ipsa, maiores repellat et sapiente cupiditate saepe
+                                exercitationem id laboriosam, quod architecto non placeat eaque aspernatur fugit qui
+                                quae.</li>
                             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A similique deleniti ducimus iste magnam quae, consectetur autem consequatur minus pariatur facere vel necessitatibus veritatis atque repellendus id unde. Nostrum, quia.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A similique deleniti ducimus
+                                iste magnam quae, consectetur autem consequatur minus pariatur facere vel necessitatibus
+                                veritatis atque repellendus id unde. Nostrum, quia.</li>
                         </ul>
-                        
-                </p>
+
+                    </p>
                 </div>
             </div>
         </section>
@@ -798,13 +804,23 @@
             <div class="partner-details">
                 <div><a href="#" class="cta-button">Get Involved</a></div>
                 <div class="community-partners">
-                <div>   <h3>Our Partners</h3></div>
-                   <div class="partner-logos">
-                   <div class="partner-logo"><img src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220" alt="parterner logo"></div>
-                    <div class="partner-logo"> <img src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220" alt="parterner logo"></div>
-                    <div class="partner-logo"> <img src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220" alt="parterner logo"></div>
-                    <div class="partner-logo"> <img src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220" alt="parterner logo"></div>
-                   </div>
+                    <div>
+                        <h3>Our Partners</h3>
+                    </div>
+                    <div class="partner-logos">
+                        <div class="partner-logo"><img
+                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img
+                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img
+                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img
+                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                                alt="parterner logo"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -892,38 +908,35 @@
 
     <!-- Right sidebar with News & Announcements -->
     <aside class="sidebar">
-    <div class="search-container" id="searchContainer">
-  <div class="search-bar">
-    <div class="search-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </div>
-    <input 
-      type="text" 
-      id="searchInput" 
-      class="search-input" 
-      placeholder="Search content..." 
-      autocomplete="off"
-    >
-    <button id="clearButton" class="clear-button" style="display: none;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    <button id="searchButton" class="search-button">Search</button>
-  </div>
-  
-  <div id="suggestionsContainer" class="suggestions-container" style="display: none;"></div>
-  
-  <div id="loadingIndicator" class="suggestions-container" style="display: none;">
-    <div class="loading-indicator">Loading suggestions...</div>
-  </div>
-</div>
+        <div class="search-container" id="searchContainer">
+            <div class="search-bar">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search content..."
+                    autocomplete="off">
+                <button id="clearButton" class="clear-button" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <button id="searchButton" class="search-button">Search</button>
+            </div>
 
-<div id="searchResults" class="search-results" style="display: none;"></div>
+            <div id="suggestionsContainer" class="suggestions-container" style="display: none;"></div>
+
+            <div id="loadingIndicator" class="suggestions-container" style="display: none;">
+                <div class="loading-indicator">Loading suggestions...</div>
+            </div>
+        </div>
+
+        <div id="searchResults" class="search-results" style="display: none;"></div>
         <section class="news-section">
             <h2 id="news">News & Announcements</h2>
             <div class="news-container">
@@ -971,54 +984,6 @@
                 </article>
             </div>
         </section>
-        <section class="news-section new-uploads">
-            <h2>other title</h2>
-            <div class="news-container">
-                <article class="news-item">
-                    <div class="news-date">April 25, 2025</div>
-                    <h3 class="news-title">Spring Arts Festival Next Week</h3>
-                    <p class="news-excerpt">Join us for our annual Spring Arts Festival featuring performances and
-                        exhibits from students across all grade levels.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 20, 2025</div>
-                    <h3 class="news-title">Math Team Wins Regional Competition</h3>
-                    <p class="news-excerpt">Congratulations to our Math Team for their outstanding performance at the
-                        regional competition last weekend.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 15, 2025</div>
-                    <h3 class="news-title">Parent-Teacher Conferences Schedule</h3>
-                    <p class="news-excerpt">Spring parent-teacher conferences will take place next month. Please check
-                        the schedule and register for your preferred time slot.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 10, 2025</div>
-                    <h3 class="news-title">New Science Lab Equipment Arrives</h3>
-                    <p class="news-excerpt">Thanks to a generous donation, our science department has received
-                        state-of-the-art equipment for enhanced learning experiences.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 5, 2025</div>
-                    <h3 class="news-title">Summer Camp Registration Open</h3>
-                    <p class="news-excerpt">Registration for our popular summer enrichment camps is now open. Spaces
-                        fill quickly, so register early!</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 1, 2025</div>
-                    <h3 class="news-title">Community Service Day Success</h3>
-                    <p class="news-excerpt">Our annual Community Service Day was a great success with over 500 students
-                        participating in various service projects.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-            </div>
-        </section>
-
         <section class="quick-links">
             <h3>Quick Links</h3>
             <ul class="links-list">
@@ -1081,256 +1046,255 @@
 <!-- Search functionality -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // DOM Elements
-      const searchInput = document.getElementById('searchInput');
-      const clearButton = document.getElementById('clearButton');
-      const searchButton = document.getElementById('searchButton');
-      const suggestionsContainer = document.getElementById('suggestionsContainer');
-      const loadingIndicator = document.getElementById('loadingIndicator');
-      const searchResults = document.getElementById('searchResults');
-      const searchContainer = document.getElementById('searchContainer');
-      
-      // Sample website content for search demonstration
-      const webpageContent = [
-        { title: "Home Page", content: "Welcome to our website. We offer various services and products.", url: "#home" },
-        { title: "About Us", content: "Learn more about our company history and mission statement.", url: "#about" },
-        { title: "Products", content: "Browse our wide range of products including electronics, clothing, and accessories.", url: "#products" },
-        { title: "Services", content: "We provide top-notch customer service and support for all your needs.", url: "#services" },
-        { title: "Contact", content: "Get in touch with our support team via email, phone, or visit our office.", url: "#contact" },
-        { title: "Blog", content: "Read our latest articles on technology, fashion, and industry trends.", url: "#blog" },
-        { title: "FAQ", content: "Find answers to frequently asked questions about our products and services.", url: "#faq" },
-        { title: "Privacy Policy", content: "Information about how we collect, use, and protect your personal data.", url: "#privacy" },
-        { title: "Terms of Service", content: "Details about the terms and conditions of using our website and services.", url: "#terms" },
-      ];
-      
-      // Variables
-      let searchTimeout;
-      let hasSearched = false;
-      
-      // Event Listeners
-      searchInput.addEventListener('input', handleInput);
-      searchInput.addEventListener('keyup', function(e) {
-        if (e.key === 'Enter') {
-          performSearch();
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const clearButton = document.getElementById('clearButton');
+        const searchButton = document.getElementById('searchButton');
+        const suggestionsContainer = document.getElementById('suggestionsContainer');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const searchResults = document.getElementById('searchResults');
+        const searchContainer = document.getElementById('searchContainer');
+        // Sample website content for search demonstration
+        const webpageContent = [{
+                title: "Home Page",
+                content: "Welcome to our website. We offer various services and products.",
+                url: "#home"
+            },
+            {
+                title: "About Us",
+                content: "Learn more about our company history and mission statement.",
+                url: "#about"
+            },
+            {
+                title: "Products",
+                content: "Browse our wide range of products including electronics, clothing, and accessories.",
+                url: "#products"
+            },
+            {
+                title: "Services",
+                content: "We provide top-notch customer service and support for all your needs.",
+                url: "#services"
+            },
+            {
+                title: "Contact",
+                content: "Get in touch with our support team via email, phone, or visit our office.",
+                url: "#contact"
+            },
+            {
+                title: "Blog",
+                content: "Read our latest articles on technology, fashion, and industry trends.",
+                url: "#blog"
+            },
+            {
+                title: "FAQ",
+                content: "Find answers to frequently asked questions about our products and services.",
+                url: "#faq"
+            },
+            {
+                title: "Privacy Policy",
+                content: "Information about how we collect, use, and protect your personal data.",
+                url: "#privacy"
+            },
+            {
+                title: "Terms of Service",
+                content: "Details about the terms and conditions of using our website and services.",
+                url: "#terms"
+            },
+        ];
+        // Variables
+        let searchTimeout;
+        let hasSearched = false;
+        // Event Listeners
+        searchInput.addEventListener('input', handleInput);
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        searchInput.addEventListener('focus', function() {
+            if (searchInput.value.trim() !== '') {
+                showSuggestions();
+            }
+        });
+        clearButton.addEventListener('click', clearSearch);
+        searchButton.addEventListener('click', performSearch);
+        // Handle clicks outside the search container
+        document.addEventListener('click', function(e) {
+            if (!searchContainer.contains(e.target)) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+        // Functions
+        function handleInput() {
+            const query = searchInput.value.trim();
+            // Toggle clear button visibility
+            clearButton.style.display = query ? 'block' : 'none';
+            if (query === '') {
+                suggestionsContainer.style.display = 'none';
+                loadingIndicator.style.display = 'none';
+                clearTimeout(searchTimeout);
+                return;
+            }
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+            suggestionsContainer.style.display = 'none';
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            // Set new timeout for search suggestions
+            searchTimeout = setTimeout(() => {
+                generateSuggestions(query);
+            }, 300);
         }
-      });
-      searchInput.addEventListener('focus', function() {
-        if (searchInput.value.trim() !== '') {
-          showSuggestions();
-        }
-      });
-      clearButton.addEventListener('click', clearSearch);
-      searchButton.addEventListener('click', performSearch);
-      
-      // Handle clicks outside the search container
-      document.addEventListener('click', function(e) {
-        if (!searchContainer.contains(e.target)) {
-          suggestionsContainer.style.display = 'none';
-        }
-      });
-      
-      // Functions
-      function handleInput() {
-        const query = searchInput.value.trim();
-        
-        // Toggle clear button visibility
-        clearButton.style.display = query ? 'block' : 'none';
-        
-        if (query === '') {
-          suggestionsContainer.style.display = 'none';
-          loadingIndicator.style.display = 'none';
-          clearTimeout(searchTimeout);
-          return;
-        }
-        
-        // Show loading indicator
-        loadingIndicator.style.display = 'block';
-        suggestionsContainer.style.display = 'none';
-        
-        // Clear previous timeout
-        clearTimeout(searchTimeout);
-        
-        // Set new timeout for search suggestions
-        searchTimeout = setTimeout(() => {
-          generateSuggestions(query);
-        }, 300);
-      }
-      
-      function generateSuggestions(query) {
-        // Filter content based on query
-        const filteredContent = webpageContent.filter(item => 
-          item.title.toLowerCase().includes(query.toLowerCase()) || 
-          item.content.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 5);
-        
-        // Hide loading indicator
-        loadingIndicator.style.display = 'none';
-        
-        // Show suggestions if there are any
-        if (filteredContent.length > 0) {
-          suggestionsContainer.innerHTML = '';
-          
-          filteredContent.forEach(item => {
-            const suggestionItem = document.createElement('div');
-            suggestionItem.className = 'suggestion-item';
-            
-            const titleElement = document.createElement('div');
-            titleElement.className = 'suggestion-title';
-            titleElement.innerHTML = highlightMatch(item.title, query);
-            
-            const contentElement = document.createElement('div');
-            contentElement.className = 'suggestion-content';
-            contentElement.innerHTML = highlightMatch(item.content.substring(0, 60) + '...', query);
-            
-            suggestionItem.appendChild(titleElement);
-            suggestionItem.appendChild(contentElement);
-            
-            // Add click event to select suggestion
-            suggestionItem.addEventListener('click', function() {
-              selectSuggestion(item);
-            });
-            
-            suggestionsContainer.appendChild(suggestionItem);
-          });
-          
-          suggestionsContainer.style.display = 'block';
-        } else {
-          suggestionsContainer.style.display = 'none';
-        }
-      }
-      
-      function performSearch() {
-        const query = searchInput.value.trim();
-        
-        if (query === '') return;
-        
-        // Filter content based on query
-        const results = webpageContent.filter(item => 
-          item.title.toLowerCase().includes(query.toLowerCase()) || 
-          item.content.toLowerCase().includes(query.toLowerCase())
-        );
-        
-        // Display results
-        displaySearchResults(results, query);
-        
-        // Hide suggestions
-        suggestionsContainer.style.display = 'none';
-        hasSearched = true;
-      }
-      
-      function displaySearchResults(results, query) {
-        searchResults.innerHTML = '';
-        
-        // Create results title
-        const resultsTitle = document.createElement('h2');
-        resultsTitle.className = 'results-title';
-        resultsTitle.textContent = `Search Results ${results.length > 0 ? `(${results.length})` : ''}`;
-        searchResults.appendChild(resultsTitle);
-        
-        if (results.length > 0) {
-          // Create results list
-          results.forEach(result => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'result-item';
-            
-            const resultLink = document.createElement('a');
-            resultLink.href = result.url;
-            resultLink.style.textDecoration = 'none';
-            
-            const titleElement = document.createElement('h3');
-            titleElement.className = 'result-title';
-            titleElement.innerHTML = highlightMatch(result.title, query);
-            
-            const contentElement = document.createElement('p');
-            contentElement.className = 'result-content';
-            contentElement.innerHTML = highlightMatch(result.content, query);
-            
-            resultLink.appendChild(titleElement);
-            resultLink.appendChild(contentElement);
-            resultItem.appendChild(resultLink);
-            
-            searchResults.appendChild(resultItem);
-          });
-        } else {
-          // No results found
-          const noResults = document.createElement('div');
-          noResults.className = 'no-results';
-          
-          const noResultsMessage = document.createElement('p');
-          noResultsMessage.className = 'no-results-message';
-          noResultsMessage.textContent = `No results found for "${query}"`;
-          
-          const noResultsSuggestion = document.createElement('p');
-          noResultsSuggestion.className = 'no-results-suggestion';
-          noResultsSuggestion.textContent = 'Try using different keywords or check your spelling';
-          
-          noResults.appendChild(noResultsMessage);
-          noResults.appendChild(noResultsSuggestion);
-          
-          searchResults.appendChild(noResults);
-        }
-        
-        searchResults.style.display = 'block';
-      }
-      
-      function selectSuggestion(suggestion) {
-        searchInput.value = suggestion.title;
-        displaySearchResults([suggestion], suggestion.title);
-        suggestionsContainer.style.display = 'none';
-        hasSearched = true;
-      }
-      
-      function clearSearch() {
-        searchInput.value = '';
-        clearButton.style.display = 'none';
-        suggestionsContainer.style.display = 'none';
-        searchResults.style.display = 'none';
-        hasSearched = false;
-      }
-      
-      function showSuggestions() {
-        const query = searchInput.value.trim();
-        if (query !== '') {
-          generateSuggestions(query);
-        }
-      }
-      
-      function highlightMatch(text, query) {
-        if (!query) return text;
-        
-        const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
-        return text.replace(regex, '<span class="highlight">$1</span>');
-      }
-      
-      function escapeRegExp(string) {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      }
-    });
-  </script>
-  <!-- Animating scroll -->
-  <script>
-       const isInViewport = (element) => {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.bottom >= 0
-            );
-        };
-  </script>
-  <!--  smooth scroll--> 
-<script>
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                const navHeight = document.querySelector('header').offsetHeight;
-                window.scrollTo({
-                    top: targetElement.offsetTop - navHeight,
-                    behavior: 'smooth'
+
+        function generateSuggestions(query) {
+            // Filter content based on query
+            const filteredContent = webpageContent.filter(item =>
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.content.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 5);
+            // Hide loading indicator
+            loadingIndicator.style.display = 'none';
+            // Show suggestions if there are any
+            if (filteredContent.length > 0) {
+                suggestionsContainer.innerHTML = '';
+                filteredContent.forEach(item => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    const titleElement = document.createElement('div');
+                    titleElement.className = 'suggestion-title';
+                    titleElement.innerHTML = highlightMatch(item.title, query);
+                    const contentElement = document.createElement('div');
+                    contentElement.className = 'suggestion-content';
+                    contentElement.innerHTML = highlightMatch(item.content.substring(0, 60) + '...',
+                        query);
+                    suggestionItem.appendChild(titleElement);
+                    suggestionItem.appendChild(contentElement);
+                    // Add click event to select suggestion
+                    suggestionItem.addEventListener('click', function() {
+                        selectSuggestion(item);
+                    });
+                    suggestionsContainer.appendChild(suggestionItem);
                 });
+                suggestionsContainer.style.display = 'block';
+            } else {
+                suggestionsContainer.style.display = 'none';
+            }
+        }
+
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (query === '') return;
+            // Filter content based on query
+            const results = webpageContent.filter(item =>
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.content.toLowerCase().includes(query.toLowerCase())
+            );
+            // Display results
+            displaySearchResults(results, query);
+            // Hide suggestions
+            suggestionsContainer.style.display = 'none';
+            hasSearched = true;
+        }
+
+        function displaySearchResults(results, query) {
+            searchResults.innerHTML = '';
+            // Create results title
+            const resultsTitle = document.createElement('h2');
+            resultsTitle.className = 'results-title';
+            resultsTitle.textContent = `Search Results ${results.length > 0 ? `(${results.length})` : ''}`;
+            searchResults.appendChild(resultsTitle);
+            if (results.length > 0) {
+                // Create results list
+                results.forEach(result => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    const resultLink = document.createElement('a');
+                    resultLink.href = result.url;
+                    resultLink.style.textDecoration = 'none';
+                    const titleElement = document.createElement('h3');
+                    titleElement.className = 'result-title';
+                    titleElement.innerHTML = highlightMatch(result.title, query);
+                    const contentElement = document.createElement('p');
+                    contentElement.className = 'result-content';
+                    contentElement.innerHTML = highlightMatch(result.content, query);
+                    resultLink.appendChild(titleElement);
+                    resultLink.appendChild(contentElement);
+                    resultItem.appendChild(resultLink);
+                    searchResults.appendChild(resultItem);
+                });
+            } else {
+                // No results found
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                const noResultsMessage = document.createElement('p');
+                noResultsMessage.className = 'no-results-message';
+                noResultsMessage.textContent = `No results found for "${query}"`;
+                const noResultsSuggestion = document.createElement('p');
+                noResultsSuggestion.className = 'no-results-suggestion';
+                noResultsSuggestion.textContent = 'Try using different keywords or check your spelling';
+                noResults.appendChild(noResultsMessage);
+                noResults.appendChild(noResultsSuggestion);
+                searchResults.appendChild(noResults);
+            }
+            searchResults.style.display = 'block';
+        }
+
+        function selectSuggestion(suggestion) {
+            searchInput.value = suggestion.title;
+            displaySearchResults([suggestion], suggestion.title);
+            suggestionsContainer.style.display = 'none';
+            hasSearched = true;
+        }
+
+        function clearSearch() {
+            searchInput.value = '';
+            clearButton.style.display = 'none';
+            suggestionsContainer.style.display = 'none';
+            searchResults.style.display = 'none';
+            hasSearched = false;
+        }
+
+        function showSuggestions() {
+            const query = searchInput.value.trim();
+            if (query !== '') {
+                generateSuggestions(query);
+            }
+        }
+
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+    });
+</script>
+<!-- Animating scroll -->
+<script>
+    const isInViewport = (element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    };
+</script>
+<!--  smooth scroll-->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            const navHeight = document.querySelector('header').offsetHeight;
+            window.scrollTo({
+                top: targetElement.offsetTop - navHeight,
+                behavior: 'smooth'
             });
         });
+    });
 </script>
-  

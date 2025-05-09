@@ -285,10 +285,7 @@
         <ul class="dropdown">
           <li><a href="">Admissions</a></li>
           <li><a href="">Teacher Portal</a></li>
-          <li><a href="">Student Portal</a></li>
-          <li><a href="">Courses/Programs Offered</a></li>
-          <li><a href="">Curriculum Outlines</a></li>
-          <li><a href="">Academic Calendar</a></li>
+          <li><a href="">Student Portal</a></li> 
         </ul>
       </li>
       <li style="display: none;">
