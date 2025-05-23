@@ -3,8 +3,6 @@ function toggleMenu() {
   const navLinks = document.getElementById('navLinks');
   navLinks.classList.toggle('show');
 }
-
-// For mobile dropdown toggles
 document.addEventListener('DOMContentLoaded', function() {
   const hasDropdowns = document.querySelectorAll('.has-dropdown');
   

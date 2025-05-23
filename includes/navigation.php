@@ -283,7 +283,7 @@
       <li>
         <a href="" class="has-dropdown">Portals</a>
         <ul class="dropdown">
-          <li><a href="">Admissions</a></li>
+          <!-- <li><a href="">Admissions</a></li> -->
           <li><a href="">Teacher Portal</a></li>
           <li><a href="">Student Portal</a></li> 
         </ul>
