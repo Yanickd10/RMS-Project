@@ -238,13 +238,16 @@
        </div>
        <div class="contact-info">
          <i class="fas fa-envelope"></i>
-         <span>info@schoolname.edu</span>
+         <span>modelrukara@gmail.com</span>
        </div>
        <div class="contact-info">
          <i class="fas fa-clock"></i>
          <span>Monday-Friday: 8:00 AM - 4:00 PM</span>
        </div>
      </div>
+     <!-- 
+     Principal,Dean of studies(Nursery and primary and secondary), bursar,secretary
+      -->
      <div class="footer-section">
        <h3>Newsletter</h3>
        <p>Subscribe to our newsletter to receive updates about school events, news, and important announcements.</p>
