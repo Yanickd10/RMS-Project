@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-  <?php include('includes/header-links.php');?> 
+  <?php include('includes/header-links.php');
+  ?> 
 </head>
 <body>
 <?php include("includes/navigation.php");?>
