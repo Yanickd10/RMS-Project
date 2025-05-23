@@ -44,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_paths = [];
     $upload_status = true;
     $error_message = "";
-    
     // Process file uploads
     if (isset($_FILES["documents"]) && !empty($_FILES["documents"]["name"][0])) {
         $total_files = count($_FILES["documents"]["name"]);
