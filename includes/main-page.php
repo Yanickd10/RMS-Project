@@ -677,7 +677,7 @@
         <div class="hero-carousel">
             <div class="carousel-container">
                 <div class="carousel-slide"
-                    style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
+                    style="background-image: url('/RMS-Project/assets/images/59.jpg')">
                     <div class="carousel-caption">
                         <h2>Welcome to Our School</h2>
                         <p>Empowering students to achieve excellence in education</p>
@@ -894,7 +894,7 @@
                 </article>
                 <article class="featured-item">
                     <div class="featured-img"
-                        style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
+                        style="background-image: url('/RMS-Project/assets/images/59.jpg')">
                     </div>
                     <div class="featured-text">
                         <h3>Athletics Program</h3>
@@ -1006,7 +1006,11 @@
         </section>
     </aside>
 </div>
+
+<script src="/RMS-Project/RMS-Details/details.js"></script>
+<script src="/RMS-Project/setInfo.js"></script>
 <script>
+  
     // Simple carousel functionality
     document.addEventListener('DOMContentLoaded', function() {
         const carouselContainer = document.querySelector('.carousel-container');

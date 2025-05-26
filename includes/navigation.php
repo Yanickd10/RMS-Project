@@ -245,7 +245,7 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <a href="/RMS-Project/"><img style=" border-radius: 50%;" src="https://up.yimg.com/ib/th?id=OIP.imw8RAghxpj_jhaiSp9FKQHaHa&pid=Api&rs=1&c=1&qlt=95&w=109&h=109" alt="Logo"></a>
+      <a href="/RMS-Project/"><img id="logoImg" style=" border-radius: 50%;"></a>
       <h1>Rukara Model School</h1>
     </div>
     <div class="mobile-menu-btn" onclick="toggleMenu()">
