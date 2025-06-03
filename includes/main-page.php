@@ -236,10 +236,11 @@
         gap: 15px;
         margin-top: 20px;
     }
+
     .community-partners h3 {
         text-align: center;
         background-color: #184e77;
-        color: white; 
+        color: white;
         padding: 5px 20px;
 
 
@@ -265,12 +266,17 @@
         width: fit-content;
         max-width: 100%;
         max-height: 100%;
-        object-fit: cover; 
+        object-fit: cover;
         /* margin-right: 10px; */
         cursor: pointer;
         border: 1px solid black;
         border-radius: 10px;
-        
+
+    }
+
+    .partner-logo img:hover {
+        box-shadow: 1px 1px 5px 1px black;
+
     }
 
     /* Extracurricular Activities section */
@@ -451,7 +457,7 @@
         border-radius: 5px;
         font-weight: bold;
         transition: background-color 0.3s;
-        margin-top: 15px;
+        /* margin-top: 15px; */
     }
 
     #cta-button:hover {
@@ -684,20 +690,21 @@
     .highlight {
         background-color: #fef08a;
     }
-     .mypopup{
-              /* position: absolute; */
-              top: 34px;
-          background-color: cyan;
-          margin: auto;
-          width: 50%;
-          /* height: 50%; */
-          padding: 50px;
-          border-radius: 10px;
-          border: 1px solid;
-          z-index: 99;
-          box-shadow: 1px 3px 3px black;
-          transition: 5s ease-in-out;
-        }
+
+    .mypopup {
+        /* position: absolute; */
+        top: 34px;
+        background-color: cyan;
+        margin: auto;
+        width: 50%;
+        /* height: 50%; */
+        padding: 50px;
+        border-radius: 10px;
+        border: 1px solid;
+        z-index: 99;
+        box-shadow: 1px 3px 3px black;
+        transition: 5s ease-in-out;
+    }
 </style>
 <div class="main-container">
     <main class="main-content">
@@ -723,12 +730,12 @@
                         <p>Building partnerships for a stronger educational experience</p>
                     </div>
                 </div>
-           
+
             </div>
             <div class="carousel-controls">
                 <div class="carousel-dot active"></div>
                 <div class="carousel-dot"></div>
-                <div class="carousel-dot"></div> 
+                <div class="carousel-dot"></div>
             </div>
         </div>
 
@@ -810,8 +817,7 @@
         <section class="section">
             <h2 id="community" class="section-title">Community Engagement</h2>
             <div class="community-content">
-                <div class="community-image"
-                    style="background-image: url('/RMS-Project/assets/images/7.jpg')">
+                <div class="community-image" style="background-image: url('/RMS-Project/assets/images/7.jpg')">
                 </div>
                 <div class="community-text">
                     <p>
@@ -827,26 +833,26 @@
                         We invite parents and community members to participate in school events, volunteer
                         opportunities, and advisory committees to help shape the future of our educational programs.
                     </p>
-
                 </div>
             </div>
-            <div class="partner-details"> 
+            <div class="partner-details">
                 <button id="cta-button">Get involved</button><br>
-                  <div id="form-div"></div>
-                  <script>
-                     document.getElementById("cta-button").addEventListener(
-            "click",showBox
-        ); 
-       function showBox(){
-       document.getElementById("form-div").innerHTML =`
+                <div id="form-div"></div>
+                <script>
+                    document.getElementById("cta-button").addEventListener(
+                        "click", showBox
+                    );
+
+                    function showBox() {
+                        document.getElementById("form-div").innerHTML = `
        <div class='mypopup'>
         helllo there
         <button onlclick="close">Close</button>
         </div>
        `;
-       }
-                  </script>
-                   
+                    }
+                </script>
+
                 <div class="community-partners">
                     <div>
                         <h3>Our Partners</h3>
@@ -858,7 +864,7 @@
                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
-                       
+
                     </div>
                 </div>
             </div>
