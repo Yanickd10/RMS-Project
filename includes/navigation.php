@@ -285,7 +285,7 @@
         <ul class="dropdown">
           <!-- <li><a href="">Admissions</a></li> -->
           <li><a href="">Teacher Portal</a></li>
-          <li><a href="">Student Portal</a></li> 
+          <li><a href="/RMS-Project/pages/student-portal">Student Portal</a></li> 
         </ul>
       </li>
       <li style="display: none;">
