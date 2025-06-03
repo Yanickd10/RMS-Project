@@ -281,7 +281,7 @@
         </ul>
       </li>
       <li>
-        <a href="" class="has-dropdown">Portals</a>
+        <a href=""   style="cursor: not-allowed; " class="has-dropdown">Portals</a>
         <ul class="dropdown">
           <!-- <li><a href="">Admissions</a></li> -->
           <li><a href="">Teacher Portal</a></li>
@@ -292,7 +292,7 @@
         <a href="/RMS-Project/RMS-TEP">TEP</a>
       </li>
       <li>
-        <a href="/RMS-Project/news">Events</a>
+        <a href="/RMS-Project/pages/news">Events</a>
       </li>
       <li>
         <a href="index" data-scroll-to="footer">Contact</a>

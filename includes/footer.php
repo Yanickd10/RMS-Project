@@ -202,8 +202,7 @@
    <div class="footer-container">
      <div class="footer-section">
        <h3>About School</h3>
-       <p>Our school is dedicated to providing high-quality education and fostering a supportive environment for
-         students to grow academically and personally.</p>
+       <p>We are a model school dedicated to excellence, nurturing students through innovative, student-centered teaching. Our mission is to equip every learner with critical thinking, problem-solving, and leadership skills, ensuring 100% graduation and high national exam success preparing confident, capable, and compassionate leaders for tomorrow's changing world.</p>
        <div class="social-links">
          <a href="#"><i class="fab fa-facebook-f"></i></a>
          <a href="#"><i class="fab fa-twitter"></i></a>
@@ -230,11 +229,11 @@
        <h3>Contact Info</h3>
        <div class="contact-info">
          <i class="fas fa-map-marker-alt"></i>
-         <span>123 ,6768</span>
+         <span>Kayonza, Gahini</span>
        </div>
        <div class="contact-info">
          <i class="fas fa-phone-alt"></i>
-         <span>765456123-4567</span>
+         <span>0788244491 / 079245452</span>
        </div>
        <div class="contact-info">
          <i class="fas fa-envelope"></i>

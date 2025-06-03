@@ -236,6 +236,14 @@
         gap: 15px;
         margin-top: 20px;
     }
+    .community-partners h3 {
+        text-align: center;
+        background-color: #184e77;
+        color: white; 
+        padding: 5px 20px;
+
+
+    }
 
     .partner-logo {
         height: 60px;
@@ -250,13 +258,19 @@
 
     .partner-logos {
         display: flex;
-        justify-content: space-between
+        justify-content: space-evenly;
     }
 
     .partner-logo img {
+        width: fit-content;
         max-width: 100%;
         max-height: 100%;
-        object-fit: cover;
+        object-fit: cover; 
+        /* margin-right: 10px; */
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 10px;
+        
     }
 
     /* Extracurricular Activities section */
@@ -428,7 +442,7 @@
     }
 
     /* Call to action button */
-    .cta-button {
+    #cta-button {
         display: inline-block;
         padding: 12px 25px;
         background-color: #1a759f;
@@ -440,7 +454,7 @@
         margin-top: 15px;
     }
 
-    .cta-button:hover {
+    #cta-button:hover {
         background-color: #184e77;
     }
 
@@ -670,38 +684,51 @@
     .highlight {
         background-color: #fef08a;
     }
+     .mypopup{
+              /* position: absolute; */
+              top: 34px;
+          background-color: cyan;
+          margin: auto;
+          width: 50%;
+          /* height: 50%; */
+          padding: 50px;
+          border-radius: 10px;
+          border: 1px solid;
+          z-index: 99;
+          box-shadow: 1px 3px 3px black;
+          transition: 5s ease-in-out;
+        }
 </style>
 <div class="main-container">
     <main class="main-content">
         <!-- Hero carousel section -->
         <div class="hero-carousel">
             <div class="carousel-container">
-                <div class="carousel-slide"
-                    style="background-image: url('/RMS-Project/assets/images/59.jpg')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/46.jpg')">
                     <div class="carousel-caption">
                         <h2>Welcome to Our School</h2>
                         <p>Empowering students to achieve excellence in education</p>
                     </div>
                 </div>
-                <div class="carousel-slide"
-                    style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/54.jpg')">
                     <div class="carousel-caption">
                         <h2>Academic Excellence</h2>
                         <p>Fostering a love for learning in every student</p>
                     </div>
                 </div>
-                <div class="carousel-slide"
-                    style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/53.jpg')">
+
                     <div class="carousel-caption">
                         <h2>Community Engagement</h2>
                         <p>Building partnerships for a stronger educational experience</p>
                     </div>
                 </div>
+           
             </div>
             <div class="carousel-controls">
                 <div class="carousel-dot active"></div>
                 <div class="carousel-dot"></div>
-                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div> 
             </div>
         </div>
 
@@ -713,10 +740,9 @@
                     <div class="box-icon">M</div>
                     <h3 class="box-title">Our Mission</h3>
                     <p class="box-content">
-                        We are committed to providing a stimulating learning environment that maximizes individual
-                        potential and ensures students of all ability levels are well equipped to meet the challenges of
-                        education, work, and life. Through a challenging curriculum and supportive school environment,
-                        our students will become responsible and innovative global citizens.
+                        To foster a dynamic learning environment that equips all students with critical thinking,
+                        problem-solving, and leadership skills through innovative, student-centered teaching practices
+                        by 2025, aiming for a 100% graduation rate and an 95% success rate in national exams.
                     </p>
                 </div>
                 <div class="vision-box">
@@ -724,13 +750,16 @@
                     <h3 class="box-title">Core Values</h3>
                     <p class="box-content">
                         <ul type="square">
-                            <li>Voluptatem minus blanditiis ipsa, maiores repellat et sapiente cupiditate saepe
-                                exercitationem id laboriosam, quod architecto non placeat eaque aspernatur fugit qui
-                                quae.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem</li>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A similique deleniti ducimus
-                                iste magnam quae, consectetur autem consequatur minus pariatur facere vel necessitatibus
-                                veritatis atque repellendus id unde. Nostrum, quia.</li>
+                            <li>Innovation in Education <br>
+                                We use creative and new ways of teaching to make learning active, fun, and focused on
+                                students.</li>
+                            <li>Student-Centered Learning<br>
+                                We prioritize individualized learning approaches that recognize each student’s unique
+                                needs, abilities, and potential, ensuring they are actively involved in their education.
+                            </li>
+                            <li>Excellence<br>
+                                We strive for excellence in all aspects of education, aiming for high academic
+                                achievement</li>
                         </ul>
 
                     </p>
@@ -782,7 +811,7 @@
             <h2 id="community" class="section-title">Community Engagement</h2>
             <div class="community-content">
                 <div class="community-image"
-                    style="background-image: url('https://tse4.mm.bing.net/th?id=OIP.qDvAlhidTBzXiGyDfq_O0gHaE7&pid=Api&P=0&h=220')">
+                    style="background-image: url('/RMS-Project/assets/images/7.jpg')">
                 </div>
                 <div class="community-text">
                     <p>
@@ -795,38 +824,48 @@
                         students develop a deeper understanding of their community and their role as engaged citizens.
                     </p>
                     <p>
-                        We invite parents, alumni, and community members to participate in school events, volunteer
+                        We invite parents and community members to participate in school events, volunteer
                         opportunities, and advisory committees to help shape the future of our educational programs.
                     </p>
 
                 </div>
             </div>
-            <div class="partner-details">
-                <div><a href="#" class="cta-button">Get Involved</a></div>
+            <div class="partner-details"> 
+                <button id="cta-button">Get involved</button><br>
+                  <div id="form-div"></div>
+                  <script>
+                     document.getElementById("cta-button").addEventListener(
+            "click",showBox
+        ); 
+       function showBox(){
+       document.getElementById("form-div").innerHTML =`
+       <div class='mypopup'>
+        helllo there
+        <button onlclick="close">Close</button>
+        </div>
+       `;
+       }
+                  </script>
+                   
                 <div class="community-partners">
                     <div>
                         <h3>Our Partners</h3>
                     </div>
                     <div class="partner-logos">
-                        <div class="partner-logo"><img
-                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
+                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"> <img
-                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"> <img
-                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
-                                alt="parterner logo"></div>
-                        <div class="partner-logo"> <img
-                                src="https://tse2.mm.bing.net/th?id=OIP.zBofnL6pymgoUpcGwnT4CAHaFu&pid=Api&P=0&h=220"
-                                alt="parterner logo"></div>
+                       
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Extracurricular Activities Section -->
-        <section class="section">
+        <section style="display: none;" class="section">
             <h2 id="activities" class="section-title">Extracurricular Activities</h2>
             <div class="activities-grid">
                 <div class="activity-item"
@@ -869,7 +908,7 @@
         </section>
 
         <!-- Featured content section -->
-        <section class="featured-content">
+        <section style="display: none;" class="featured-content">
             <h2 class="section-title">Featured Programs</h2>
             <div class="featured-grid">
                 <article class="featured-item">
@@ -893,8 +932,7 @@
                     </div>
                 </article>
                 <article class="featured-item">
-                    <div class="featured-img"
-                        style="background-image: url('/RMS-Project/assets/images/59.jpg')">
+                    <div class="featured-img" style="background-image: url('/RMS-Project/assets/images/59.jpg')">
                     </div>
                     <div class="featured-text">
                         <h3>Athletics Program</h3>
@@ -1010,7 +1048,6 @@
 <script src="/RMS-Project/RMS-Details/details.js"></script>
 <script src="/RMS-Project/setInfo.js"></script>
 <script>
-  
     // Simple carousel functionality
     document.addEventListener('DOMContentLoaded', function() {
         const carouselContainer = document.querySelector('.carousel-container');
