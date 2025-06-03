@@ -234,9 +234,7 @@
             transform: translateY(-1px);
         }
 
-        .assignments-list {
-            space-y: 20px;
-        }
+      
 
         .assignment-item {
             background: white;
