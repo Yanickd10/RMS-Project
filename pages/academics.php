@@ -250,6 +250,9 @@
     </style>
 </head>
 <body>
+    <?php
+    include("../includes/progress-bar.php");
+    ?>
     <header>
         <h1>Academics</h1>
     </header> 
@@ -501,7 +504,7 @@
         </section>
     </div>
     <?php
-   include('includes/footer.php');
+   include('../includes/footer.php');
     ?>
     <script src="form-validation.js"></script>
     <script>

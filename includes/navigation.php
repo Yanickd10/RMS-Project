@@ -1,17 +1,19 @@
 <style>
    
-   /* * {
+   * {
       margin: 0;
       padding: 0;
+
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    } */
+       font-family: 'Times New Roman', Times, serif;
+    }
     
     body {
       background-color: #f5f7fa;
     }
     
     .navbar {
+    
       background-color: #1a5276;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       position: sticky;
@@ -74,14 +76,16 @@
       top: 100%;
       left: 0;
       width: 230px;
-      background-color: #2c3e50;
+      background-color:  #1a5276;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       opacity: 0;
       visibility: hidden;
       transform: translateY(10px);
+      display: block;
       transition: all 0.3s ease;
       z-index: 200;
     }
+       
     
     .nav-links li:hover .dropdown {
       opacity: 1;
@@ -89,10 +93,7 @@
       transform: translateY(0);
     }
     
-    .dropdown li {
-      width: 100%; 
-        list-style: none; 
-    }
+     
     
     .dropdown a {
       padding: 12px 15px;
@@ -101,7 +102,7 @@
     }
     
     .dropdown a:hover {
-      background-color: #34495e;
+      background-color:rgb(48, 97, 127);
     }
     
     .has-dropdown::after {
@@ -156,6 +157,8 @@
         left: 0;
         background-color: #1a5276;
         width: 100%;
+        height: 100vh;
+        overflow-y: auto;
         flex-direction: column;
         display: none;
       }
@@ -201,7 +204,7 @@
       }
       
       .has-dropdown.active::after {
-        content: '-';
+        content: '+';
       }
     }
     
@@ -242,6 +245,9 @@
       }
     }
 </style>
+<?php 
+include("progress-bar.php");
+?>
 <nav class="navbar">
   <div class="container">
     <div class="logo">
@@ -254,38 +260,36 @@
     <ul class="nav-links" id="navLinks">
       <li>
         <a href="/RMS-Project/" class="has-dropdown active">Home</a>
-        <ul class="dropdown">
-          <li><a href="/RMS-Project/index">Welcome Message</a></li>
+        <ul class="dropdown"> 
           <li><a href="/RMS-Project/index.php#mission">Mission and Core Values</a></li>
           <li><a href="/RMS-Project/index.php#goals">Strategic Goals</a></li>
-          <li><a href="/RMS-Project/index.php#community">Community Engagement</a></li>
-          <li><a href="/RMS-Project/index.php#activities">Extracurricular Activities</a></li>
+          <li  style="display: none;"><a href="/RMS-Project/index.php#community">Community Engagement</a></li>
+          <li style="display: none;"><a href="/RMS-Project/index.php#activities"  >Extracurricular Activities</a></li>
           <li><a href="/RMS-Project/index.php#news">News & Announcements</a></li> 
         </ul>
       </li>
       <li>
         <a href="/RMS-Project/pages/about" class="has-dropdown">About Us</a>
         <ul class="dropdown">
-          <li><a href="/RMS-Project/pages/about.php#history">School History</a></li>
-          <li><a href="/RMS-Project/pages/about.php#administration">Administration Team</a></li>
-          <li><a href="/RMS-Project/pages/about.php#administration">Staff Profiles</a></li>
+          <li><a href="/RMS-Project/pages/about.php#history">School History</a></li> 
+          <li><a href="/RMS-Project/pages/about.php#staff">Staff Profiles</a></li>
         </ul>
       </li>
       <li>
-        <a href="/RMS-Project/academics" class="has-dropdown">Academics</a>
+        <a href="/RMS-Project/pages/academics" class="has-dropdown">Academics</a>
         <ul class="dropdown">
-          <li><a href="/RMS-Project/academics#requirements">Admissions</a></li>
-          <li><a href="academics.php#courses">Courses/Programs Offered</a></li>
-          <li><a href="academics.php#curriculum">Curriculum Outlines</a></li>
-          <li><a href="academics.php#calendar">Academic Calendar</a></li>
+          <li><a href="/RMS-Project/pages/academics#requirements">Admissions</a></li>
+          <li><a href="/RMS-Project/pages/academics#courses">Courses/Programs Offered</a></li>
+          <li><a href="/RMS-Project/pages/academics#curriculum">Curriculum Outlines</a></li>
+          <li><a href="/RMS-Project/pages/academics#calendar">Academic Calendar</a></li>
         </ul>
       </li>
       <li>
-        <a href=""   style="cursor: not-allowed; " class="has-dropdown">Portals</a>
+        <a class="/RMS-Project/login">Portals</a>
         <ul class="dropdown">
-          <li><a href="/RMS-Project/pages/admin">Adminstration</a></li>
+          <li><a href="/RMS-Project/login">Adminstration</a></li>
           <li><a href="">Teacher Portal</a></li>
-          <li><a href="/RMS-Project/pages/student-portal">Student Portal</a></li> 
+          <li><a href="/RMS-Project/login">Student Portal</a></li> 
         </ul>
       </li>
       <li style="display: none;">

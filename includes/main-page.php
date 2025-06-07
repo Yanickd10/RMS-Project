@@ -106,7 +106,7 @@
         font-size: 24px;
         margin-bottom: 20px;
         padding-bottom: 10px;
-        border-bottom: 2px solid #184e77;
+        border-bottom: 4px solid rgb(214, 43, 43);
         color: #184e77;
     }
 
@@ -129,6 +129,7 @@
     }
 
     .box-title {
+        margin-top: 20px;
         font-size: 20px;
         color: #184e77;
         margin-bottom: 15px;
@@ -162,6 +163,17 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
+    }
+
+    #goals,
+    #community,
+    #activities,
+    #mission,
+    #news {
+        background-color: #1a5276;
+        /* width: fit-content; */
+        padding: 0px 20px;
+        color: white;
     }
 
     .goal-item {
@@ -205,7 +217,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 20px;
+        /* margin-top: 5px; */
+    }
+
+    .partner-details button {
+        margin-top: 0px;
     }
 
     .community-image {
@@ -464,71 +480,18 @@
         background-color: #184e77;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .main-container {
-            flex-direction: column;
-        }
 
-        .main-content {
-            padding-right: 0;
-            margin-bottom: 20px;
-        }
-
-        .sidebar {
-            width: 100%;
-        }
-
-        .hero-carousel {
-            height: 300px;
-        }
-
-        .carousel-caption {
-            left: 20px;
-            bottom: 20px;
-        }
-
-        .carousel-caption h2 {
-            font-size: 24px;
-        }
-
-        .carousel-caption p {
-            font-size: 16px;
-        }
-
-        .mission-box,
-        .vision-box {
-            margin-bottom: 20px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero-carousel {
-            height: 220px;
-        }
-
-        .carousel-caption h2 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .carousel-caption p {
-            font-size: 14px;
-        }
-
-        .section-title {
-            font-size: 20px;
-        }
-    }
 
     /* search styles */
     /* Search bar styles */
     .search-container {
+        display: flex;
         position: relative;
         margin-bottom: 10px;
     }
 
     .search-bar {
+
         display: flex;
         align-items: center;
         border: 1px solid #ccc;
@@ -705,7 +668,125 @@
         box-shadow: 1px 3px 3px black;
         transition: 5s ease-in-out;
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+          .quick-links {
+       display: none
+    }
+        .community-partners {
+            width: 100%;
+        }
+
+        .partner-logos {
+            width: 100%;
+        }
+
+        .main-container {
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            width: 100%;
+        }
+
+        .hero-carousel {
+            height: 300px;
+        }
+
+        .carousel-caption {
+            left: 20px;
+            bottom: 20px;
+        }
+
+        .carousel-caption h2 {
+            font-size: 24px;
+        }
+
+        .carousel-caption p {
+            font-size: 16px;
+        }
+
+        .mission-box,
+        .vision-box {
+            margin-bottom: 20px;
+        }
+
+        .news-container {
+            height: fit-content;
+            /* overflow-y: n; */
+        }
+
+        .search-container {
+            display: none;
+        }
+
+        .partner-details {
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .partner-details button {
+
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+          .quick-links {
+        display: none;
+    }
+        .community-partners {
+            width: 100%;
+        }
+
+        .partner-logos {
+            width: 100%;
+        }
+
+        .news-container {
+            height: fit-content;
+            /* overflow-y: n; */
+        }
+
+        .hero-carousel {
+            height: 220px;
+        }
+
+        .carousel-caption h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .carousel-caption p {
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .search-container {
+            display: none;
+        }
+
+        .partner-details {
+            width: 100%;
+            display: block;
+        }
+
+        .partner-details button {
+            margin-top: 30px;
+        }
+    }
 </style>
+
 <div class="main-container">
     <main class="main-content">
         <!-- Hero carousel section -->
@@ -747,9 +828,13 @@
                     <div class="box-icon">M</div>
                     <h3 class="box-title">Our Mission</h3>
                     <p class="box-content">
-                        To foster a dynamic learning environment that equips all students with critical thinking,
-                        problem-solving, and leadership skills through innovative, student-centered teaching practices
-                        by 2025, aiming for a 100% graduation rate and an 95% success rate in national exams.
+                        To foster a dynamic, inclusive, and future-ready learning environment that equips all students
+                        with critical thinking, problem-solving, communication, and leadership skills through
+                        innovative, student-centered teaching practices. By 2025, we aim to achieve a 100% graduation
+                        rate and a 95% success rate in national examinations, while also promoting lifelong learning,
+                        ethical responsibility, digital literacy, and global citizenship. Through strategic
+                        partnerships, continuous professional development, and a commitment to equity and excellence, we
+                        aspire to empower every learner to thrive in an ever-evolving world.
                     </p>
                 </div>
                 <div class="vision-box">
@@ -822,22 +907,63 @@
                 <div class="community-text">
                     <p>
                         At our school, we believe that strong community connections enrich the educational experience of
-                        our students. We actively partner with local businesses, organizations, and families to create
-                        meaningful learning opportunities beyond the classroom.
+                        our students.
                     </p>
                     <p>
                         Through service-learning projects, guest speaker programs, and collaborative initiatives, our
                         students develop a deeper understanding of their community and their role as engaged citizens.
                     </p>
                     <p>
-                        We invite parents and community members to participate in school events, volunteer
-                        opportunities, and advisory committees to help shape the future of our educational programs.
+                        We invite parents and community members to participate in school events to help shape the future
+                        of our educational programs.
                     </p>
                 </div>
             </div>
             <div class="partner-details">
+                <div class="community-partners">
+                    <div>
+                        <h3>Our Partners</h3>
+                    </div>
+                    <div class="partner-logos">
+                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
+                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+                    </div>
+                     <div class="partner-logos" style="display: none;">
+                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
+                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+      
+
+                    </div>
+                     <div class="partner-logos" style="display: none;">
+                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
+                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
+                                alt="parterner logo"></div>
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                alt="parterner logo"></div>
+      
+
+                    </div>
+                </div>
                 <button id="cta-button">Get involved</button><br>
-                <div id="form-div"></div>
+                <!-- <div id="form-div"></div> -->
                 <script>
                     document.getElementById("cta-button").addEventListener(
                         "click", showBox
@@ -845,28 +971,14 @@
 
                     function showBox() {
                         document.getElementById("form-div").innerHTML = `
-       <div class='mypopup'>
-        helllo there
-        <button onlclick="close">Close</button>
-        </div>
-       `;
+                    <div class='mypopup'>
+                        helllo there
+                        <button onlclick="close">Close</button>
+                        </div>
+                    `;
                     }
                 </script>
 
-                <div class="community-partners">
-                    <div>
-                        <h3>Our Partners</h3>
-                    </div>
-                    <div class="partner-logos">
-                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
-                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
-                                alt="parterner logo"></div>
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
-                                alt="parterner logo"></div>
-
-                    </div>
-                </div>
             </div>
         </section>
 

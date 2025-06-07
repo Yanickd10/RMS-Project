@@ -109,19 +109,7 @@
             border-radius: 10px;
         }
 
-        @media (max-width: 768px) {
-            .news-container {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .main-news,
-            .sidebar-news {
-                width: 100%;
-                max-height: 60vh;
-                margin-bottom: 20px;
-            }
-        }
+   
 
         /* Section Titles */
         .section-title {
@@ -136,7 +124,7 @@
         .news-article {
             background-color: white;
             border-radius: 8px;
-            overflow: hidden;
+            overflow-y: none;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
@@ -215,7 +203,7 @@
 
         /* Highlight Results */
         .highlight {
-            background-color: yellow;
+            background-color: green;
             font-weight: bold;
         }
 
@@ -244,6 +232,33 @@
         .top-bar:hover {
             background-color:rgb(43, 94, 77); 
         }
+        .full-content {
+    display: none;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.news-excerpt {
+    display: block;
+    margin-bottom: 15px;
+}
+     @media (max-width: 768px) {
+            
+            .news-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .main-news,
+            .sidebar-news {
+
+                width: 100%;
+                height: auto;
+                /* max-height: 60vh; */
+                margin-bottom: 20px;
+                overflow-y: none;
+            }
+        }
     </style>
 </head>
 
@@ -251,6 +266,8 @@
    <?php 
 //    include("includes/navigation.php");
    ?> 
+<?php include("../includes/progress-bar.php"); ?>
+
 <div onclick="goBack()" class="top-bar">Go back</div>
     <div class="container">
         <!-- Search Bar -->
@@ -295,7 +312,8 @@
                                 insights and to our dedicated teachers who have been instrumental in guiding our
                                 students toward success.</p>
                         </div>
-                        <button class="read-more">Read More</button>
+                         <div id="show-full-content"></div>
+                        <button class="read-more" id="toggle-full-content">Read More</button>
                         <p class="news-meta">Published on: 2025-02-05 10:59:17</p>
                     </div>
                 </div>
@@ -322,7 +340,8 @@
                                 association and corporate partners. An official ribbon-cutting ceremony will be held
                                 next month, but students are welcome to start using the facilities immediately.</p>
                         </div>
-                        <button class="read-more">Read More</button>
+                         <div id="show-full-content"></div>
+                        <button class="read-more" id="toggle-full-content">Read More</button>
                         <p class="news-meta">Published on: 2025-01-28 14:30:22</p>
                     </div>
                 </div>
@@ -350,10 +369,12 @@
                                 summer. This achievement reflects the exceptional quality of our science program and the
                                 outstanding talent of our students.</p>
                         </div>
-                        <button class="read-more">Read More</button>
+                        <div id="show-full-content"></div>
+                        <button class="read-more" id="toggle-full-content">Read More</button>
                         <p class="news-meta">Published on: 2025-01-15 09:45:11</p>
                     </div>
                 </div>
+             
             </div>
 
             <!-- Sidebar - Advertisements & News -->
@@ -421,6 +442,14 @@
     <?php     include("../includes/footer.php"); ?>
 
     <script>
+        //full content popup page
+        document.getElementById('toggle-full-content').addEventListener('click', function() {
+               document.getElementById('show-full-content').style.display = 'block';
+                fullcontent.innerHTML = `
+                    <p>hello there</p>
+                `; 
+            });
+
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const searchButton = document.getElementById('searchButton');
@@ -504,6 +533,17 @@
                 // Show "no results" message if needed
                 if (!foundResults) {
                     noResults.style.display = 'block';
+                    // document.getElementsByClassName("section-title")[0].style.display = "none";
+                    // document.getElementsByClassName("section-title")[1].style.display = "none";
+                    document.querySelectorAll(".section-title").forEach(element => {
+                        element.style.display = "none";
+                    })
+
+                }
+                else{
+                  document.querySelectorAll(".section-title").forEach(element => {
+                        element.style.display = "block";
+                    })
                 }
             }
             // Reset search results

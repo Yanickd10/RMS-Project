@@ -3,7 +3,7 @@
 <head>
     <?php include('../includes/header-links.php');?>
 <link rel="stylesheet" href="/RMS-Project/assets/css/nav.css">
-    <title>About Us</title>
+    <title>About Rukara Model School</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     
@@ -108,74 +108,52 @@
         <!-- School History Section -->
         <section class="history-section" id="history">
             <h2 class="section-title">Our School History</h2>
-            <div class="history-card">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit officiis officia numquam error maiores nobis eos minima fuga ipsa mollitia! Voluptatum laudantium blanditiis cupiditate nostrum deserunt, ut distinctio sunt vero!
-                Dolores doloremque quia sapiente fuga recusandae vel sequi eveniet nobis molestias enim, ipsa reiciendis quas. Quas totam, quibusdam, quasi nostrum nemo at, omnis iure enim in ea eum aliquam repellat.
-             <br><br>
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit illum quis nemo impedit nihil id rem, perspiciatis soluta? Tempore voluptatem magnam dicta quo voluptatibus explicabo excepturi totam aliquid exercitationem. Temporibus.
-             Nihil illo a velit dignissimos quidem itaque maxime maiores. Neque, animi ab a, amet odit aliquid qui eum soluta labore beatae aut ex libero aspernatur nulla! Alias dolores id praesentium.
-             Inventore natus soluta eius atque voluptas odit tenetur iusto? Quibusdam, deserunt nesciunt, voluptatem beatae voluptatum officiis repudiandae eum nisi quis eius itaque quos temporibus culpa soluta ducimus odit tenetur provident?
-             </div>
-        </section>
+            <div class="history-card"> Rukara Model School was established as part of the Rwanda Quality Basic Education for Human Capital Development (RQBEHCD) project of MINEDUC, a government initiative funded by the World Bank after the University of Rwanda-College of Education (UR-CE) submitted a list of
+the priorities intended to improve the quality of education in schools, and also for the training of pre-service teachers. <br>
+ 
+The list included support to Teachers Training Centres (TTCs), establishment of a
+Demonstration school at UR-Rukara Campus (head office of UR-CE), strengthening the teaching of STEM subjects in basic education schools, enhancing English proficiency and digital literacy for TTC and UR-CE students. All these priorities were considered with or without modifications to fit the purpose. The project aimed to improve teacher training and enhance the quality of education in Rwanda by building model schools across the country. The construction of Rukara Model School was completed in 2024, and it officially opened its doors for the 2024-2025 academic year.
 
-        <!-- Administration Team Section -->
-        <section class="administration-section" id="administration">
-            <h2 class="section-title">Administration Team</h2>
-            <div class="admin-team">
-                <div class="admin-card">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Principal">
-                    <div class="admin-info">
-                    <h3>Admin Name</h3>
-                        <p>Principal</p>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Vice Principal">
-                    <div class="admin-info">
-                    <h3>Admin Name</h3>
-                        <p>Vice Principal</p>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Administrative Head">
-                    <div class="admin-info">
-                        <h3>Admin Name</h3>
-                        <p>Administrative Head</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<br>Before its establishment, Teacher Training Centers (TTCs) in Rwanda faced several challenges, including limited access to practical teaching environments. Many trainee teachers had to rely on theoretical coursework without sufficient hands-on experience in real classrooms. Rukara Model School was built to address this gap by serving as a demonstration school where student-teachers could gain practical teaching experience under the guidance of professional educators.
 
+<br>The school was designed to reflect modern educational standards, featuring state-of-the-art facilities such as fully equipped science laboratories, a digital resource center, and innovative teaching spaces. Since its opening, the school has played a key role in developing future educators, offering them a space to practice and refine their teaching methods. The integration of ICT in education at Rukara Model School has also set a benchmark for other schools in the region, making it a pioneer in digital learning.
+
+<br>Over time, Rukara Model School is expected to continue growing as a center of excellence in teacher education, contributing to Rwanda’s broader goals of achieving quality education for all.
+
+<br>It offers Programmes in the line of General education where we find Nursery Education, Primary Education, Ordinary level and Advanced level with options of Mathematics-Economics and Geography (MEG), Mathematics-Computer Science and Economics (MCE) and Physics- Chemistry and Mathematics (PCM).
+
+                </div>
+        </section> 
         <!-- Staff Profiles Section -->
         <section class="staff-section" id="staff">
-            <h2 class="section-title">Our Staff</h2>
+            <h2 class="section-title">Administration Team</h2>
             <div class="staff-profiles">
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Jane Doe">
                     <div class="staff-info">
-                        <h3>Teache name</h3>
-                        <p>Mathematics Teacher</p>
+                        <h3>ERIC</h3>
+                      <p>Director of Studies (Secondary)</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Robert Brown">
                     <div class="staff-info">
-                    <h3>Teache name</h3>
-                        <p>Science Teacher</p>
+                      <h3>ERIC</h3>
+                        <p>Director of Studies (Secondary)</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Emily White">
                     <div class="staff-info">
-                    <h3>Teache name</h3>
-                        <p>English Teacher</p>
+                     <h3>ERIC</h3>
+                        <p>Director of Studies (Secondary)</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="David Clark">
                     <div class="staff-info">
-                    <h3>Teache name</h3>
-                        <p>Physical Education</p>
+                      <h3>ERIC</h3>
+                       <p>Director of Studies (Secondary)</p>
                     </div>
                 </div>
             </div>

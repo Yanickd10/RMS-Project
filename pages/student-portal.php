@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Optional: Block access if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Access the name and role
+$userName = $_SESSION['user_name'];
+$userRole = $_SESSION['user_role'];
+?>
+
+ 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,7 +441,7 @@
         <div class="header">
             <h1>🎓 Student Learning Portal</h1>
             <div class="user-info">
-                Welcome back, <strong>John Doe</strong> | Student ID: STU2024001
+               <strong>Welcome back, <?php echo htmlspecialchars($userName); ?> (<?php echo $userRole; ?>)</strong>
             </div>
         </div>
 
@@ -486,7 +502,7 @@
                     </div>
                     <p><strong>Subject:</strong> Modern History</p>
                     <p><strong>Submitted:</strong> May 22, 2025</p>
-                    <p><strong>Status:</strong> Under review by Prof. Johnson</p>
+                    <p><strong>Status:</strong> Under review by Teacher name</p>
                 </div>
             </div>
         </div>
@@ -534,12 +550,11 @@
                         ⬇️ Download
                     </button>
                 </div>
-
                 <div class="document-card">
                     <div class="document-title">🏛️ History Timeline</div>
                     <div class="document-meta">
                         <p><strong>Course:</strong> HIST 205</p>
-                        <p><strong>Professor:</strong> Prof. Johnson</p>
+                        <p><strong>Professor:</strong> Teacher name</p>
                         <p><strong>Updated:</strong> May 19, 2025</p>
                         <p><strong>Size:</strong> 3.7 MB</p>
                     </div>

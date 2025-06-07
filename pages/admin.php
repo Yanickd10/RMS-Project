@@ -1,5 +1,19 @@
+<?php
+session_start();
+
+// Optional: Block access if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Access the name and role
+$userName = $_SESSION['user_name'];
+$userRole = $_SESSION['user_role'];
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +27,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgb(102, 232, 234) 0%, rgb(212, 237, 240) 100%);
             min-height: 100vh;
         }
 
@@ -47,6 +61,11 @@
             font-weight: 700;
         }
 
+        .logo h1 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .admin-info {
             display: flex;
             align-items: center;
@@ -55,12 +74,13 @@
         }
 
         .sidebar {
+            z-index: 99;
             position: fixed;
             left: 0;
             top: 80px;
             width: 280px;
             height: calc(100vh - 80px);
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(218, 212, 212, 0.81);
             backdrop-filter: blur(10px);
             padding: 2rem 0;
             overflow-y: auto;
@@ -78,10 +98,11 @@
             border-left: 4px solid transparent;
         }
 
-        .nav-item:hover, .nav-item.active {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            border-left-color: #667eea;
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(102, 126, 234, 0.6);
+            color: rgb(49, 49, 50);
+            border-left-color: rgb(245, 0, 0);
         }
 
         .nav-item span {
@@ -105,8 +126,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .dashboard-grid {
@@ -123,6 +151,7 @@
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            /* z-index: -1; */
         }
 
         .card:hover {
@@ -164,7 +193,9 @@
             margin-bottom: 0.5rem;
         }
 
-        input, textarea, select {
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 0.75rem 1rem;
             border: 2px solid #e2e8f0;
@@ -173,7 +204,9 @@
             transition: all 0.3s ease;
         }
 
-        input:focus, textarea:focus, select:focus {
+        input:focus,
+        textarea:focus,
+        select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -210,7 +243,8 @@
             margin-top: 1rem;
         }
 
-        .table th, .table td {
+        .table th,
+        .table td {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #e2e8f0;
@@ -290,34 +324,81 @@
             color: #718096;
         }
 
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-right: 1rem;
+            color: #2d3748;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+            max-width: 100%;
+        }
+
         @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
             }
-            
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
             .main-content {
                 margin-left: 0;
                 max-width: 100vw;
             }
-            
+
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
+    <?php include("../includes/progress-bar.php");?>
+
     <header class="header">
         <div class="header-content">
-            <div class="logo">
-                <h1>🏫 Rukara Model School</h1>
-            </div>
+            <!-- <div class="logo">
+                <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
+            </div> -->
             <div class="admin-info">
-                <span>👨‍💼 Admin Panel</span>
+                <span><?php echo htmlspecialchars($userName); ?> (<?php echo $userRole; ?>)</span>
                 <span>|</span>
                 <span id="currentDate"></span>
             </div>
         </div>
+        <div class="header-content">
+            <div class="logo">
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    ☰
+                </button>
+                <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
+            </div>
     </header>
 
     <nav class="sidebar">
@@ -348,6 +429,9 @@
         <a href="#" class="nav-item" onclick="showSection('settings')">
             ⚙️ <span>Settings</span>
         </a>
+        <a href="#" class="nav-item" onclick="logout()">
+            🚪 <span>Logout</span>
+        </a>
     </nav>
 
     <main class="main-content">
@@ -372,7 +456,7 @@
                     <div class="stat-label">Active Events</div>
                 </div>
             </div>
-            
+
             <div class="dashboard-grid">
                 <div class="card">
                     <h3>📢 Recent Announcements</h3>
@@ -387,12 +471,15 @@
                         <p>Due to weather conditions, Sports Day has been rescheduled...</p>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <h3>🎯 Quick Actions</h3>
-                    <button class="btn" style="width: 100%; margin-bottom: 1rem;" onclick="showModal('addStudentModal')">➕ Add New Student</button>
-                    <button class="btn" style="width: 100%; margin-bottom: 1rem;" onclick="showModal('addTeacherModal')">👨‍🏫 Add New Teacher</button>
-                    <button class="btn" style="width: 100%; margin-bottom: 1rem;" onclick="showModal('announcementModal')">📢 Make Announcement</button>
+                    <button class="btn" style="width: 100%; margin-bottom: 1rem;"
+                        onclick="showModal('addStudentModal')">➕ Add New Student</button>
+                    <button class="btn" style="width: 100%; margin-bottom: 1rem;"
+                        onclick="showModal('addTeacherModal')">👨‍🏫 Add New Teacher</button>
+                    <button class="btn" style="width: 100%; margin-bottom: 1rem;"
+                        onclick="showModal('announcementModal')">📢 Make Announcement</button>
                     <button class="btn" style="width: 100%;" onclick="showModal('eventModal')">📅 Create Event</button>
                 </div>
             </div>
@@ -402,23 +489,26 @@
         <section id="announcements" class="content-section">
             <h2>📢 Announcements Management</h2>
             <div class="card">
-                <button class="btn" onclick="showModal('announcementModal')" style="margin-bottom: 1rem;">➕ New Announcement</button>
-                
+                <button class="btn" onclick="showModal('announcementModal')" style="margin-bottom: 1rem;">➕ New
+                    Announcement</button>
+
                 <div id="announcementsList">
                     <div class="announcement-item">
                         <div class="announcement-date">June 3, 2025</div>
                         <div class="announcement-title">Term Examination Schedule Released</div>
-                        <p>The schedule for end-of-term examinations has been published. Students should check their respective class notice boards for detailed timing and subject arrangements.</p>
+                        <p>The schedule for end-of-term examinations has been published. Students should check their
+                            respective class notice boards for detailed timing and subject arrangements.</p>
                         <div class="action-buttons" style="margin-top: 1rem;">
                             <button class="btn btn-sm">✏️ Edit</button>
                             <button class="btn btn-sm btn-danger">🗑️ Delete</button>
                         </div>
                     </div>
-                    
+
                     <div class="announcement-item">
                         <div class="announcement-date">June 1, 2025</div>
                         <div class="announcement-title">Sports Day Postponed</div>
-                        <p>Due to weather conditions, Sports Day has been rescheduled to June 15, 2025. All participants will be notified of the new arrangements.</p>
+                        <p>Due to weather conditions, Sports Day has been rescheduled to June 15, 2025. All participants
+                            will be notified of the new arrangements.</p>
                         <div class="action-buttons" style="margin-top: 1rem;">
                             <button class="btn btn-sm">✏️ Edit</button>
                             <button class="btn btn-sm btn-danger">🗑️ Delete</button>
@@ -434,9 +524,10 @@
             <div class="card">
                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
                     <button class="btn" onclick="showModal('addStudentModal')">➕ Add Student</button>
-                    <input type="text" placeholder="🔍 Search students..." style="width: 300px; margin-left: auto;" onkeyup="searchTable(this, 'studentsTable')">
+                    <input type="text" placeholder="🔍 Search students..." style="width: 300px; margin-left: auto;"
+                        onkeyup="searchTable(this, 'studentsTable')">
                 </div>
-                
+
                 <table class="table" id="studentsTable">
                     <thead>
                         <tr>
@@ -502,9 +593,10 @@
             <div class="card">
                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
                     <button class="btn" onclick="showModal('addTeacherModal')">➕ Add Teacher</button>
-                    <input type="text" placeholder="🔍 Search teachers..." style="width: 300px; margin-left: auto;" onkeyup="searchTable(this, 'teachersTable')">
+                    <input type="text" placeholder="🔍 Search teachers..." style="width: 300px; margin-left: auto;"
+                        onkeyup="searchTable(this, 'teachersTable')">
                 </div>
-                
+
                 <table class="table" id="teachersTable">
                     <thead>
                         <tr>
@@ -563,7 +655,7 @@
                     </div>
                     <button class="btn">➕ Create New Class</button>
                 </div>
-                
+
                 <div class="card">
                     <h3>🎯 Quick Stats</h3>
                     <div style="margin-bottom: 1rem;">
@@ -576,7 +668,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="card">
                 <h3>📋 Class List</h3>
                 <table class="table">
@@ -623,8 +715,9 @@
         <section id="events" class="content-section">
             <h2>📅 Events Management</h2>
             <div class="card">
-                <button class="btn" onclick="showModal('eventModal')" style="margin-bottom: 1rem;">➕ Create Event</button>
-                
+                <button class="btn" onclick="showModal('eventModal')" style="margin-bottom: 1rem;">➕ Create
+                    Event</button>
+
                 <div class="dashboard-grid">
                     <div class="card">
                         <h3>🏆 Sports Day</h3>
@@ -637,7 +730,7 @@
                             <button class="btn btn-sm btn-danger">🗑️ Cancel</button>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <h3>🎭 Cultural Festival</h3>
                         <p><strong>Date:</strong> July 20, 2025</p>
@@ -657,23 +750,26 @@
         <section id="advertisements" class="content-section">
             <h2>📺 Advertisement Management</h2>
             <div class="card">
-                <button class="btn" onclick="showModal('adModal')" style="margin-bottom: 1rem;">➕ Create Advertisement</button>
-                
+                <button class="btn" onclick="showModal('adModal')" style="margin-bottom: 1rem;">➕ Create
+                    Advertisement</button>
+
                 <div class="announcement-item">
                     <div class="announcement-date">Active - Expires: June 30, 2025</div>
                     <div class="announcement-title">🎓 Enrollment Open for 2025-2026 Academic Year</div>
-                    <p>Join Rukara Model School! We're now accepting applications for the new academic year. Limited seats available. Apply today!</p>
+                    <p>Join Rukara Model School! We're now accepting applications for the new academic year. Limited
+                        seats available. Apply today!</p>
                     <div class="action-buttons" style="margin-top: 1rem;">
                         <button class="btn btn-sm">✏️ Edit</button>
                         <button class="btn btn-sm btn-success">📈 Analytics</button>
                         <button class="btn btn-sm btn-danger">⏹️ Stop</button>
                     </div>
                 </div>
-                
+
                 <div class="announcement-item">
                     <div class="announcement-date">Active - Expires: July 15, 2025</div>
                     <div class="announcement-title">👨‍🏫 Teaching Positions Available</div>
-                    <p>We're hiring qualified teachers for Mathematics, Science, and English. Excellent benefits and competitive salary. Join our team!</p>
+                    <p>We're hiring qualified teachers for Mathematics, Science, and English. Excellent benefits and
+                        competitive salary. Join our team!</p>
                     <div class="action-buttons" style="margin-top: 1rem;">
                         <button class="btn btn-sm">✏️ Edit</button>
                         <button class="btn btn-sm btn-success">📈 Analytics</button>
@@ -692,19 +788,19 @@
                     <p>Generate comprehensive academic reports</p>
                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
                 </div>
-                
+
                 <div class="card">
                     <h3>👥 Attendance Reports</h3>
                     <p>Track student and teacher attendance</p>
                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
                 </div>
-                
+
                 <div class="card">
                     <h3>💰 Financial Reports</h3>
                     <p>School fees and financial summaries</p>
                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
                 </div>
-                
+
                 <div class="card">
                     <h3>📈 Growth Analytics</h3>
                     <p>Student enrollment and school growth</p>
@@ -725,15 +821,15 @@
                     </div>
                     <div class="form-group">
                         <label>Address</label>
-                        <textarea>Kigali, Rwanda</textarea>
+                        <textarea>Kayonza, Rwanda</textarea>
                     </div>
                     <div class="form-group">
                         <label>Contact Phone</label>
-                        <input type="tel" value="+250 788 000 000">
+                        <input type="tel" value="+250788244491 / +25079245452">
                     </div>
                     <button class="btn">💾 Save Changes</button>
                 </div>
-                
+
                 <div class="card">
                     <h3>🎓 Academic Settings</h3>
                     <div class="form-group">
@@ -974,6 +1070,10 @@
     </div>
 
     <script>
+        //logout
+        function logout() {
+            window.location.href = "/RMS-Project/includes/logout";
+        }
         // Initialize current date
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-RW', {
             weekday: 'long',
@@ -981,28 +1081,23 @@
             month: 'long',
             day: 'numeric'
         });
-
         // Navigation functionality
-        function showSection(sectionId) {
+function showSection(sectionId) {
             // Hide all sections
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
-            
             // Remove active class from nav items
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
             });
-            
             // Show selected section
             document.getElementById(sectionId).classList.add('active');
-            
             // Add active class to clicked nav item
             event.target.closest('.nav-item').classList.add('active');
         }
-
         // Modal functionality
         function showModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
@@ -1011,41 +1106,34 @@
         function hideModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
-
         // Close modals when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
-
         // Search functionality
         function searchTable(input, tableId) {
             const filter = input.value.toLowerCase();
             const table = document.getElementById(tableId);
             const rows = table.getElementsByTagName('tr');
-            
             for (let i = 1; i < rows.length; i++) {
                 const cells = rows[i].getElementsByTagName('td');
                 let match = false;
-                
                 for (let j = 0; j < cells.length; j++) {
                     if (cells[j].textContent.toLowerCase().includes(filter)) {
                         match = true;
                         break;
                     }
                 }
-                
                 rows[i].style.display = match ? '' : 'none';
             }
         }
-
         // Form submission functions
         function createAnnouncement() {
             // Simulate announcement creation
             alert('📢 Announcement published successfully!');
             hideModal('announcementModal');
-            
             // In a real application, this would send data to the server
             // and update the announcements list
         }
@@ -1054,7 +1142,6 @@
             // Simulate student addition
             alert('👥 Student added successfully!');
             hideModal('addStudentModal');
-            
             // In a real application, this would send data to the server
             // and update the students table
         }
@@ -1063,7 +1150,6 @@
             // Simulate teacher addition
             alert('👨‍🏫 Teacher added successfully!');
             hideModal('addTeacherModal');
-            
             // In a real application, this would send data to the server
             // and update the teachers table
         }
@@ -1072,7 +1158,6 @@
             // Simulate event creation
             alert('📅 Event created successfully!');
             hideModal('eventModal');
-            
             // In a real application, this would send data to the server
             // and update the events list
         }
@@ -1081,11 +1166,9 @@
             // Simulate advertisement creation
             alert('📺 Advertisement launched successfully!');
             hideModal('adModal');
-            
             // In a real application, this would send data to the server
             // and update the advertisements list
         }
-
         // Simulate real-time updates
         function updateStats() {
             // This would typically fetch real data from the server
@@ -1098,14 +1181,39 @@
                 stat.textContent = newValue.toLocaleString();
             });
         }
-
         // Update stats every 30 seconds
         setInterval(updateStats, 30000);
-
         // Welcome message
-        setTimeout(() => {
-            alert('🏫 Welcome to Rukara Model School Administration Dashboard!\n\nYou can:\n• Manage students and teachers\n• Create announcements and events\n• Monitor school statistics\n• Generate reports\n• Control advertisements\n\nEverything you need to run the school efficiently!');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('🏫 Welcome to Rukara Model School Administration Dashboard!\n\nYou can:\n• Manage students and teachers\n• Create announcements and events\n• Monitor school statistics\n• Generate reports\n• Control advertisements\n\nEverything you need to run the school efficiently!');
+        // }, 1000);
+        // Add this to your existing JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                mainContent.classList.toggle('expanded');
+            });
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideToggle = sidebarToggle.contains(event.target);
+                if (!isClickInsideSidebar && !isClickInsideToggle && window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    mainContent.classList.add('expanded');
+                }
+            });
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('active');
+                    mainContent.classList.remove('expanded');
+                }
+            });
+        });
     </script>
 </body>
+
 </html>
