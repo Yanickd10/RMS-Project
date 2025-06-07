@@ -434,15 +434,37 @@ $userRole = $_SESSION['user_role'];
         .hidden {
             display: none;
         }
+        #logoutbtn{
+            background:rgb(240, 101, 50);
+            /* color: black; */
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bolder;
+             cursor: pointer;
+            text-decoration: none;
+        } 
+           #logoutbtn:hover{
+
+            background:rgb(237, 127, 90); 
+        } 
+        #logoutbtn a{ 
+            color: black;
+            text-decoration: none;
+              font-size: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+             <button id="logoutbtn"><a href="#" class="nav-item" onclick="logout()">
+        <span>Logout</span>
+        </a></button>
             <h1>🎓 Student Learning Portal</h1>
             <div class="user-info">
                <strong>Welcome back, <?php echo htmlspecialchars($userName); ?> (<?php echo $userRole; ?>)</strong>
-            </div>
+            </div> 
+       
         </div>
 
         <div class="nav-tabs">
@@ -1073,6 +1095,9 @@ $userRole = $_SESSION['user_role'];
                     star.classList.remove('active');
                 }
             });
+        }
+        function logout() {
+            window.location.href = "/RMS-Project/includes/logout";
         }
 
         function submitTeacherRating(teacherId) {
