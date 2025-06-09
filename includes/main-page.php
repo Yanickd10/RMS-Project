@@ -387,10 +387,7 @@
         margin-top: 30px;
     }
 
-    .news-container {
-        /* height: 60vh; */
-        /* overflow-y: auto; */
-    }
+   
 
     .news-item {
         padding: 15px 5px;
