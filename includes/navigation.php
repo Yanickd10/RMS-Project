@@ -43,9 +43,13 @@
     }
     
     .logo h1 {
-      color: white;
+   
       font-size: 1.5rem;
       font-weight: 600;
+    }
+      .logo h1 a{
+  text-decoration: none;
+   color: white;
     }
     
     .nav-links {
@@ -252,7 +256,7 @@ include("progress-bar.php");
   <div class="container">
     <div class="logo">
       <a href="/RMS-Project/"><img id="logoImg" style=" border-radius: 50%;"></a>
-      <h1>Rukara Model School</h1>
+      <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
     </div>
     <div class="mobile-menu-btn" onclick="toggleMenu()">
       ☰

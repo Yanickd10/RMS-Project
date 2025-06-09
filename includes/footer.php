@@ -219,8 +219,7 @@
          <li><a href="/RMS-Project/pages/about">About Us</a></li>
          <li><a href="academics">Academics</a></li>
          <li><a href="admissions">Admissions</a></li>
-         <li><a href="student-portal">Student Portal</a></li>
-         <li><a href="staff-portal">Staff Portal</a></li>
+         <li><a href="/RMS-Project/pages/student-portal">Student Portal</a></li> 
          <li><a href="contact">Contact Us</a></li>
        </ul>
      </div>

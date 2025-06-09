@@ -16,11 +16,20 @@
         }
 
         .section-title {
+            /* border-bottom: 5px solid #3498db; */
+            text-decoration: underline;
+            text-decoration-color: #3498db;
+            text-decoration-thickness: 10px; 
             text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
             color: #2c3e50;
+            padding:10px;
         }
+          /* .section-title::after{ */
+            /* border-right: 5px solid #3498db;  */
+            /* width: 50%; */
+        /* } */
 
         /* School History Section */
         .history-card {
@@ -58,8 +67,9 @@
 
         /* Staff Profiles */
         .staff-profiles {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -126,34 +136,48 @@ Demonstration school at UR-Rukara Campus (head office of UR-CE), strengthening t
         </section> 
         <!-- Staff Profiles Section -->
         <section class="staff-section" id="staff">
-            <h2 class="section-title">Administration Team</h2>
+            <h2 class="section-title">Administration Team</h2> 
             <div class="staff-profiles">
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Jane Doe">
                     <div class="staff-info">
-                        <h3>ERIC</h3>
-                      <p>Director of Studies (Secondary)</p>
+                        <h3> Admin Name</h3>
+                      <p>Principal</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Robert Brown">
                     <div class="staff-info">
-                      <h3>ERIC</h3>
-                        <p>Director of Studies (Secondary)</p>
+                      <h3> Admin Name</h3>
+                        <p>Director of Studies (Nursary)</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Emily White">
                     <div class="staff-info">
-                     <h3>ERIC</h3>
-                        <p>Director of Studies (Secondary)</p>
+                     <h3> Admin Name</h3>
+                        <p>Director of Studies (Primary)</p>
                     </div>
                 </div>
                 <div class="staff-card">
                     <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="David Clark">
                     <div class="staff-info">
-                      <h3>ERIC</h3>
+                      <h3> Admin Name</h3>
                        <p>Director of Studies (Secondary)</p>
+                    </div>
+                </div>
+                  <div class="staff-card">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="Emily White">
+                    <div class="staff-info">
+                     <h3> Admin Name</h3>
+                        <p>Secretary</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vgT-xN93AGkhrGpIEaz-sgHaJG&pid=Api&P=0&h=220" alt="David Clark">
+                    <div class="staff-info">
+                      <h3> Admin Name</h3>
+                       <p>Bursary</p>
                     </div>
                 </div>
             </div>
