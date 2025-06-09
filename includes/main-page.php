@@ -792,10 +792,21 @@
         <!-- Hero carousel section -->
         <div class="hero-carousel">
             <div class="carousel-container">
-                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/46.jpg')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/62.jpg'); height: 600px;width:1000px">
                     <div class="carousel-caption">
                         <h2>Welcome to Our School</h2>
                         <p>Empowering students to achieve excellence in education</p>
+                    </div>
+                </div>
+                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/46.jpg')">
+                    <div class="carousel-caption">
+                        <h2>Our School</h2> 
+                    </div>
+                </div>
+                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/19.jpg')">
+                    <div class="carousel-caption">
+                        <h2>Opening school event</h2>
+                        <!-- <p>Empowering students to achieve excellence in education</p> -->
                     </div>
                 </div>
                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/54.jpg')">
@@ -807,8 +818,8 @@
                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/53.jpg')">
 
                     <div class="carousel-caption">
-                        <h2>Community Engagement</h2>
-                        <p>Building partnerships for a stronger educational experience</p>
+                        <h2>Scientific</h2>
+                        <p>Inside every child there is Scientific</p>
                     </div>
                 </div>
 
@@ -817,6 +828,9 @@
                 <div class="carousel-dot active"></div>
                 <div class="carousel-dot"></div>
                 <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+
             </div>
         </div>
 

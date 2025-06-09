@@ -288,7 +288,7 @@ include("progress-bar.php");
         <a class="/RMS-Project/login">Portals</a>
         <ul class="dropdown">
           <li><a href="/RMS-Project/login">Adminstration</a></li>
-          <li><a href="">Teacher Portal</a></li>
+          <li><a href="/RMS-Project/login">Teacher Portal</a></li>
           <li><a href="/RMS-Project/login">Student Portal</a></li> 
         </ul>
       </li>

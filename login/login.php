@@ -43,16 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_id'] = $userId;
     $_SESSION['user_name'] = $userName;
     $_SESSION['user_role'] = $userRole;
-
+    
     // Redirect based on role
     if ($userRole === 'admin') {
         header("Location: /RMS-Project/pages/admin.php");
         exit;
     } elseif ($userRole === 'teacher') {
-        header("Location: ../teacher.php");
+        header("Location: /RMS-Project/pages/teacher");
         exit;
     } elseif ($userRole === 'student') {
-        header("Location: /RMS-Project/pages/student-portal.php");
+        header("Location: /RMS-Project/pages/student-portal");
         exit;
     } else {
         echo "<p style='color:red;'>Unknown role.</p>";
