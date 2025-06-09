@@ -17,10 +17,13 @@
 
     /* Right sidebar */
     .sidebar {
+        /* position: fixed; */
+
         width: 300px;
         background-color: #f5f5f5;
-        padding: 15px;
+        padding: 0px 15px;
         border-radius: 5px;
+        border-left: 1px solid hsl(22, 100.00%, 48.40%);
     }
 
     /* Hero section with carousel */
@@ -385,8 +388,8 @@
     }
 
     .news-container {
-        height: 500px;
-        overflow-y: auto;
+        /* height: 60vh; */
+        /* overflow-y: auto; */
     }
 
     .news-item {
@@ -1154,24 +1157,18 @@
                 </article>
             </div>
         </section>
-        <section class="quick-links">
+        <section class="quick-links" style="display: none;">
             <h3>Quick Links</h3>
             <ul class="links-list">
                 <li><a href="#">Academic Calendar</a></li>
-                <li><a href="#">Student Portal</a></li>
-                <li><a href="#">Parent Resources</a></li>
-                <li><a href="#">Extracurricular Activities</a></li>
+                <li><a href="#">Student Portal</a></li> 
+                <li><a href="#">Admin Portal</a></li> 
+                <li><a href="#">Teacher Portal</a></li> 
+
+
+                <!-- <li><a href="#">Extracurricular Activities</a></li> -->
                 <li><a href="">Contact Us</a></li>
-                <li><a href="#">Academic Calendar</a></li>
-                <li><a href="#">Student Portal</a></li>
-                <li><a href="#">Parent Resources</a></li>
-                <li><a href="#">Extracurricular Activities</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Academic Calendar</a></li>
-                <li><a href="#">Student Portal</a></li>
-                <li><a href="#">Parent Resources</a></li>
-                <li><a href="#">Extracurricular Activities</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Academic Calendar</a></li> 
             </ul>
         </section>
     </aside>
