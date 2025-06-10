@@ -421,7 +421,7 @@ $userRole = $_SESSION['user_role'];
             📅 <span>Events</span>
         </a>
         <a href="#" class="nav-item" onclick="showSection('advertisements')">
-            📺 <span>Advertisements</span>
+            📺 <span>Announce</span>
         </a>
         <a href="#" class="nav-item" onclick="showSection('reports')">
             📈 <span>Reports</span>
@@ -440,19 +440,19 @@ $userRole = $_SESSION['user_role'];
             <h2>📊 Dashboard Overview</h2>
             <div class="dashboard-grid">
                 <div class="card stat-card">
-                    <div class="stat-number">1,247</div>
+                    <div class="stat-number">832</div>
                     <div class="stat-label">Total Students</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">68</div>
+                    <div class="stat-number">36</div>
                     <div class="stat-label">Teachers</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">32</div>
+                    <div class="stat-number">22</div>
                     <div class="stat-label">Classes</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">0</div>
                     <div class="stat-label">Active Events</div>
                 </div>
             </div>
