@@ -11,7 +11,8 @@
     /* Left content */
     .main-content {
         flex: 1;
-        min-width: 300px;
+        /* min-width: 300px; */
+        width: 100%;
         padding-right: 20px;
     }
 
@@ -174,7 +175,7 @@
     #mission,
     #news {
         background-color: #1a5276;
-        /* width: fit-content; */
+        width: fit-content;
         padding: 0px 20px;
         color: white;
     }
@@ -387,7 +388,7 @@
         margin-top: 30px;
     }
 
-   
+
 
     .news-item {
         padding: 15px 5px;
@@ -671,9 +672,21 @@
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
-          .quick-links {
-       display: none
+          .carousel-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+        width: 100%;
     }
+       
+        .mission-vision {
+            display: block; 
+        }
+
+        .quick-links {
+            display: none
+        }
+
         .community-partners {
             width: 100%;
         }
@@ -683,6 +696,7 @@
         }
 
         .main-container {
+            /* background-color: cyan; */
             flex-direction: column;
         }
 
@@ -719,7 +733,7 @@
 
         .news-container {
             height: fit-content;
-            /* overflow-y: n; */
+            overflow-y: n;
         }
 
         .search-container {
@@ -739,9 +753,15 @@
     }
 
     @media (max-width: 480px) {
-          .quick-links {
-        display: none;
-    }
+        
+        .mission-vision {
+            display: block; 
+        }
+
+        .quick-links {
+            display: none;
+        }
+
         .community-partners {
             width: 100%;
         }
@@ -752,7 +772,7 @@
 
         .news-container {
             height: fit-content;
-            /* overflow-y: n; */
+            overflow-y: hidden;
         }
 
         .hero-carousel {
@@ -792,18 +812,19 @@
         <!-- Hero carousel section -->
         <div class="hero-carousel">
             <div class="carousel-container">
-                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/62.jpg'); height: 600px;width:1000px">
+                <div class="carousel-slide"
+                    style="background-image: url('/RMS-Project/assets/images/62.jpg'); height: 600px;width:1000px">
                     <div class="carousel-caption">
                         <h2>Welcome to Our School</h2>
                         <p>Empowering students to achieve excellence in education</p>
                     </div>
                 </div>
-                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/46.jpg')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/46.jpg')">
                     <div class="carousel-caption">
-                        <h2>Our School</h2> 
+                        <h2>Our School</h2>
                     </div>
                 </div>
-                 <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/19.jpg')">
+                <div class="carousel-slide" style="background-image: url('/RMS-Project/assets/images/19.jpg')">
                     <div class="carousel-caption">
                         <h2>Opening school event</h2>
                         <!-- <p>Empowering students to achieve excellence in education</p> -->
@@ -939,7 +960,7 @@
                         <h3>Our Partners</h3>
                     </div>
                     <div class="partner-logos">
-                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
                         <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
@@ -949,8 +970,8 @@
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
                     </div>
-                     <div class="partner-logos" style="display: none;">
-                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                    <div class="partner-logos" style="display: none;">
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
                         <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
@@ -959,11 +980,10 @@
                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
-      
 
                     </div>
-                     <div class="partner-logos" style="display: none;">
-                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                    <div class="partner-logos" style="display: none;">
+                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
                         <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
@@ -972,7 +992,6 @@
                         <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
-      
 
                     </div>
                 </div>
@@ -1110,68 +1129,53 @@
         <section class="news-section">
             <h2 id="news">News & Announcements</h2>
             <div class="news-container">
-                <article class="news-item">
-                    <div class="news-date">April 25, 2025</div>
-                    <h3 class="news-title">Spring Arts Festival Next Week</h3>
-                    <p class="news-excerpt">Join us for our annual Spring Arts Festival featuring performances and
-                        exhibits from students across all grade levels.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 20, 2025</div>
-                    <h3 class="news-title">Math Team Wins Regional Competition</h3>
-                    <p class="news-excerpt">Congratulations to our Math Team for their outstanding performance at the
-                        regional competition last weekend.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 15, 2025</div>
-                    <h3 class="news-title">Parent-Teacher Conferences Schedule</h3>
-                    <p class="news-excerpt">Spring parent-teacher conferences will take place next month. Please check
-                        the schedule and register for your preferred time slot.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 10, 2025</div>
-                    <h3 class="news-title">New Science Lab Equipment Arrives</h3>
-                    <p class="news-excerpt">Thanks to a generous donation, our science department has received
-                        state-of-the-art equipment for enhanced learning experiences.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 5, 2025</div>
-                    <h3 class="news-title">Summer Camp Registration Open</h3>
-                    <p class="news-excerpt">Registration for our popular summer enrichment camps is now open. Spaces
-                        fill quickly, so register early!</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="news-item">
-                    <div class="news-date">April 1, 2025</div>
-                    <h3 class="news-title">Community Service Day Success</h3>
-                    <p class="news-excerpt">Our annual Community Service Day was a great success with over 500 students
-                        participating in various service projects.</p>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
             </div>
         </section>
         <section class="quick-links" style="display: none;">
             <h3>Quick Links</h3>
             <ul class="links-list">
                 <li><a href="#">Academic Calendar</a></li>
-                <li><a href="#">Student Portal</a></li> 
-                <li><a href="#">Admin Portal</a></li> 
-                <li><a href="#">Teacher Portal</a></li> 
-
+                <li><a href="#">Student Portal</a></li>
+                <li><a href="#">Admin Portal</a></li>
+                <li><a href="#">Teacher Portal</a></li>
 
                 <!-- <li><a href="#">Extracurricular Activities</a></li> -->
                 <li><a href="">Contact Us</a></li>
-                <li><a href="#">Academic Calendar</a></li> 
+                <li><a href="#">Academic Calendar</a></li>
             </ul>
         </section>
     </aside>
 </div>
-
-<script src="/RMS-Project/RMS-Details/details.js"></script>
+<script>
+    const newsItems = [{
+            date: "April 25, 2025",
+            title: "Spring Arts Festival Next Week",
+            excerpt: "Join us for our annual Spring Arts Festival featuring performances and exhibits from students across all grade levels.",
+            link: "#"
+        },
+        {
+            date: "April 20, 2025",
+            title: "New Library Opens",
+            excerpt: "The new library opens this weekend with a special ceremony and guest speakers.",
+            link: "#"
+        },
+        {
+            date: "April 15, 2025",
+            title: "Sports Day Highlights",
+            excerpt: "Highlights from last week's Sports Day, including winners and memorable moments.",
+            link: "#"
+        }
+    ]
+    document.getElementById('news').innerHTML = `News & Announcements (${newsItems.length})`;
+    document.querySelector('.news-container').innerHTML = newsItems.map(item => `
+        <article class="news-item">
+            <div class="news-date">${item.date}</div>
+            <h3 class="news-title">${item.title}</h3>
+            <p class="news-excerpt">${item.excerpt}</p>
+            <a href="${item.link}" class="read-more">Read more →</a>
+        </article>
+    `).join('');
+</script>
 <script src="/RMS-Project/setInfo.js"></script>
 <script>
     // Simple carousel functionality

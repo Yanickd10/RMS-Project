@@ -115,7 +115,6 @@
         }
     </style>
 </head>
-
 <body>
     <?php include("../includes/navigation.php"); ?>
 
@@ -196,5 +195,4 @@
     <script src="assets/js/nav.js"></script>
     <script src="../assets/js/smooth-scroll.js"></script>
 </body>
-
 </html>
