@@ -259,7 +259,7 @@ include("progress-bar.php");
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <a href="/RMS-Project/"><img id="logoImg" style=" border-radius: 50%;"></a>
+      <a href="/RMS-Project/"><img src="/RMS-Project/assets/images/logo.jpg" style=" border-radius: 50%;"></a>
       <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
     </div>
     <div class="mobile-menu-btn" onclick="toggleMenu()">
