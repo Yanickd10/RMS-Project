@@ -3,7 +3,7 @@
 $db_host = "localhost";
 $db_user = "root"; // Replace with your database username
 $db_pass = ""; // Replace with your database password
-$db_name = "application_form_database";     // Replace with your database name
+$db_name = "rms-database";     // Replace with your database name
 
 // Create uploads directory if it doesn't exist
 $upload_dir = "uploads/";
@@ -129,14 +129,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Success message
             $response = [
-                'status' => 'success',
+                'status' => true,
                 'message' => 'Your application has been submitted successfully!'
             ];
-            
-            // Redirect to a success page or show success message
-            header('Content-Type: application/json');
-            echo json_encode($response);
-            
+         
+            echo  '<script>window.alert("Your application has been submitted successfully!");</script>';
+            header( 'Location: /RMS-Project/pages/academics.php');  
+            exit();
         } catch(PDOException $e) {
             // Error handling for database connection/query
             $response = [

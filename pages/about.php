@@ -21,6 +21,7 @@
             text-decoration: underline;
             text-decoration-color: #3498db;
             text-decoration-thickness: 10px;
+            z-index: -1;
             text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
@@ -167,13 +168,13 @@
                 <?php
     $staff_members = [
         ['name' => 'Dr. Barnabas Muyengwa', 'role' => 'Principal', 'image' => '/RMS-Project/assets/images/principal.jpg' ],
-        ['name' => 'IYAMUREMYE Eric', 'role' => 'Director of Studies (Secondary)','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3' ],
-        ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3' ],
+        ['name' => 'IYAMUREMYE Eric', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/eric.png' ],
+        ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/dos-chistoph.png' ],
         ['name' => 'Dr. Nyasha Cefas', 'role' => 'Director of Studies (Primary)','image' =>'/RMS-Project/assets/images/DOS-primary_i.jpg' ],
-        ['name' => 'Mukamugabo Odette', 'role' => 'Director of Studies (Primary)','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3' ],
-        ['name' => 'Nyiransanwa Betty', 'role' => 'Bursar','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3' ],
-        ['name' => 'DOD NAME', 'role' => 'Director of Discipline','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3'],
-        ['name' => 'Valens', 'role' => 'Secretary','image' => 'https://th.bing.com/th/id/OIP.GKAbRpYzDlJa139WC8xPtwHaIC?w=178&h=194&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3']
+        ['name' => 'Mukamugabo Odette', 'role' => 'Director of Studies (Primary)','image' => '/RMS-Project/assets/images/dos-primary-ii.png' ],
+        ['name' => 'Nyiransanwa Betty', 'role' => 'Bursar','image' => '/RMS-Project/assets/images/bursar.jpg' ],
+        ['name' => 'Justine Mukarugira', 'role' => 'Director of Discipline','image' => '/RMS-Project/assets/images/dod2.png'],
+        ['name' => 'Niyonsenga Valens', 'role' => 'Secretary','image' => '/RMS-Project/assets/images/secretary.png' ], 
     ];
     foreach ($staff_members as $staff) {
         echo '<div class="staff-card">

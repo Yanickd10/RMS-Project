@@ -123,7 +123,7 @@
     }
 
     .active {
-      background-color: #2980b9;
+      /* background-color: #2980b9; */
     }
     
     .portal-buttons {
@@ -155,12 +155,15 @@
     }
     
     @media screen and (max-width: 992px) {
+      
+    
       .nav-links {
+        transition: all 0.3s ease;
         position: absolute;
         top: 70px;
         left: 0;
-        background-color: #1a5276;
-        width: 100%;
+        background-color:  rgba(43, 119, 151,0.9);
+        width: 50%;
         height: 100vh;
         overflow-y: auto;
         flex-direction: column;
@@ -208,7 +211,7 @@
       }
       
       .has-dropdown.active::after {
-        content: '+';
+        content: '-';
       }
     }
     
@@ -223,6 +226,7 @@
       
       .nav-links {
         top: 60px;
+           transition: all 0.3s ease;
       }
       
       .portal-buttons {
@@ -289,7 +293,7 @@ include("progress-bar.php");
         </ul>
       </li>
       <li>
-        <a class="/RMS-Project/login">Portals</a>
+        <a class="has-dropdown">Portals</a>
         <ul class="dropdown">
           <li><a href="/RMS-Project/login">Adminstration</a></li>
           <li><a href="/RMS-Project/login">Teacher Portal</a></li>
