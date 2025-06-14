@@ -390,7 +390,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Curriculum Section -->
         <section id="curriculum" class="section">
             <h2>Curriculum Outlines</h2>
@@ -477,7 +476,7 @@
         </section>
 
         <!-- Apply Online Section -->
-        <section   class="section">
+        <section    class="section">
             <h2>Apply Online</h2>
             <form class="apply-form" action="submit_application" id="applyForm" enctype="multipart/form-data" method="post" action="submit-application.php">
                 <label for="fullname">Full Name *</label>

@@ -405,6 +405,9 @@ $userRole = $_SESSION['user_role'];
         <a href="#" class="nav-item active" onclick="showSection('dashboard')">
             📊 <span>Dashboard</span>
         </a>
+         <a href="#" class="nav-item" onclick="location.href='/RMS-Project/pages/view_applications.php'">
+            📚 <span>View applications</span>
+        </a>
         <a href="#" class="nav-item" onclick="showSection('announcements')">
             📢 <span>Announcements</span>
         </a>
