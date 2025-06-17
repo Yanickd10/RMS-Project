@@ -1,4 +1,7 @@
+
+
 <?php
+// $_SESSION['logged_in'] === true;
 session_start(); // Start a session to store login state
 
 // DB connection

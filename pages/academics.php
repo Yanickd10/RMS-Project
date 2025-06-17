@@ -271,7 +271,7 @@
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#curriculum">Curriculum</a></li>
                 <li><a href="#calendar">Calendar</a></li>
-                <li><a href="#apply">Apply Online</a></li>
+                <!-- <li><a href="#apply">Apply Online</a></li> -->
             </ul>
         </div>
     </nav>

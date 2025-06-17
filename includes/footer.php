@@ -217,10 +217,13 @@
        <ul>
          <li><a href="/RMS-Project/">Home</a></li>
          <li><a href="/RMS-Project/pages/about">About Us</a></li>
-         <li><a href="academics">Academics</a></li>
-         <li><a href="admissions">Admissions</a></li>
-         <li><a href="/RMS-Project/pages/student-portal">Student Portal</a></li> 
-         <li><a href="contact">Contact Us</a></li>
+         <li><a href="/RMS-Project/pages/academics">Academics</a></li> 
+          <li><a href="/RMS-Project/pages/academics#requirements">Admissions</a></li>
+          <li><a href="/RMS-Project/pages/academics#courses">Courses/Programs Offered</a></li>
+          <li><a href="/RMS-Project/pages/academics#curriculum">Curriculum Outlines</a></li>
+          <li><a href="/RMS-Project/pages/academics#calendar">Academic Calendar</a></li>
+         <li><a href="/RMS-Project/login">Student Portal</a></li> 
+         <li><a href="index" data-scroll-to="footer">Contact</a></li>
        </ul>
      </div>
 

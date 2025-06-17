@@ -1,19 +1,46 @@
 <?php
 session_start();
 
-// Optional: Block access if not logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
+// Check if user is logged in
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    // Not allowed
+    //   header("Location: /RMS-Project/login/");
+    // exit;
 }
+?>
+<?php 
+// Optional: Block access if not logged in
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: /RMS-Project/login/");
+//     exit;
+// }
 
 // Access the name and role
 $userName = $_SESSION['user_name'];
 $userRole = $_SESSION['user_role'];
 ?>
+<!-- Retieving the student info -->
+ <?php
+// Database credentials
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "rms-database";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch applications data
+$sql = "SELECT * FROM students ORDER BY id ASC";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,6 +178,7 @@ $userRole = $_SESSION['user_role'];
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
             /* z-index: -1; */
         }
 
@@ -442,23 +470,24 @@ $userRole = $_SESSION['user_role'];
         <section id="dashboard" class="content-section active">
             <h2>📊 Dashboard Overview</h2>
             <div class="dashboard-grid">
-                <div class="card stat-card">
-                    <div class="stat-number">832</div>
+                <div onclick="showSection('students')" class="card stat-card">
+                    <div class="stat-number"><?= $result->num_rows ?></div>
                     <div class="stat-label">Total Students</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">36</div>
+                    <div class="stat-number">undefined</div>
                     <div class="stat-label">Teachers</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">22</div>
+                    <div class="stat-number">undefined</div>
                     <div class="stat-label">Classes</div>
                 </div>
-                <div class="card stat-card">
+                <div style="display: none;" class="card stat-card">
                     <div class="stat-number">0</div>
                     <div class="stat-label">Active Events</div>
                 </div>
             </div>
+             
 
             <div class="dashboard-grid">
                 <div class="card">
@@ -520,7 +549,7 @@ $userRole = $_SESSION['user_role'];
                 </div>
             </div>
         </section>
-
+         <?php if ($result->num_rows > 0): ?>
         <!-- Students Section -->
         <section id="students" class="content-section">
             <h2>👥 Student Management</h2>
@@ -537,54 +566,27 @@ $userRole = $_SESSION['user_role'];
                             <th>ID</th>
                             <th>Name</th>
                             <th>Class</th>
-                            <th>Parent Contact</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <!-- <th>Parent Contact</th> -->
+                            <!-- <th>Status</th> -->
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>STU001</td>
-                            <td>Jean Baptiste Uwimana</td>
-                            <td>Grade 10A</td>
-                            <td>+250 788 123 456</td>
-                            <td><span style="color: #48bb78; font-weight: 600;">Active</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                    <button class="btn btn-sm btn-danger">❌ Suspend</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>STU002</td>
-                            <td>Marie Claire Gasana</td>
-                            <td>Grade 11B</td>
-                            <td>+250 788 234 567</td>
-                            <td><span style="color: #48bb78; font-weight: 600;">Active</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                    <button class="btn btn-sm btn-danger">❌ Suspend</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>STU003</td>
-                            <td>Patrick Niyomugabo</td>
-                            <td>Grade 9C</td>
-                            <td>+250 788 345 678</td>
-                            <td><span style="color: #ed8936; font-weight: 600;">Warning</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                    <button class="btn btn-sm btn-danger">❌ Suspend</button>
-                                </div>
-                            </td>
-                        </tr>
+                    <?php 
+                    while($row = $result->fetch_assoc()): 
+                    ?> 
+                    <tr>
+                           <td><?= htmlspecialchars($row['id']) ?></td>
+                    <td><?= htmlspecialchars($row['full_name']) ?></td>
+                    <td><?= htmlspecialchars($row['class']) ?></td> 
+                    <td> 
+                                <button onclick="location.href='view_student.php?id=<?= htmlspecialchars($row['id']) ?>'" class="btn btn-sm">👁️ View</button> 
+                    </td>
+                    </tr>
+                    <?php 
+                    endwhile;
+                    endif;
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -892,46 +894,44 @@ $userRole = $_SESSION['user_role'];
 
     <div id="addStudentModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="hideModal('addStudentModal')">&times;</span>
+            <form action="register_student.php" method="POST" ><!--onsubmit="return validateForm()"-->
+                <span class="close" onclick="
+                hideModal('addStudentModal')
+                ">&times;</span>
             <h2>👥 Add New Student</h2>
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter student full name">
+        <input type="text" name="full_name" placeholder="Enter student full name">
+                 
             </div>
             <div class="form-group">
                 <label>Date of Birth</label>
-                <input type="date">
+              <input type="date" name="date_of_birth">
+
             </div>
             <div class="form-group">
                 <label>Class</label>
-                <select>
-                    <option>Grade 7A</option>
-                    <option>Grade 7B</option>
-                    <option>Grade 8A</option>
-                    <option>Grade 8B</option>
-                    <option>Grade 9A</option>
-                    <option>Grade 9B</option>
-                    <option>Grade 10A</option>
-                    <option>Grade 10B</option>
-                    <option>Grade 11A</option>
-                    <option>Grade 11B</option>
-                    <option>Grade 12A</option>
-                    <option>Grade 12B</option>
+                <select name="class">
+                    <option value="S1A">S1A</option>
+                    <option value="S4 MCE">Primary</option> 
                 </select>
             </div>
             <div class="form-group">
-                <label>Parent/Guardian Name</label>
-                <input type="text" placeholder="Enter parent/guardian name">
+                <label>Parent/Guardian Name</label> 
+<input type="text" name="parent_name" placeholder="Enter parent/guardian name">
+
             </div>
             <div class="form-group">
                 <label>Parent Contact</label>
-                <input type="tel" placeholder="+250 788 000 000">
+<input type="tel" name="parent_contact" placeholder="+250 788 000 000">
+                 
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Address</label>
                 <textarea rows="3" placeholder="Enter home address"></textarea>
-            </div>
+            </div> -->
             <button class="btn" onclick="addStudent()">➕ Add Student</button>
+            </form>
         </div>
     </div>
 
@@ -1143,8 +1143,9 @@ function showSection(sectionId) {
 
         function addStudent() {
             // Simulate student addition
-            alert('👥 Student added successfully!');
-            hideModal('addStudentModal');
+            // alert('👥 Student added successfully!');
+            location.href = "register_student.php";
+           
             // In a real application, this would send data to the server
             // and update the students table
         }
@@ -1217,6 +1218,7 @@ function showSection(sectionId) {
             });
         });
     </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 </html>

@@ -59,6 +59,7 @@ $check->close();
     // Insert user
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $hashedPassword, $role);
+    
 
     if ($stmt->execute()) {
         // echo "Signup successful!";
