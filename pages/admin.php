@@ -40,10 +40,21 @@ $sql = "SELECT * FROM students ORDER BY id ASC";
 $result = $conn->query($sql);
 $teacher_sql = "SELECT * FROM teachers ORDER BY id ASC";
 $teacher_result = $conn->query($teacher_sql);
+$classes_sql = "SELECT * FROM classes ORDER BY id ASC";
+$classes_result = $conn->query($classes_sql);
+?>
+
+<?php 
+$sum = "SELECT AVG(total_students) AS total_students_sum FROM classes";
+$total_result = $conn->query($sum);
+
+if ($total_result->num_rows > 0) {
+    $row = $total_result->fetch_assoc();
+    $total = $row['total_students_sum']; 
+}  
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -477,12 +488,12 @@ $teacher_result = $conn->query($teacher_sql);
                     <div class="stat-number"><?= $result->num_rows ?></div>
                     <div class="stat-label">Total Students</div>
                 </div>
-                <div class="card stat-card">
-                    <div class="stat-number" onclick="showSection('teachers')"><?= $teacher_result->num_rows?></div>
+                <div class="card stat-card" onclick="showSection('teachers')">
+                    <div class="stat-number" ><?= $teacher_result->num_rows?></div>
                     <div class="stat-label">Teachers</div>
                 </div>
-                <div class="card stat-card">
-                    <div class="stat-number">undefined</div>
+                <div class="card stat-card" onclick="showSection('classes')">
+                    <div class="stat-number"><?= $classes_result->num_rows ?></div>
                     <div class="stat-label">Classes</div>
                 </div>
                 <div style="display: none;" class="card stat-card">
@@ -656,16 +667,16 @@ $teacher_result = $conn->query($teacher_sql);
             <h2>🏛️ Class Management</h2>
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>📚 Class Overview</h3>
+                    <h3>📚 Classes Overview</h3>
                     <div style="margin-bottom: 1rem;">
-                        <strong>Total Classes:</strong> 32<br>
-                        <strong>Average Class Size:</strong> 39 students<br>
-                        <strong>Teacher-Student Ratio:</strong> 1:18
+                        <strong>Total Classes:</strong> <?= htmlspecialchars($classes_result->num_rows) ?><br>
+                        <strong>Average Class Size:</strong> <?php echo round($total,0);?> students<br>
+                        
                     </div>
-                    <button class="btn">➕ Create New Class</button>
+                    <button class="btn" onclick="showModal('createClassModal')">➕ Create New Class</button>
                 </div>
 
-                <div class="card">
+                <div style="display: none;" class="card">
                     <h3>🎯 Quick Stats</h3>
                     <div style="margin-bottom: 1rem;">
                         <strong>Grade 7:</strong> 6 classes (234 students)<br>
@@ -677,44 +688,40 @@ $teacher_result = $conn->query($teacher_sql);
                     </div>
                 </div>
             </div>
-
+   <?php if ($classes_result->num_rows > 0): ?>
             <div class="card">
                 <h3>📋 Class List</h3>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Class</th>
-                            <th>Class Teacher</th>
                             <th>Students</th>
-                            <th>Room</th>
+                            
+                            <th>Class Teacher</th>
+                            <!-- <th>Room</th> -->
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                           <?php 
+                    while($classes_row = $classes_result->fetch_assoc()): 
+                    ?>
                         <tr>
-                            <td>Grade 10A</td>
-                            <td>Dr. Sarah Mukamana</td>
-                            <td>38</td>
-                            <td>Room 201</td>
+                            <td><?= htmlspecialchars($classes_row['class_name']) ?></td>
+                            <td><?= htmlspecialchars($classes_row['total_students']) ?></td>
+                            <td><?= htmlspecialchars($classes_row['class_teacher']) ?></td>
+                            <!-- <td>Room 201</td> -->
                             <td>
                                 <div class="action-buttons">
                                     <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
+                                    <!-- <button class="btn btn-sm">✏️ Edit</button> -->
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Grade 11B</td>
-                            <td>Mr. Emmanuel Bizimana</td>
-                            <td>41</td>
-                            <td>Room 301</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                </div>
-                            </td>
-                        </tr>
+                             <?php 
+                    endwhile;
+                    endif;
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -861,41 +868,52 @@ $teacher_result = $conn->query($teacher_sql);
             </div>
         </section>
     </main>
-
     <!-- Modals -->
-    <div id="announcementModal" class="modal">
+    <div id="createClassModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="hideModal('announcementModal')">&times;</span>
-            <h2>📢 Create Announcement</h2>
+            <form id="classForm" action="create_class.php" method="POST">
+            <span class="close" onclick="hideModal('createClassModal')">&times;</span>
+            <h2>🏫 Create Class</h2>
             <div class="form-group">
-                <label>Title</label>
-                <input type="text" placeholder="Enter announcement title">
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea rows="4" placeholder="Enter announcement content"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Priority</label>
-                <select>
-                    <option>Normal</option>
-                    <option>Important</option>
-                    <option>Urgent</option>
+                <label>Select Class</label> 
+                <select name="class_name" id="classSelect">
+                    <option value="" hidden>Select Class</option>
+                    <option value="S1A">S1A</option>
+                    <option value="S1B">S1B</option>
+                    <option value="S2A">S2A</option>
+                    <option value="S2B">S2B</option>
+                    <option value="S3A">S3A</option>
+                    <option value="S3B">S3B</option>
+                    <option value="S4MCE">S4MCE</option>
+                    <option value="S4MPC">S4MPC</option>
+                    <option value="S4MEG">S4MEG</option> 
+                     <option value="S5MCE">S5MCE</option>
+                    <option value="S5MPC">S5MPC</option>
+                    <option value="S5MEG">S5MEG</option> 
+                     <option value="S6MCE">S6MCE</option>
+                    <option value="S6MPC">S6MPC</option>
+                    <option value="S6MEG">S6MEG</option> 
                 </select>
             </div>
             <div class="form-group">
-                <label>Target Audience</label>
-                <select>
-                    <option>All</option>
-                    <option>Students</option>
-                    <option>Teachers</option>
-                    <option>Parents</option>
+                <label>Number of Students</label> 
+                <input type="number" name="total_students" id="studentsInput" placeholder="Enter number of students" min="1">
+            </div>
+            <div class="form-group">
+                <label>Class Teacher</label>
+                <select id="teacherSelect"  name="class_teacher">
+                    <option hidden>Select the class teacher</option>
+                   <option value="Yanick">Yanick</option>
+                     <option value="Eric">Eric</option>
+                    <option value="Alice">Alice</option>
+                    <option value="John">John</option>
                 </select>
             </div>
-            <button class="btn" onclick="createAnnouncement()">📢 Publish Announcement</button>
+            <button class="btn" onclick="createClass()">🏫 Create Class</button>
+            </div>
+            </form>
         </div>
     </div>
-
     <div id="addStudentModal" class="modal">
         <div class="modal-content">
             <form action="register_student.php" method="POST">
@@ -939,6 +957,7 @@ $teacher_result = $conn->query($teacher_sql);
             </form>
         </div>
     </div>
+
 
     <div id="addTeacherModal" class="modal">
         <div class="modal-content">
@@ -1009,6 +1028,38 @@ $teacher_result = $conn->query($teacher_sql);
             </div>
             <button class="btn" onclick="addTeacher()">👨‍🏫 Add Teacher</button>
             </form>
+        </div>
+    </div>
+    <div id="announcementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('announcementModal')">&times;</span>
+            <h2>📢 Create Announcement</h2>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" placeholder="Enter announcement title">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <textarea rows="4" placeholder="Enter announcement content"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Priority</label>
+                <select>
+                    <option>Normal</option>
+                    <option>Important</option>
+                    <option>Urgent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Target Audience</label>
+                <select>
+                    <option>All</option>
+                    <option>Students</option>
+                    <option>Teachers</option>
+                    <option>Parents</option>
+                </select>
+            </div>
+            <button class="btn" onclick="createAnnouncement()">📢 Publish Announcement</button>
         </div>
     </div>
 
@@ -1099,8 +1150,50 @@ $teacher_result = $conn->query($teacher_sql);
             <button class="btn" onclick="createAd()">📺 Launch Advertisement</button>
         </div>
     </div>
-
     <script>
+document.getElementById("classForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Stop normal form submission
+
+    const classSelect = document.getElementById("classSelect");
+    const teacherSelect = document.getElementById("teacherSelect");
+    const studentsInput = document.getElementById("studentsInput");
+
+    const classId = classSelect.value;
+    const totalStudents = studentsInput.value;
+    const teacherId = teacherSelect.value;
+
+    if (!classId || !totalStudents || !teacherId) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    // Send data to PHP
+    const formData = new FormData();
+    formData.append("class_name", classId);
+    formData.append("total_students", totalStudents);
+    formData.append("class_teacher", teacherId);
+
+  fetch("create_class.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+    console.log("Server response:", data); // 🔍 Add this line to debug
+
+    if (data.trim() === "success") {
+        classSelect.remove(classSelect.selectedIndex);
+        alert("Class added successfully.");
+    } else {
+        alert("Error: " + data);
+    }
+})
+});
+</script>
+
+    <script> 
+   
+ 
         //logout
         function logout() {
             window.location.href = "/RMS-Project/includes/logout";
@@ -1136,7 +1229,7 @@ $teacher_result = $conn->query($teacher_sql);
 
         function hideModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-        }
+        } 
         // Close modals when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
@@ -1165,6 +1258,11 @@ $teacher_result = $conn->query($teacher_sql);
             // Simulate announcement creation
             alert('📢 Announcement published successfully!');
             hideModal('announcementModal');
+            // In a real application, this would send data to the server
+            // and update the announcements list
+        }
+    function createClass() { 
+            hideModal('createClassModal');
             // In a real application, this would send data to the server
             // and update the announcements list
         }
