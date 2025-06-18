@@ -122,9 +122,9 @@
       font-size: 1.5rem;
     }
 
-    .active {
-      /* background-color: #2980b9; */
-    }
+    /* .active {
+      background-color: #2980b9;
+    } */
     
     .portal-buttons {
       display: flex;

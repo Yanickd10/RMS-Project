@@ -12,21 +12,21 @@ if ($conn->connect_error) {
 
 // Get student ID from URL
 if (isset($_GET['id'])) {
-    $student_id = intval($_GET['id']); // secure the input
+    $new_id = intval($_GET['id']); // secure the input
     
-    $stmt = $conn->prepare("SELECT * FROM students WHERE id = ?");
-    $stmt->bind_param("i", $student_id);
+    $stmt = $conn->prepare("SELECT * FROM teachers WHERE  id = ?");
+    $stmt->bind_param("i", $new_id);
     $stmt->execute();
     $result = $stmt->get_result();
     
     if ($result->num_rows == 1) {
         $student = $result->fetch_assoc();
     } else {
-        echo "<p>Student not found.</p>";
+        echo "<p>Teacher not found.</p>";
         exit;
     }
 } else {
-    echo "<p>No student ID provided.</p>";
+    echo "<p>No Teacher ID provided.</p>";
     exit;
 }
 ?>
@@ -79,16 +79,14 @@ if (isset($_GET['id'])) {
 <div class="card">
     <!-- go back button -->
     <a onclick="history.back()" class="btn">Go Back</a>
-    <h2>Student Full Information</h2>
+    <h2>Teacher Full Information</h2>
     <table class="info-table">
-        <tr><td>ID:</td><td><?= $student['id'] ?></td></tr>
-        <tr><td>Full Name:</td><td><?= $student['full_name'] ?></td></tr>
-        <tr><td>Date of Birth:</td><td><?= $student['date_of_birth'] ?></td></tr>
-        <tr><td>Class:</td><td><?= $student['class'] ?></td></tr>
-        <tr><td>Parent Name:</td><td><?= $student['parent_name'] ?></td></tr>
-        <tr><td>Parent Contact:</td><td><?= $student['parent_contact'] ?></td></tr>
-        <tr><td>Address:</td><td><?= $student['address'] ?></td></tr>
-        <tr><td>Created At:</td><td><?= $student['created_at'] ?></td></tr>
+        <tr><td>ID:</td><td><?= $student['teacher_id'] ?></td></tr>
+        <tr><td>Full Name:</td><td><?= $student['full_name'] ?></td></tr> 
+        <tr><td>Class Assigned:</td><td><?= isset($student['class_assigned']) ? htmlspecialchars($student['class_assigned']) : 'Not Assigned' ?></td>
+</tr> 
+        <tr><td>Contact:</td><td><?= $student['phone'] ?></td></tr> 
+        <tr><td>Registered At:</td><td><?= $student['created_at'] ?></td></tr>
         <tr><td>Updated At:</td><td><?= $student['updated_at'] ?></td></tr>
     </table>
 </div>

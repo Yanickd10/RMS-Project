@@ -16,11 +16,11 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 // }
 
 // Access the name and role
-$userName = $_SESSION['user_name'];
-$userRole = $_SESSION['user_role'];
+// $userName = $_SESSION['user_name'];
+// $userRole = $_SESSION['user_role'];
 ?>
 <!-- Retieving the student info -->
- <?php
+<?php
 // Database credentials
 $servername = "localhost";
 $username = "root";
@@ -38,9 +38,12 @@ if ($conn->connect_error) {
 // Fetch applications data
 $sql = "SELECT * FROM students ORDER BY id ASC";
 $result = $conn->query($sql);
+$teacher_sql = "SELECT * FROM teachers ORDER BY id ASC";
+$teacher_result = $conn->query($teacher_sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -415,7 +418,7 @@ $result = $conn->query($sql);
                 <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
             </div> -->
             <div class="admin-info">
-                <span><?php echo htmlspecialchars($userName); ?> (<?php echo $userRole; ?>)</span>
+                <span><?php echo htmlspecialchars("ERIC"); ?> Admin</span>
                 <span>|</span>
                 <span id="currentDate"></span>
             </div>
@@ -433,7 +436,7 @@ $result = $conn->query($sql);
         <a href="#" class="nav-item active" onclick="showSection('dashboard')">
             📊 <span>Dashboard</span>
         </a>
-         <a href="#" class="nav-item" onclick="location.href='/RMS-Project/pages/view_applications.php'">
+        <a href="#" class="nav-item" onclick="location.href='/RMS-Project/pages/view_applications.php'">
             📚 <span>View applications</span>
         </a>
         <a href="#" class="nav-item" onclick="showSection('announcements')">
@@ -475,7 +478,7 @@ $result = $conn->query($sql);
                     <div class="stat-label">Total Students</div>
                 </div>
                 <div class="card stat-card">
-                    <div class="stat-number">undefined</div>
+                    <div class="stat-number" onclick="showSection('teachers')"><?= $teacher_result->num_rows?></div>
                     <div class="stat-label">Teachers</div>
                 </div>
                 <div class="card stat-card">
@@ -487,7 +490,6 @@ $result = $conn->query($sql);
                     <div class="stat-label">Active Events</div>
                 </div>
             </div>
-             
 
             <div class="dashboard-grid">
                 <div class="card">
@@ -549,7 +551,7 @@ $result = $conn->query($sql);
                 </div>
             </div>
         </section>
-         <?php if ($result->num_rows > 0): ?>
+        <?php if ($result->num_rows > 0): ?>
         <!-- Students Section -->
         <section id="students" class="content-section">
             <h2>👥 Student Management</h2>
@@ -572,26 +574,29 @@ $result = $conn->query($sql);
                         </tr>
                     </thead>
                     <tbody>
-                    <?php 
+                        <?php 
                     while($row = $result->fetch_assoc()): 
-                    ?> 
-                    <tr>
-                           <td><?= htmlspecialchars($row['id']) ?></td>
-                    <td><?= htmlspecialchars($row['full_name']) ?></td>
-                    <td><?= htmlspecialchars($row['class']) ?></td> 
-                    <td> 
-                                <button onclick="location.href='view_student.php?id=<?= htmlspecialchars($row['id']) ?>'" class="btn btn-sm">👁️ View</button> 
-                    </td>
-                    </tr>
-                    <?php 
+                    ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['id']) ?></td>
+                            <td><?= htmlspecialchars($row['full_name']) ?></td>
+                            <td><?= htmlspecialchars($row['class']) ?></td>
+                            <td>
+                                <button
+                                    onclick="location.href='view_student.php?id=<?= htmlspecialchars($row['id']) ?>'"
+                                    class="btn btn-sm">👁️ View</button>
+                            </td>
+                        </tr>
+                        <?php 
                     endwhile;
                     endif;
                     ?>
                     </tbody>
                 </table>
             </div>
-        </section>
-
+        </section> 
+        <?php if ($teacher_result->num_rows > 0): ?>
+        
         <!-- Teachers Section -->
         <section id="teachers" class="content-section">
             <h2>👨‍🏫 Teacher Management</h2>
@@ -608,40 +613,39 @@ $result = $conn->query($sql);
                             <th>ID</th>
                             <th>Name</th>
                             <th>Subject</th>
+                            <th>Class Teacher</th>
                             <th>Phone</th>
-                            <th>Email</th>
+                            <!-- <th>Email</th> -->
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                            <?php 
+                    while($teacher_row = $teacher_result->fetch_assoc()): 
+                    ?>
                         <tr>
-                            <td>TEA001</td>
-                            <td>Dr. Sarah Mukamana</td>
-                            <td>Mathematics</td>
-                            <td>+250 788 111 222</td>
-                            <td>sarah.mukamana@rukara.edu.rw</td>
+                            <td><?= htmlspecialchars($teacher_row['id']) ?></td>
+                            <td><?= htmlspecialchars($teacher_row['full_name']) ?></td> 
+                            <td><?= isset($teacher_row['subject_specialization']) ? htmlspecialchars($teacher_row['subject_specialization']) : '';
+                             ?></td>
+                            <td><?= isset($teacher_row['class_assigned']) ? htmlspecialchars($teacher_row['class_assigned']) : 'Not Assigned' ?></td>
+
+                            <td><?= isset($teacher_row['phone']) ? htmlspecialchars($teacher_row['phone']) : '' ?></td>
+
                             <td>
                                 <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                    <button class="btn btn-sm btn-danger">🚫 Remove</button>
+                                   <button
+                                    onclick="location.href='view_teacher.php?id=<?= htmlspecialchars($teacher_row['id']) ?>'"
+                                    class="btn btn-sm">👁️ View</button>
+                                    <!-- <button class="btn btn-sm">✏️ Edit</button> -->
+                                    <!-- <button class="btn btn-sm btn-danger">🚫 Remove</button> -->
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>TEA002</td>
-                            <td>Mr. Emmanuel Bizimana</td>
-                            <td>Physics</td>
-                            <td>+250 788 222 333</td>
-                            <td>emmanuel.bizimana@rukara.edu.rw</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
-                                    <button class="btn btn-sm">✏️ Edit</button>
-                                    <button class="btn btn-sm btn-danger">🚫 Remove</button>
-                                </div>
-                            </td>
-                        </tr>
+                            <?php 
+                    endwhile;
+                    endif;
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -894,93 +898,117 @@ $result = $conn->query($sql);
 
     <div id="addStudentModal" class="modal">
         <div class="modal-content">
-            <form action="register_student.php" method="POST" ><!--onsubmit="return validateForm()"-->
+            <form action="register_student.php" method="POST">
+                <!--onsubmit="return validateForm()"-->
                 <span class="close" onclick="
                 hideModal('addStudentModal')
                 ">&times;</span>
-            <h2>👥 Add New Student</h2>
-            <div class="form-group">
-                <label>Full Name</label>
-        <input type="text" name="full_name" placeholder="Enter student full name">
-                 
-            </div>
-            <div class="form-group">
-                <label>Date of Birth</label>
-              <input type="date" name="date_of_birth">
+                <h2>👥 Add New Student</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="full_name" placeholder="Enter student full name">
 
-            </div>
-            <div class="form-group">
-                <label>Class</label>
-                <select name="class">
-                    <option value="S1A">S1A</option>
-                    <option value="S4 MCE">Primary</option> 
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Parent/Guardian Name</label> 
-<input type="text" name="parent_name" placeholder="Enter parent/guardian name">
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" name="date_of_birth">
 
-            </div>
-            <div class="form-group">
-                <label>Parent Contact</label>
-<input type="tel" name="parent_contact" placeholder="+250 788 000 000">
-                 
-            </div>
-            <!-- <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label>Class</label>
+                    <select name="class">
+                        <option value="S1A">S1A</option>
+                        <option value="S4 MCE">Primary</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Parent/Guardian Name</label>
+                    <input type="text" name="parent_name" placeholder="Enter parent/guardian name">
+
+                </div>
+                <div class="form-group">
+                    <label>Parent Contact</label>
+                    <input type="tel" name="parent_contact" placeholder="+250 788 000 000">
+
+                </div>
+                <!-- <div class="form-group">
                 <label>Address</label>
                 <textarea rows="3" placeholder="Enter home address"></textarea>
             </div> -->
-            <button class="btn" onclick="addStudent()">➕ Add Student</button>
+                <button class="btn" onclick="addStudent()">➕ Add Student</button>
             </form>
         </div>
     </div>
 
     <div id="addTeacherModal" class="modal">
         <div class="modal-content">
+            <form action="register_teacher.php" method="POST">
             <span class="close" onclick="hideModal('addTeacherModal')">&times;</span>
             <h2>👨‍🏫 Add New Teacher</h2>
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter teacher full name">
+                <input type="text" name="full_name" placeholder="Enter teacher full name">
             </div>
             <div class="form-group">
                 <label>Subject Specialization</label>
-                <select>
-                    <option>Mathematics</option>
-                    <option>Physics</option>
-                    <option>Chemistry</option>
-                    <option>Biology</option>
-                    <option>English</option>
-                    <option>Kinyarwanda</option>
-                    <option>French</option>
-                    <option>History</option>
-                    <option>Geography</option>
-                    <option>Computer Science</option>
-                    <option>Physical Education</option>
+                <select name="subject">
+                    <option  value="Mathematics">Mathematics</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Biology">Biology</option>
+                    <option value="English">English</option>
+                    <option value="Kinyarwanda">Kinyarwanda</option>
+                    <option value="French">French</option>
+                    <option value="History">History</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Physical Education">Physical Education</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="teacher@rukara.edu.rw">
+                <input type="email" name="email" placeholder="teacher@rukara.edu.rw">
             </div>
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="+250 788 000 000">
+                <input type="tel" name="phone" placeholder="+250 788 000 000">
             </div>
             <div class="form-group">
                 <label>Qualification</label>
-                <select>
-                    <option>Bachelor's Degree</option>
-                    <option>Master's Degree</option>
-                    <option>PhD</option>
-                    <option>Diploma</option>
+                <select name="qualification">
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="PhD">PhD</option>
+                    <option value="Diploma">Diploma</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Years of Experience</label>
-                <input type="number" placeholder="0" min="0">
+                <input type="number" name="experience" placeholder="0" min="0">
+            </div>
+             <div class="form-group">
+                <label>Class Assigned</label> 
+                <select name="class_assigned" id="">
+                    <option value="S1A">S1A</option>
+                    <option value="S1B">S1B</option>
+                    <option value="S2A">S2A</option>
+                    <option value="S2B">S2B</option>
+                    <option value="S3A">S3A</option>
+                    <option value="S3B">S3B</option>
+                    <option value="S4MCE">S4MCE</option>
+                    <option value="S4MPC">S4MPC</option>
+                    <option value="S4MEG">S4MEG</option> 
+                     <option value="S5MCE">S5MCE</option>
+                    <option value="S5MPC">S5MPC</option>
+                    <option value="S5MEG">S5MEG</option> 
+                     <option value="S6MCE">S6MCE</option>
+                    <option value="S6MPC">S6MPC</option>
+                    <option value="S6MEG">S6MEG</option> 
+                </select>
             </div>
             <button class="btn" onclick="addTeacher()">👨‍🏫 Add Teacher</button>
+            </form>
         </div>
     </div>
 
@@ -1085,7 +1113,7 @@ $result = $conn->query($sql);
             day: 'numeric'
         });
         // Navigation functionality
-function showSection(sectionId) {
+        function showSection(sectionId) {
             // Hide all sections
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
@@ -1145,7 +1173,6 @@ function showSection(sectionId) {
             // Simulate student addition
             // alert('👥 Student added successfully!');
             location.href = "register_student.php";
-           
             // In a real application, this would send data to the server
             // and update the students table
         }
@@ -1221,4 +1248,5 @@ function showSection(sectionId) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
