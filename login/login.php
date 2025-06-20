@@ -1,68 +1,48 @@
+ <?php
+session_start(); // Start session at the top
 
+$conn = new mysqli("localhost", "root", "", "rms-database");
 
-<?php
-// $_SESSION['logged_in'] === true;
-session_start(); // Start a session to store login state
-
-// DB connection
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
-
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
-    die('Database connection failed: ' . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    // Validate input
-    if (empty($email) || empty($password)) {
-        echo "<p style='color:red;'>Email and password are required.</p>";
-        exit;
+    // Tables to check (you can add 'teachers', 'students' later)
+    $tables = ['admins'];
+    $user = null;
+    $role = '';
+
+    foreach ($tables as $table) {
+        $stmt = $conn->prepare("SELECT * FROM $table WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            // Check hashed password
+            if (password_verify($password, $user['password'])) {
+                $role = $table;
+                break;
+            } else {
+                $user = null; // Password does not match
+            }
+        }
     }
 
-    // Get user from database
-    $stmt = $conn->prepare("SELECT id, name, password, role FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-
-    // Check if user exists
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($userId, $userName, $hashedPassword, $userRole);
-        $stmt->fetch();
-
-        // Verify password
-      if (password_verify($password, $hashedPassword)) {
-    // Store user info in session
-    session_regenerate_id(true); // For better security
-    $_SESSION['user_id'] = $userId;
-    $_SESSION['user_name'] = $userName;
-    $_SESSION['user_role'] = $userRole;
-    
-    // Redirect based on role
-    if ($userRole === 'admin') {
-        header("Location: /RMS-Project/pages/admin.php");
-        exit;
-    } elseif ($userRole === 'teacher') {
-        header("Location: /RMS-Project/pages/teacher");
-        exit;
-    } elseif ($userRole === 'student') {
-        header("Location: /RMS-Project/pages/student-portal");
+    // If user authenticated
+    if ($user) {
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['names'] = $user['names']; // Ensure column name is 'names'
+        $_SESSION['role'] = $role;
+        header("Location: /RMS-Project/pages/admin");
         exit;
     } else {
-        echo "<p style='color:red;'>Unknown role.</p>";
-    }
-     $stmt->close();
+        echo "<script> alert('Invalid email or password.  Or you are not Authorised to use this system'); location.href = '/RMS-Project/login/';</script>";
     }
 }
-}
-$conn->close();
 ?>

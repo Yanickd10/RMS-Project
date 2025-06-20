@@ -72,8 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errors[] = "Student age must be between 5 and 25 years";
             }
         }
-    }
-    
+    } 
     // If no errors, insert into database
     if (empty($errors)) {
         try {

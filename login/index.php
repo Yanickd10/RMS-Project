@@ -239,23 +239,19 @@
          data-sitekey="6Ld4_C8rAAAAAM11e-O_4z0o4JuwD3MS6p1J8-PO"
          data-callback="onRecaptchaSuccess"
          data-expired-callback="onRecaptchaExpired">
-    </div> -->
-
+    </div> --> 
                     <div class="field button-field">
                         <button type="submit" name="login">Login</button>
                     </div>
                 </form>
-
                 <div class="form-link">
-                    <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+                    <span>Login if you have been registered</span>
+                    <!-- <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span> -->
                 </div>
             </div>
-
         </div>
-
         <!-- Signup Form -->
-
-        <div class="form signup">
+        <div  class="form signup">
             <div class="form-content">
                 <header>Signup</header>
                 <form action="signup.php" method="POST">

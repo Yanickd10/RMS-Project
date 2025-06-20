@@ -16,7 +16,6 @@ $password = '';
     $class_name = $_POST['class_name'];
     $total_students = $_POST['total_students'];
     $class_teacher = $_POST['class_teacher'];
-         
                 // Insert teacher record
                 $sql = "INSERT INTO classes (class_name, total_students, class_teacher) VALUES (?, ?, ?)";
                          

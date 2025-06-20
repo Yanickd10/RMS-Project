@@ -1,36 +1,4 @@
-    
-    //  import {cart} from 'newsdetails.js';
-    //  console.log(`hello ${cart.length} items in cart`);
-    // import { sharedData } from 'newsdetails.js';
-    // console.log(window.sharedData);
-     const newsItems = [{
-            date: "April 25, 2025",
-            title: "Spring Arts Festival Next Week yanick 2",
-            excerpt: "Join us for our annual Spring Arts Festival featuring performances and exhibits from students across all grade levels.",
-            link: "#"
-        },
-        {
-            date: "April 20, 2025",
-            title: "New Library Opens",
-            excerpt: "The new library opens this weekend with a special ceremony and guest speakers.",
-            link: "#"
-        },
-        {
-            date: "April 15, 2025",
-            title: "Sports Day Highlights",
-            excerpt: "Highlights from last week's Sports Day, including winners and memorable moments.",
-            link: "#"
-        }
-    ]
-    document.getElementById('news').innerHTML = `News & Announcements (${newsItems.length})`;
-    document.querySelector('.news-container').innerHTML = newsItems.map(item => `
-        <article class="news-item">
-            <div class="news-date">${item.date}</div>
-            <h3 class="news-title">${item.title}</h3>
-            <p class="news-excerpt">${item.excerpt}</p>
-            <a href="${item.link}" class="read-more">Read more →</a>
-        </article>
-    `).join('');
+ 
     // Simple carousel functionality
     document.addEventListener('DOMContentLoaded', function() {
         const carouselContainer = document.querySelector('.carousel-container');

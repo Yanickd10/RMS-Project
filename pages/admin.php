@@ -9,6 +9,21 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 ?>
 <?php 
+if (!isset($_SESSION['email'])) {
+    // Not logged in
+      header("Location: /RMS-Project/login/"); 
+    exit;
+}
+
+// Access user info
+$email = $_SESSION['email'];
+$name = $_SESSION['names'];
+$role = $_SESSION['role'];
+?>
+
+
+<?php 
+
 // Optional: Block access if not logged in
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: /RMS-Project/login/");
@@ -38,12 +53,21 @@ if ($conn->connect_error) {
 // Fetch applications data
 $sql = "SELECT * FROM students ORDER BY id ASC";
 $result = $conn->query($sql);
+// Fetch teachers data
 $teacher_sql = "SELECT * FROM teachers ORDER BY id ASC";
 $teacher_result = $conn->query($teacher_sql);
+// Fetch classes data
 $classes_sql = "SELECT * FROM classes ORDER BY id ASC";
 $classes_result = $conn->query($classes_sql);
+// Fetch classes data for the second table
+$classes2_sql = "SELECT * FROM classes ORDER BY class_name ASC";
+$classes2_result = $conn->query($classes2_sql);
 ?>
-
+<!-- Retrieving the events info -->
+<?php
+$events_sql = "SELECT * FROM events order by event_date desc";
+$events_result = $conn->query($events_sql);
+?>
 <?php 
 $sum = "SELECT AVG(total_students) AS total_students_sum FROM classes";
 $total_result = $conn->query($sum);
@@ -55,10 +79,14 @@ if ($total_result->num_rows > 0) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rukara Model School - Administration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&family=Purple+Purse&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -88,7 +116,7 @@ if ($total_result->num_rows > 0) {
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-        }
+        } 
 
         .logo {
             display: flex;
@@ -108,6 +136,8 @@ if ($total_result->num_rows > 0) {
         }
 
         .admin-info {
+            font-weight: 600;
+            font-family: "Noto Naskh Arabic", serif;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -422,14 +452,14 @@ if ($total_result->num_rows > 0) {
 
 <body>
     <?php include("../includes/progress-bar.php");?>
-
+ 
     <header class="header">
         <div class="header-content">
             <!-- <div class="logo">
                 <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
             </div> -->
             <div class="admin-info">
-                <span><?php echo htmlspecialchars("ERIC"); ?> Admin</span>
+                <span >Welcome, </span> <span id="adminName"> <?php echo $name; ?></span>
                 <span>|</span>
                 <span id="currentDate"></span>
             </div>
@@ -442,7 +472,6 @@ if ($total_result->num_rows > 0) {
                 <h1><a href="/RMS-Project/">Rukara Model School</a></h1>
             </div>
     </header>
-
     <nav class="sidebar">
         <a href="#" class="nav-item active" onclick="showSection('dashboard')">
             📊 <span>Dashboard</span>
@@ -489,7 +518,7 @@ if ($total_result->num_rows > 0) {
                     <div class="stat-label">Total Students</div>
                 </div>
                 <div class="card stat-card" onclick="showSection('teachers')">
-                    <div class="stat-number" ><?= $teacher_result->num_rows?></div>
+                    <div class="stat-number"><?= $teacher_result->num_rows?></div>
                     <div class="stat-label">Teachers</div>
                 </div>
                 <div class="card stat-card" onclick="showSection('classes')">
@@ -523,20 +552,20 @@ if ($total_result->num_rows > 0) {
                         onclick="showModal('addStudentModal')">➕ Add New Student</button>
                     <button class="btn" style="width: 100%; margin-bottom: 1rem;"
                         onclick="showModal('addTeacherModal')">👨‍🏫 Add New Teacher</button>
+                    <button class="btn" style="width: 100%;margin-bottom: 1rem;"
+                        onclick="showModal('createClassModal')">📅 Create Class</button>
                     <button class="btn" style="width: 100%; margin-bottom: 1rem;"
                         onclick="showModal('announcementModal')">📢 Make Announcement</button>
                     <button class="btn" style="width: 100%;" onclick="showModal('eventModal')">📅 Create Event</button>
                 </div>
             </div>
         </section>
-
         <!-- Announcements Section -->
         <section id="announcements" class="content-section">
             <h2>📢 Announcements Management</h2>
             <div class="card">
                 <button class="btn" onclick="showModal('announcementModal')" style="margin-bottom: 1rem;">➕ New
                     Announcement</button>
-
                 <div id="announcementsList">
                     <div class="announcement-item">
                         <div class="announcement-date">June 3, 2025</div>
@@ -605,9 +634,9 @@ if ($total_result->num_rows > 0) {
                     </tbody>
                 </table>
             </div>
-        </section> 
+        </section>
         <?php if ($teacher_result->num_rows > 0): ?>
-        
+
         <!-- Teachers Section -->
         <section id="teachers" class="content-section">
             <h2>👨‍🏫 Teacher Management</h2>
@@ -631,29 +660,30 @@ if ($total_result->num_rows > 0) {
                         </tr>
                     </thead>
                     <tbody>
-                            <?php 
+                        <?php 
                     while($teacher_row = $teacher_result->fetch_assoc()): 
                     ?>
                         <tr>
                             <td><?= htmlspecialchars($teacher_row['id']) ?></td>
-                            <td><?= htmlspecialchars($teacher_row['full_name']) ?></td> 
+                            <td><?= htmlspecialchars($teacher_row['full_name']) ?></td>
                             <td><?= isset($teacher_row['subject_specialization']) ? htmlspecialchars($teacher_row['subject_specialization']) : '';
                              ?></td>
-                            <td><?= isset($teacher_row['class_assigned']) ? htmlspecialchars($teacher_row['class_assigned']) : 'Not Assigned' ?></td>
+                            <td><?= isset($teacher_row['class_assigned']) ? htmlspecialchars($teacher_row['class_assigned']) : 'Not Assigned' ?>
+                            </td>
 
                             <td><?= isset($teacher_row['phone']) ? htmlspecialchars($teacher_row['phone']) : '' ?></td>
 
                             <td>
                                 <div class="action-buttons">
-                                   <button
-                                    onclick="location.href='view_teacher.php?id=<?= htmlspecialchars($teacher_row['id']) ?>'"
-                                    class="btn btn-sm">👁️ View</button>
+                                    <button
+                                        onclick="location.href='view_teacher.php?id=<?= htmlspecialchars($teacher_row['id']) ?>'"
+                                        class="btn btn-sm">👁️ View</button>
                                     <!-- <button class="btn btn-sm">✏️ Edit</button> -->
                                     <!-- <button class="btn btn-sm btn-danger">🚫 Remove</button> -->
                                 </div>
                             </td>
                         </tr>
-                            <?php 
+                        <?php 
                     endwhile;
                     endif;
                     ?>
@@ -671,12 +701,19 @@ if ($total_result->num_rows > 0) {
                     <div style="margin-bottom: 1rem;">
                         <strong>Total Classes:</strong> <?= htmlspecialchars($classes_result->num_rows) ?><br>
                         <strong>Average Class Size:</strong> <?php echo round($total,0);?> students<br>
-                        
-                    </div>
-                    <button class="btn" onclick="showModal('createClassModal')">➕ Create New Class</button>
-                </div>
 
+                    </div>
+                </div>
+                <div class="card">
+                    <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('addStudentModal')">➕ Add
+                        Student</button>
+                    <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('createClassModal')">➕ Create
+                        New Class</button>
+
+                </div>
                 <div style="display: none;" class="card">
+                    <button class="btn" onclick="addStudent()">➕ Add Student</button>
+
                     <h3>🎯 Quick Stats</h3>
                     <div style="margin-bottom: 1rem;">
                         <strong>Grade 7:</strong> 6 classes (234 students)<br>
@@ -688,37 +725,38 @@ if ($total_result->num_rows > 0) {
                     </div>
                 </div>
             </div>
-   <?php if ($classes_result->num_rows > 0): ?>
+            <?php if ($classes_result->num_rows > 0): ?>
             <div class="card">
                 <h3>📋 Class List</h3>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Class</th>
-                            <th>Students</th>
-                            
+                            <!-- <th>Students</th> -->
+
                             <th>Class Teacher</th>
                             <!-- <th>Room</th> -->
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                           <?php 
+                        <?php 
                     while($classes_row = $classes_result->fetch_assoc()): 
                     ?>
                         <tr>
                             <td><?= htmlspecialchars($classes_row['class_name']) ?></td>
-                            <td><?= htmlspecialchars($classes_row['total_students']) ?></td>
                             <td><?= htmlspecialchars($classes_row['class_teacher']) ?></td>
                             <!-- <td>Room 201</td> -->
                             <td>
                                 <div class="action-buttons">
-                                    <button class="btn btn-sm">👁️ View</button>
+                                    <button
+                                        onclick="location.href='view_class.php?class_name=<?= htmlspecialchars($classes_row['class_name']) ?>'"
+                                        class="btn btn-sm">👁️ View</button>
                                     <!-- <button class="btn btn-sm">✏️ Edit</button> -->
                                 </div>
                             </td>
                         </tr>
-                             <?php 
+                        <?php 
                     endwhile;
                     endif;
                     ?>
@@ -730,36 +768,35 @@ if ($total_result->num_rows > 0) {
         <!-- Events Section -->
         <section id="events" class="content-section">
             <h2>📅 Events Management</h2>
+          
             <div class="card">
                 <button class="btn" onclick="showModal('eventModal')" style="margin-bottom: 1rem;">➕ Create
                     Event</button>
 
                 <div class="dashboard-grid">
+                      <?php 
+           if($events_result->num_rows > 0): ?>
+            <?php while($events_row = $events_result->fetch_assoc()): 
+                    ?>
                     <div class="card">
-                        <h3>🏆 Sports Day</h3>
-                        <p><strong>Date:</strong> June 15, 2025</p>
-                        <p><strong>Time:</strong> 8:00 AM - 5:00 PM</p>
-                        <p><strong>Participants:</strong> All students</p>
+                        <h3><?= htmlspecialchars ($events_row['event_name']) ?></h3>
+                        <p><strong>Date:</strong> <?= htmlspecialchars($events_row['event_date']) ?></p>
+                        <p><strong>Time:</strong> <?= htmlspecialchars($events_row['event_time'])?> </p>
+                        <p><strong>Participants:</strong> <?= htmlspecialchars($events_row['event_participants'])?></p>
                         <div class="action-buttons" style="margin-top: 1rem;">
-                            <button class="btn btn-sm">✏️ Edit</button>
-                            <button class="btn btn-sm btn-success">✅ Publish</button>
-                            <button class="btn btn-sm btn-danger">🗑️ Cancel</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteEvent()">🗑️ Delete event</button>
+                            <button id="mark-as-done" class="btn btn-sm btn-primary" onclick="location.href='mark_event.php?event_name=<?= htmlspecialchars($events_row['event_name']) ?>';
+                            // change mark as done to marked as done #
+                            document.getElementById('mark-as-done').addEventListener('click', () => this.id.textContent = 'Done ✅')
+                            "> Mark as Done ✅</button>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <h3>🎭 Cultural Festival</h3>
-                        <p><strong>Date:</strong> July 20, 2025</p>
-                        <p><strong>Time:</strong> 2:00 PM - 8:00 PM</p>
-                        <p><strong>Participants:</strong> Students & Parents</p>
-                        <div class="action-buttons" style="margin-top: 1rem;">
-                            <button class="btn btn-sm">✏️ Edit</button>
-                            <button class="btn btn-sm btn-success">✅ Publish</button>
-                            <button class="btn btn-sm btn-danger">🗑️ Cancel</button>
-                        </div>
-                    </div>
+                     <?php 
+endwhile;
+endif; ?>
                 </div>
             </div>
+           
         </section>
 
         <!-- Advertisements Section -->
@@ -863,7 +900,8 @@ if ($total_result->num_rows > 0) {
                             <option selected>Term 3</option>
                         </select>
                     </div>
-                    <button class="btn">💾 Save Settings</button>
+                    <button style="margin-bottom: 2em;" class="btn">💾 Save Settings</button>
+                    <button style="background-color:linear-gradient(to right,rgb(0, 255, 47),rgb(225, 255, 0)); color: #fff;" class="btn btn-primary" onclick="showModal('changePasswordModal')">🗝️Change your password</button>
                 </div>
             </div>
         </section>
@@ -872,47 +910,48 @@ if ($total_result->num_rows > 0) {
     <div id="createClassModal" class="modal">
         <div class="modal-content">
             <form id="classForm" action="create_class.php" method="POST">
-            <span class="close" onclick="hideModal('createClassModal')">&times;</span>
-            <h2>🏫 Create Class</h2>
-            <div class="form-group">
-                <label>Select Class</label> 
-                <select name="class_name" id="classSelect">
-                    <option value="" hidden>Select Class</option>
-                    <option value="S1A">S1A</option>
-                    <option value="S1B">S1B</option>
-                    <option value="S2A">S2A</option>
-                    <option value="S2B">S2B</option>
-                    <option value="S3A">S3A</option>
-                    <option value="S3B">S3B</option>
-                    <option value="S4MCE">S4MCE</option>
-                    <option value="S4MPC">S4MPC</option>
-                    <option value="S4MEG">S4MEG</option> 
-                     <option value="S5MCE">S5MCE</option>
-                    <option value="S5MPC">S5MPC</option>
-                    <option value="S5MEG">S5MEG</option> 
-                     <option value="S6MCE">S6MCE</option>
-                    <option value="S6MPC">S6MPC</option>
-                    <option value="S6MEG">S6MEG</option> 
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Number of Students</label> 
-                <input type="number" name="total_students" id="studentsInput" placeholder="Enter number of students" min="1">
-            </div>
-            <div class="form-group">
-                <label>Class Teacher</label>
-                <select id="teacherSelect"  name="class_teacher">
-                    <option hidden>Select the class teacher</option>
-                   <option value="Yanick">Yanick</option>
-                     <option value="Eric">Eric</option>
-                    <option value="Alice">Alice</option>
-                    <option value="John">John</option>
-                </select>
-            </div>
-            <button class="btn" onclick="createClass()">🏫 Create Class</button>
-            </div>
-            </form>
+                <span class="close" onclick="hideModal('createClassModal')">&times;</span>
+                <h2>🏫 Create Class</h2>
+                <div class="form-group">
+                    <label>Select Class</label>
+                    <select name="class_name" id="classSelect">
+                        <option value="" hidden>Select Class</option>
+                        <option value="S1A">S1A</option>
+                        <option value="S1B">S1B</option>
+                        <option value="S2A">S2A</option>
+                        <option value="S2B">S2B</option>
+                        <option value="S3A">S3A</option>
+                        <option value="S3B">S3B</option>
+                        <option value="S4MCE">S4MCE</option>
+                        <option value="S4MPC">S4MPC</option>
+                        <option value="S4MEG">S4MEG</option>
+                        <option value="S5MCE">S5MCE</option>
+                        <option value="S5MPC">S5MPC</option>
+                        <option value="S5MEG">S5MEG</option>
+                        <option value="S6MCE">S6MCE</option>
+                        <option value="S6MPC">S6MPC</option>
+                        <option value="S6MEG">S6MEG</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Number of Students</label>
+                    <input type="number" name="total_students" id="studentsInput" placeholder="Enter number of students"
+                        min="1">
+                </div>
+                <div class="form-group">
+                    <label>Class Teacher</label>
+                    <select id="teacherSelect" name="class_teacher">
+                        <option hidden>Select the class teacher</option>
+                        <option value="Yanick">Yanick</option>
+                        <option value="Eric">Eric</option>
+                        <option value="Alice">Alice</option>
+                        <option value="John">John</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="createClass()">🏫 Create Class</button>
         </div>
+        </form>
+    </div>
     </div>
     <div id="addStudentModal" class="modal">
         <div class="modal-content">
@@ -925,19 +964,27 @@ if ($total_result->num_rows > 0) {
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" name="full_name" placeholder="Enter student full name">
-
                 </div>
                 <div class="form-group">
                     <label>Date of Birth</label>
                     <input type="date" name="date_of_birth">
-
                 </div>
                 <div class="form-group">
                     <label>Class</label>
+                    <?php if ($classes2_result->num_rows > 0): ?>
                     <select name="class">
-                        <option value="S1A">S1A</option>
-                        <option value="S4 MCE">Primary</option>
+                        <option value="" hidden>Select Class</option>
+                        <?php 
+                    while($classes2_row = $classes2_result->fetch_assoc()): 
+                    ?>
+                        <option value="<?= htmlspecialchars($classes2_row['class_name']) ?>">
+                            <?= htmlspecialchars($classes2_row['class_name']) ?></option>
+                        <?php endwhile; ?>
+
                     </select>
+                    <?php else: ?>
+
+                    <?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label>Parent/Guardian Name</label>
@@ -955,78 +1002,78 @@ if ($total_result->num_rows > 0) {
             </div> -->
                 <button class="btn" onclick="addStudent()">➕ Add Student</button>
             </form>
+
         </div>
     </div>
-
 
     <div id="addTeacherModal" class="modal">
         <div class="modal-content">
             <form action="register_teacher.php" method="POST">
-            <span class="close" onclick="hideModal('addTeacherModal')">&times;</span>
-            <h2>👨‍🏫 Add New Teacher</h2>
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="full_name" placeholder="Enter teacher full name">
-            </div>
-            <div class="form-group">
-                <label>Subject Specialization</label>
-                <select name="subject">
-                    <option  value="Mathematics">Mathematics</option>
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Biology">Biology</option>
-                    <option value="English">English</option>
-                    <option value="Kinyarwanda">Kinyarwanda</option>
-                    <option value="French">French</option>
-                    <option value="History">History</option>
-                    <option value="Geography">Geography</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Physical Education">Physical Education</option>
-                </select>
-            </div>
+                <span class="close" onclick="hideModal('addTeacherModal')">&times;</span>
+                <h2>👨‍🏫 Add New Teacher</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="full_name" placeholder="Enter teacher full name">
+                </div>
+                <div class="form-group">
+                    <label>Subject Specialization</label>
+                    <select name="subject">
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="English">English</option>
+                        <option value="Kinyarwanda">Kinyarwanda</option>
+                        <option value="French">French</option>
+                        <option value="History">History</option>
+                        <option value="Geography">Geography</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Physical Education">Physical Education</option>
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="teacher@rukara.edu.rw">
-            </div>
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" name="phone" placeholder="+250 788 000 000">
-            </div>
-            <div class="form-group">
-                <label>Qualification</label>
-                <select name="qualification">
-                    <option value="Bachelor's Degree">Bachelor's Degree</option>
-                    <option value="Master's Degree">Master's Degree</option>
-                    <option value="PhD">PhD</option>
-                    <option value="Diploma">Diploma</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Years of Experience</label>
-                <input type="number" name="experience" placeholder="0" min="0">
-            </div>
-             <div class="form-group">
-                <label>Class Assigned</label> 
-                <select name="class_assigned" id="">
-                    <option value="S1A">S1A</option>
-                    <option value="S1B">S1B</option>
-                    <option value="S2A">S2A</option>
-                    <option value="S2B">S2B</option>
-                    <option value="S3A">S3A</option>
-                    <option value="S3B">S3B</option>
-                    <option value="S4MCE">S4MCE</option>
-                    <option value="S4MPC">S4MPC</option>
-                    <option value="S4MEG">S4MEG</option> 
-                     <option value="S5MCE">S5MCE</option>
-                    <option value="S5MPC">S5MPC</option>
-                    <option value="S5MEG">S5MEG</option> 
-                     <option value="S6MCE">S6MCE</option>
-                    <option value="S6MPC">S6MPC</option>
-                    <option value="S6MEG">S6MEG</option> 
-                </select>
-            </div>
-            <button class="btn" onclick="addTeacher()">👨‍🏫 Add Teacher</button>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="teacher@rukara.edu.rw">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="+250 788 000 000">
+                </div>
+                <div class="form-group">
+                    <label>Qualification</label>
+                    <select name="qualification">
+                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                        <option value="Master's Degree">Master's Degree</option>
+                        <option value="PhD">PhD</option>
+                        <option value="Diploma">Diploma</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Years of Experience</label>
+                    <input type="number" name="experience" placeholder="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Class Assigned</label>
+                    <select name="class_assigned" id="">
+                        <option value="S1A">S1A</option>
+                        <option value="S1B">S1B</option>
+                        <option value="S2A">S2A</option>
+                        <option value="S2B">S2B</option>
+                        <option value="S3A">S3A</option>
+                        <option value="S3B">S3B</option>
+                        <option value="S4MCE">S4MCE</option>
+                        <option value="S4MPC">S4MPC</option>
+                        <option value="S4MEG">S4MEG</option>
+                        <option value="S5MCE">S5MCE</option>
+                        <option value="S5MPC">S5MPC</option>
+                        <option value="S5MEG">S5MEG</option>
+                        <option value="S6MCE">S6MCE</option>
+                        <option value="S6MPC">S6MPC</option>
+                        <option value="S6MEG">S6MEG</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="addTeacher()">👨‍🏫 Add Teacher</button>
             </form>
         </div>
     </div>
@@ -1063,52 +1110,34 @@ if ($total_result->num_rows > 0) {
         </div>
     </div>
 
-    <div id="eventModal" class="modal">
+
+
+
+
+
+
+
+
+
+
+
+    <div id="changePasswordModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="hideModal('eventModal')">&times;</span>
-            <h2>📅 Create Event</h2>
-            <div class="form-group">
-                <label>Event Name</label>
-                <input type="text" placeholder="Enter event name">
-            </div>
-            <div class="form-group">
-                <label>Event Type</label>
-                <select>
-                    <option>Academic</option>
-                    <option>Sports</option>
-                    <option>Cultural</option>
-                    <option>Social</option>
-                    <option>Competition</option>
-                    <option>Meeting</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Date</label>
-                <input type="date">
-            </div>
-            <div class="form-group">
-                <label>Time</label>
-                <input type="time">
-            </div>
-            <div class="form-group">
-                <label>Location</label>
-                <input type="text" placeholder="Event location">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea rows="4" placeholder="Event description"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Participants</label>
-                <select>
-                    <option>All Students</option>
-                    <option>Specific Grade</option>
-                    <option>Teachers Only</option>
-                    <option>Parents & Students</option>
-                    <option>Public Event</option>
-                </select>
-            </div>
-            <button class="btn" onclick="createEvent()">📅 Create Event</button>
+            <form action="/RMS-Project/login/change_password.php" method="POST">
+                <span class="close" onclick="hideModal('changePasswordModal')">&times;</span>
+                <h2>🗝️Change Password</h2>
+                <div class="form-group">
+                    <label>Email</label> 
+                    <input readonly name="email" type="text" value="<?php echo $email; ?>">
+                </div>
+                <div class="form-group"> 
+                <input   name="currentpassword" type="text"  placeholder="Current Password">
+                </div>
+                <div class="form-group"> 
+                <input   name="newpassword" type="text"  placeholder="New Password">
+                </div>  
+                <button class="btn" type="submit">Change password</button>
+            </form>
         </div>
     </div>
 
@@ -1151,49 +1180,41 @@ if ($total_result->num_rows > 0) {
         </div>
     </div>
     <script>
-document.getElementById("classForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // Stop normal form submission
+        document.getElementById("classForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Stop normal form submission
+            const classSelect = document.getElementById("classSelect");
+            const teacherSelect = document.getElementById("teacherSelect");
+            const studentsInput = document.getElementById("studentsInput");
+            const classId = classSelect.value;
+            const totalStudents = studentsInput.value;
+            const teacherId = teacherSelect.value;
+            if (!classId || !totalStudents || !teacherId) {
+                alert("Please fill all fields.");
+                return;
+            }
+            // Send data to PHP
+            const formData = new FormData();
+            formData.append("class_name", classId);
+            formData.append("total_students", totalStudents);
+            formData.append("class_teacher", teacherId);
+            fetch("create_class.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.text())
+                .then(data => {
+                    console.log("Server response:", data); // 🔍 Add this line to debug
+                    if (data.trim() === "success") {
+                        classSelect.remove(classSelect.selectedIndex);
+                        alert("Class added successfully.");
+                    } else {
+                        alert("Error: " + data);
+                    }
+                })
+        });
+    </script>
 
-    const classSelect = document.getElementById("classSelect");
-    const teacherSelect = document.getElementById("teacherSelect");
-    const studentsInput = document.getElementById("studentsInput");
-
-    const classId = classSelect.value;
-    const totalStudents = studentsInput.value;
-    const teacherId = teacherSelect.value;
-
-    if (!classId || !totalStudents || !teacherId) {
-        alert("Please fill all fields.");
-        return;
-    }
-
-    // Send data to PHP
-    const formData = new FormData();
-    formData.append("class_name", classId);
-    formData.append("total_students", totalStudents);
-    formData.append("class_teacher", teacherId);
-
-  fetch("create_class.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-    console.log("Server response:", data); // 🔍 Add this line to debug
-
-    if (data.trim() === "success") {
-        classSelect.remove(classSelect.selectedIndex);
-        alert("Class added successfully.");
-    } else {
-        alert("Error: " + data);
-    }
-})
-});
-</script>
-
-    <script> 
-   
- 
+    <script>
         //logout
         function logout() {
             window.location.href = "/RMS-Project/includes/logout";
@@ -1229,7 +1250,7 @@ document.getElementById("classForm").addEventListener("submit", function(e) {
 
         function hideModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-        } 
+        }
         // Close modals when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
@@ -1261,7 +1282,8 @@ document.getElementById("classForm").addEventListener("submit", function(e) {
             // In a real application, this would send data to the server
             // and update the announcements list
         }
-    function createClass() { 
+
+        function createClass() {
             hideModal('createClassModal');
             // In a real application, this would send data to the server
             // and update the announcements list
