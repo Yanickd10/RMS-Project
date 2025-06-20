@@ -45,8 +45,6 @@ if ($check->num_rows > 0) {
     exit;
 }
 $check->close();
-
-
     // Insert user
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $hashedPassword, $role);
@@ -59,7 +57,6 @@ $check->close();
     } else {
         echo "Error: " . $stmt->error;
     }
-
     $stmt->close();
 }
 
