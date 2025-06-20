@@ -1,8 +1,5 @@
 <?php
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
+  include("../includes/db.php"); 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

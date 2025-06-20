@@ -2,10 +2,7 @@
 session_start();
 
 // Database configuration
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
+  include("../includes/db.php"); 
 
 // Create PDO connection
 try {

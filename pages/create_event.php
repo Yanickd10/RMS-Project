@@ -1,9 +1,5 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root'; // Change this to your database username
-$password = ''; // Change this to your database password
+  include("../includes/db.php"); 
 
 try {
     // Create PDO connection

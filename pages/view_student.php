@@ -1,14 +1,7 @@
 <?php
 // Connect to the database
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
-$conn = new mysqli($host, $username, $password, $dbname);
+  include("../includes/db.php"); 
 
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
 
 // Get student ID from URL
 if (isset($_GET['id'])) {

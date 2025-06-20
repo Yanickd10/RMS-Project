@@ -1,11 +1,6 @@
  <?php
 session_start(); // Start session at the top
-
-$conn = new mysqli("localhost", "root", "", "rms-database");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  include("../includes/db.php"); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];

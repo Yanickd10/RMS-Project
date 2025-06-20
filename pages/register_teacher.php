@@ -1,9 +1,6 @@
 <?php
 // Database configuration
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
+  include("../includes/db.php"); 
 
 // Response array
 $response = array();

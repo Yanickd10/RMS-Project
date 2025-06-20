@@ -21,15 +21,18 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-        }
-
+        } 
         .container {
             height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-color: #4070f4;
+            justify-content: center; 
+            background:url('/RMS-Project/assets/images/logo.jpg')  ;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment:fixed ;
+            background-origin: border-box;
             column-gap: 30px;
         }
 
@@ -39,7 +42,8 @@
             width: 100%;
             padding: 30px;
             border-radius: 6px;
-            background: #FFF;
+            background: rgba(123, 245, 219, 0.7);
+            border: 2px solid rgb(113, 100, 100);
         }
 
         .form.signup {
@@ -90,7 +94,7 @@
         .field input {
             outline: none;
             padding: 0 15px;
-            border: 1px solid#CACACA;
+            border: 1px solid #CACACA;
         }
 
         .field input:focus {

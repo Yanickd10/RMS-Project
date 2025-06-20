@@ -6,18 +6,8 @@ session_start();
 //     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 // }
 
-// Database connection parameters
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "rms-database"; 
+  include("../includes/db.php"); 
 
-$conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
  
 // Check if 'id' is set and is numeric
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {

@@ -1,12 +1,5 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = '';
- 
-
- 
+  include("../includes/db.php"); 
     // Create PDO connection
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

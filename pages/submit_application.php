@@ -1,9 +1,6 @@
 <?php
 // Database configuration
-$db_host = "localhost";
-$db_user = "root"; // Replace with your database username
-$db_pass = ""; // Replace with your database password
-$db_name = "rms-database";     // Replace with your database name
+  include("../includes/db.php"); 
 
 // Create uploads directory if it doesn't exist
 $upload_dir = "uploads/";

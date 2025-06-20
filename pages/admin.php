@@ -35,20 +35,8 @@ $role = $_SESSION['role'];
 // $userRole = $_SESSION['user_role'];
 ?>
 <!-- Retieving the student info -->
-<?php
-// Database credentials
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "rms-database";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+ <?php
+include("../includes/db.php");
 
 // Fetch applications data
 $sql = "SELECT * FROM students ORDER BY id ASC";

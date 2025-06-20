@@ -1,16 +1,7 @@
 <?php
 // Database connection
-$host = 'localhost';
-$dbname = 'rms-database';
-$username = 'root';
-$password = ''; // Update if your DB has a password
+  include("../includes/db.php"); 
 
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die('Database connection failed: ' . $conn->connect_error);
-}
 
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
