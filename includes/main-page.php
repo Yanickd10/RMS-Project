@@ -1,19 +1,13 @@
 <?php
-$host = 'localhost';
-$db = 'rms-database';
-$user = 'root';       // Change if you use another username
-$pass = '';           // Add password if needed
-
-// Create connection
-$conn = new mysqli($host, $user, $pass, $db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// if (!defined('BASE_PATH')) {
+//     die('Direct access not allowed');
+// }
 ?>
+ 
 <!-- fetch events -->
 <?php
+include("db.php");
+
 $sql = "SELECT * FROM events  WHERE event_date >= CURDATE()    ORDER BY event_date ASC";
 $result = $conn->query($sql);
 ?>

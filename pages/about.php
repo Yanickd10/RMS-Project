@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php include('../includes/header-links.php');?>
     <link rel="stylesheet" href="/RMS-Project/assets/css/nav.css">
@@ -258,7 +257,7 @@
         ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/dos-chistoph.png', 'contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
         ['name' => 'Dr. Nyasha Cefas', 'role' => 'Director of Studies (Primary)','image' =>'/RMS-Project/assets/images/DOS-primary_i.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
         ['name' => 'Mukamugabo Odette', 'role' => 'Director of Studies (Primary)','image' => '/RMS-Project/assets/images/dos-primary-ii.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
-        ['name' => 'Nyiransanwa Betty', 'role' => 'Bursar','image' => '/RMS-Project/assets/images/bursar.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Nyiransangwa Betty', 'role' => 'Bursar','image' => '/RMS-Project/assets/images/bursar.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
         ['name' => 'Justine Mukarugira', 'role' => 'Director of Discipline','image' => '/RMS-Project/assets/images/dod2.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>''],
         ['name' => 'Niyonsenga Valens', 'role' => 'Secretary','image' => '/RMS-Project/assets/images/secretary.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ], 
     ];
