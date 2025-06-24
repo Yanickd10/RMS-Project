@@ -5,6 +5,9 @@
     <?php include('../includes/header-links.php');?>
     <link rel="stylesheet" href="/RMS-Project/assets/css/nav.css">
     <title>About Rukara Model School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -77,11 +80,16 @@
         }
 
         .staff-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+           width: 100%;
+    max-width: 300px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    margin: 10px auto;
+    text-align: center;
+    position: relative;
         }
 
         .staff-card img,
@@ -92,13 +100,54 @@
             width: 50%;
             /* width: fit-content; */
             border-radius: 50%;
-            /* height: fit-content; */
+          height: auto;
             object-fit: cover;
         }
 
         .staff-info {
             padding: 1rem;
         }
+        .staff-info h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+.staff-info .role {
+    color: #555;
+    font-weight: bold;
+}
+.staff-info .description {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+.social-links {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.social-links a {
+    color: #444;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #0077b5; /* Example hover color */
+}
+/* Show icons on hover */
+.staff-card:hover .social-links {
+    opacity: 1;
+    visibility: visible;
+} 
+@media screen and (max-width: 600px) {
+    .staff-card {
+        max-width: 90%;
+    }
+}
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -114,6 +163,15 @@
                 grid-template-columns: 1fr;
             }
         }
+        .about-link:visited{
+            color:rgb(219, 52, 99);
+        }
+         .about-link:link{
+            color:magenta;
+        }
+        .about-link:active{
+            color: #3498db;
+        }
     </style>
 </head>
 <body>
@@ -123,12 +181,43 @@
         <!-- School History Section -->
         <section class="history-section" id="history">
             <h2 class="section-title">Our School History</h2>
-            <div class="history-card"> Rukara Model School was established as part of the Rwanda Quality Basic Education
-                for Human Capital Development (RQBEHCD) project of MINEDUC, a government initiative funded by the World
+            <div class="history-card"> Rukara Model School was established as part of the <a class="about-link" href="https://ce.ur.ac.rw/RQBEHCD/" target="_blank">Rwanda Quality Basic Education
+                for Human Capital Development</a> project of MINEDUC, a government initiative funded by the World
                 Bank after the University of Rwanda-College of Education (UR-CE) submitted a list of
                 the priorities intended to improve the quality of education in schools, and also for the training of
                 pre-service teachers. <br>
+                <!-- 
+                Partners
+                1. Mineduc
+                2. World Bank
+                3. Kayonza District
+                4. Nesa
+                5. Idebate
+                6. International Lab Schools
+                7. MINICT
+                 -->
+                <!-- 
+                For students
+                1. English proficiency
+                2. Stem Program
+                3. Uploading their works
+                -->
+                <!-- 
+                For teacher
+                1. CPD sessions
+                2. Notes and exercises to be accessed by students
+                3. Test Safe Browser 
+                4. Teacher can upload past papers
+                 -->
+                <!-- 
+                 Interns  should be recorded in the school system
+                  -->
 
+                  <!-- 
+                  The strategic plan, School Improvement plan and Action plan should be added on home page
+                   -->
+                  <!-- 
+                   Program Remedial and Inclusion program shoul be in Events tab -->
                 The list included support to Teachers Training Centres (TTCs), establishment of a
                 Demonstration school at UR-Rukara Campus (head office of UR-CE), strengthening the teaching of STEM
                 subjects in basic education schools, enhancing English proficiency and digital literacy for TTC and
@@ -153,10 +242,7 @@
                 <br>Over time, Rukara Model School is expected to continue growing as a center of excellence in teacher
                 education, contributing to Rwanda’s broader goals of achieving quality education for all.
 
-                <br>It offers Programmes in the line of General education where we find Nursery Education, Primary
-                Education, Ordinary level and Advanced level with options of Mathematics-Economics and Geography (MEG),
-                Mathematics-Computer Science and Economics (MCE) and Physics- Chemistry and Mathematics (PCM).
-
+               
             </div>
         </section>
         <!-- Staff Profiles Section -->
@@ -167,23 +253,32 @@
                 <!-- Update these staff cards -->
                 <?php
     $staff_members = [
-        ['name' => 'Dr. Barnabas Muyengwa', 'role' => 'Principal', 'image' => '/RMS-Project/assets/images/principal.jpg' ],
-        ['name' => 'IYAMUREMYE Eric', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/eric.png' ],
-        ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/dos-chistoph.png' ],
-        ['name' => 'Dr. Nyasha Cefas', 'role' => 'Director of Studies (Primary)','image' =>'/RMS-Project/assets/images/DOS-primary_i.jpg' ],
-        ['name' => 'Mukamugabo Odette', 'role' => 'Director of Studies (Primary)','image' => '/RMS-Project/assets/images/dos-primary-ii.png' ],
-        ['name' => 'Nyiransanwa Betty', 'role' => 'Bursar','image' => '/RMS-Project/assets/images/bursar.jpg' ],
-        ['name' => 'Justine Mukarugira', 'role' => 'Director of Discipline','image' => '/RMS-Project/assets/images/dod2.png'],
-        ['name' => 'Niyonsenga Valens', 'role' => 'Secretary','image' => '/RMS-Project/assets/images/secretary.png' ], 
+        ['name' => 'Dr. Barnabas Muyengwa', 'role' => 'Principal', 'image' => '/RMS-Project/assets/images/principal.jpg', 'contact'=>'09876543','twitter'=>'' , 'linkedin'=>'', 'description'=> 'Dr. Barnabas Muyengwa is an experienced educator passionate about lifelong learning. With a rich background in teacher development, he values mentoring in teacher professional growth and has widely published on the subject.' ],
+        ['name' => 'IYAMUREMYE Eric', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/eric.png', 'contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/dos-chistoph.png', 'contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Dr. Nyasha Cefas', 'role' => 'Director of Studies (Primary)','image' =>'/RMS-Project/assets/images/DOS-primary_i.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Mukamugabo Odette', 'role' => 'Director of Studies (Primary)','image' => '/RMS-Project/assets/images/dos-primary-ii.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Nyiransanwa Betty', 'role' => 'Bursar','image' => '/RMS-Project/assets/images/bursar.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
+        ['name' => 'Justine Mukarugira', 'role' => 'Director of Discipline','image' => '/RMS-Project/assets/images/dod2.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>''],
+        ['name' => 'Niyonsenga Valens', 'role' => 'Secretary','image' => '/RMS-Project/assets/images/secretary.png','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ], 
     ];
     foreach ($staff_members as $staff) {
-        echo '<div class="staff-card">
-            <img src="'. htmlspecialchars($staff['image']) .'" alt="' . htmlspecialchars($staff['name']) . '">
-            <div class="staff-info">
-                <h3>' . htmlspecialchars($staff['name']) . '</h3>
-                <p>' . htmlspecialchars($staff['role']) . '</p>
-            </div>
-        </div>';
+        echo '
+<div class="staff-card">
+    <img src="' . htmlspecialchars($staff['image']) . '" alt="' . htmlspecialchars($staff['name']) . '">
+    <div class="staff-info">
+        <h3>' . htmlspecialchars($staff['name']) . '</h3>
+        <p class="role">' . htmlspecialchars($staff['role']) . '</p>
+        <p class="description">' . htmlspecialchars($staff['description']) . '</p>
+        <div class="social-links">
+            <a href="tel:+25' . htmlspecialchars($staff['contact']) . '" title="Call "' . htmlspecialchars($staff['name']) . '" target="_blank"><i class="bi bi-telephone-fill"></i>
+</a>
+            <a href="' . htmlspecialchars($staff['twitter']) . '" title="Twitter "' . htmlspecialchars($staff['name']) . ' on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a title="LinkedIn "' . htmlspecialchars($staff['name']) . '" href="' . htmlspecialchars($staff['linkedin']) . '" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>';
+
     }
     ?>
             </div>
