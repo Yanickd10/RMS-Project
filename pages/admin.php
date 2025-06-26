@@ -1,72 +1,72 @@
  <?php
-define('SECURE_ACCESS', true);
-require_once '../config/security.php';
-?>
+    define('SECURE_ACCESS', true);
+    require_once '../config/security.php';
+    ?>
  <?php
-session_start();
+    session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    // Not allowed
-    //   header("Location: /RMS-Project/login/");
-    // exit;
-}
-?>
- <?php 
-if (!isset($_SESSION['email'])) {
-    // Not logged in
-      header("Location: /RMS-Project/login/"); 
-    exit;
-}
-// Access user info
-$email = $_SESSION['email'];
-$name = $_SESSION['names'];
-$role = $_SESSION['role'];
-?>
+    // Check if user is logged in
+    if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+        // Not allowed
+        //   header("Location: /RMS-Project/login/");
+        // exit;
+    }
+    ?>
+ <?php
+    if (!isset($_SESSION['email'])) {
+        // Not logged in
+        header("Location: /RMS-Project/login/");
+        exit;
+    }
+    // Access user info
+    $email = $_SESSION['email'];
+    $name = $_SESSION['names'];
+    $role = $_SESSION['role'];
+    ?>
 
- <?php 
+ <?php
 
-// Optional: Block access if not logged in
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: /RMS-Project/login/");
-//     exit;
-// }
+    // Optional: Block access if not logged in
+    // if (!isset($_SESSION['user_id'])) {
+    //     header("Location: /RMS-Project/login/");
+    //     exit;
+    // }
 
-// Access the name and role
-// $userName = $_SESSION['user_name'];
-// $userRole = $_SESSION['user_role'];
-?>
+    // Access the name and role
+    // $userName = $_SESSION['user_name'];
+    // $userRole = $_SESSION['user_role'];
+    ?>
  <!-- Retieving the student info -->
  <?php
-include("../includes/db.php");
+    include("../includes/db.php");
 
-// Fetch applications data
-$sql = "SELECT * FROM students ORDER BY id ASC";
-$result = $conn->query($sql);
-// Fetch teachers data
-$teacher_sql = "SELECT * FROM teachers ORDER BY id ASC";
-$teacher_result = $conn->query($teacher_sql);
-// Fetch classes data
-$classes_sql = "SELECT * FROM classes ORDER BY id ASC";
-$classes_result = $conn->query($classes_sql);
-// Fetch classes data for the second table
-$classes2_sql = "SELECT * FROM classes ORDER BY class_name ASC";
-$classes2_result = $conn->query($classes2_sql);
-?>
+    // Fetch applications data
+    $sql = "SELECT * FROM students ORDER BY id ASC";
+    $result = $conn->query($sql);
+    // Fetch teachers data
+    $teacher_sql = "SELECT * FROM teachers ORDER BY id ASC";
+    $teacher_result = $conn->query($teacher_sql);
+    // Fetch classes data
+    $classes_sql = "SELECT * FROM classes ORDER BY id ASC";
+    $classes_result = $conn->query($classes_sql);
+    // Fetch classes data for the second table
+    $classes2_sql = "SELECT * FROM classes ORDER BY class_name ASC";
+    $classes2_result = $conn->query($classes2_sql);
+    ?>
  <!-- Retrieving the events info -->
  <?php
-$events_sql = "SELECT * FROM events order by event_date desc";
-$events_result = $conn->query($events_sql);
-?>
- <?php 
-$sum = "SELECT AVG(total_students) AS total_students_sum FROM classes";
-$total_result = $conn->query($sum);
+    $events_sql = "SELECT * FROM events order by event_date desc";
+    $events_result = $conn->query($events_sql);
+    ?>
+ <?php
+    $sum = "SELECT AVG(total_students) AS total_students_sum FROM classes";
+    $total_result = $conn->query($sum);
 
-if ($total_result->num_rows > 0) {
-    $row = $total_result->fetch_assoc();
-    $total = $row['total_students_sum']; 
-}  
-?>
+    if ($total_result->num_rows > 0) {
+        $row = $total_result->fetch_assoc();
+        $total = $row['total_students_sum'];
+    }
+    ?>
  <!DOCTYPE html>
  <html lang="en-US">
 
@@ -276,6 +276,7 @@ if ($total_result->num_rows > 0) {
              border-color: #667eea;
              box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
          }
+
          .btn {
              background: linear-gradient(135deg, #667eea, #764ba2);
              color: white;
@@ -287,6 +288,7 @@ if ($total_result->num_rows > 0) {
              cursor: pointer;
              transition: all 0.3s ease;
          }
+
          .btn:hover {
              transform: translateY(-2px);
              box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
@@ -442,7 +444,7 @@ if ($total_result->num_rows > 0) {
  </head>
 
  <body>
-     <?php include("../includes/progress-bar.php");?>
+     <?php include("../includes/progress-bar.php"); ?>
 
      <header class="header">
          <div class="header-content">
@@ -509,7 +511,7 @@ if ($total_result->num_rows > 0) {
                      <div class="stat-label">Total Students</div>
                  </div>
                  <div class="card stat-card" onclick="showSection('teachers')">
-                     <div class="stat-number"><?= $teacher_result->num_rows?></div>
+                     <div class="stat-number"><?= $teacher_result->num_rows ?></div>
                      <div class="stat-label">Teachers</div>
                  </div>
                  <div class="card stat-card" onclick="showSection('classes')">
@@ -584,322 +586,322 @@ if ($total_result->num_rows > 0) {
              </div>
          </section>
          <?php if ($result->num_rows > 0): ?>
-         <!-- Students Section -->
-         <section id="students" class="content-section">
-             <h2>👥 Student Management</h2>
-             <div class="card">
-                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
-                     <button class="btn" onclick="showModal('addStudentModal')">➕ Add Student</button>
-                     <input type="text" placeholder="🔍 Search students..." style="width: 300px; margin-left: auto;"
-                         onkeyup="searchTable(this, 'studentsTable')">
-                 </div>
-
-                 <table class="table" id="studentsTable">
-                     <thead>
-                         <tr>
-                             <th>ID</th>
-                             <th>Name</th>
-                             <th>Class</th>
-                             <!-- <th>Parent Contact</th> -->
-                             <!-- <th>Status</th> -->
-                             <th>Action</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <?php 
-                    while($row = $result->fetch_assoc()): 
-                    ?>
-                         <tr>
-                             <td><?= htmlspecialchars($row['id']) ?></td>
-                             <td><?= htmlspecialchars($row['full_name']) ?></td>
-                             <td><?= htmlspecialchars($row['class']) ?></td>
-                             <td>
-                                 <button
-                                     onclick="location.href='view_student.php?id=<?= htmlspecialchars($row['id']) ?>'"
-                                     class="btn btn-sm">👁️ View</button>
-                             </td>
-                         </tr>
-                         <?php 
-                    endwhile;
-                    endif;
-                    ?>
-                     </tbody>
-                 </table>
-             </div>
-         </section>
-         <?php if ($teacher_result->num_rows > 0): ?>
-
-         <!-- Teachers Section -->
-         <section id="teachers" class="content-section">
-             <h2>👨‍🏫 Teacher Management</h2>
-             <div class="card">
-                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
-                     <button class="btn" onclick="showModal('addTeacherModal')">➕ Add Teacher</button>
-                     <input type="text" placeholder="🔍 Search teachers..." style="width: 300px; margin-left: auto;"
-                         onkeyup="searchTable(this, 'teachersTable')">
-                 </div>
-
-                 <table class="table" id="teachersTable">
-                     <thead>
-                         <tr>
-                             <th>ID</th>
-                             <th>Name</th>
-                             <th>Subject</th>
-                             <th>Class Teacher</th>
-                             <th>Phone</th>
-                             <!-- <th>Email</th> -->
-                             <th>Actions</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <?php 
-                    while($teacher_row = $teacher_result->fetch_assoc()): 
-                    ?>
-                         <tr>
-                             <td><?= htmlspecialchars($teacher_row['id']) ?></td>
-                             <td><?= htmlspecialchars($teacher_row['full_name']) ?></td>
-                             <td><?= isset($teacher_row['subject_specialization']) ? htmlspecialchars($teacher_row['subject_specialization']) : '';
-                             ?></td>
-                             <td><?= isset($teacher_row['class_assigned']) ? htmlspecialchars($teacher_row['class_assigned']) : 'Not Assigned' ?>
-                             </td>
-
-                             <td><?= isset($teacher_row['phone']) ? htmlspecialchars($teacher_row['phone']) : '' ?></td>
-
-                             <td>
-                                 <div class="action-buttons">
-                                     <button
-                                         onclick="location.href='view_teacher.php?id=<?= htmlspecialchars($teacher_row['id']) ?>'"
-                                         class="btn btn-sm">👁️ View</button>
-                                     <!-- <button class="btn btn-sm">✏️ Edit</button> -->
-                                     <!-- <button class="btn btn-sm btn-danger">🚫 Remove</button> -->
-                                 </div>
-                             </td>
-                         </tr>
-                         <?php 
-                    endwhile;
-                    endif;
-                    ?>
-                     </tbody>
-                 </table>
-             </div>
-         </section>
-
-         <!-- Classes Section -->
-         <section id="classes" class="content-section">
-             <h2>🏛️ Class Management</h2>
-             <div class="dashboard-grid">
+             <!-- Students Section -->
+             <section id="students" class="content-section">
+                 <h2>👥 Student Management</h2>
                  <div class="card">
-                     <h3>📚 Classes Overview</h3>
-                     <div style="margin-bottom: 1rem;">
-                         <strong>Total Classes:</strong> <?= htmlspecialchars($classes_result->num_rows) ?><br>
-                         <strong>Average Class Size:</strong> <?php echo round($total,0);?> students<br>
-
+                     <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                         <button class="btn" onclick="showModal('addStudentModal')">➕ Add Student</button>
+                         <input type="text" placeholder="🔍 Search students..." style="width: 300px; margin-left: auto;"
+                             onkeyup="searchTable(this, 'studentsTable')">
                      </div>
+
+                     <table class="table" id="studentsTable">
+                         <thead>
+                             <tr>
+                                 <th>ID</th>
+                                 <th>Name</th>
+                                 <th>Class</th>
+                                 <!-- <th>Parent Contact</th> -->
+                                 <!-- <th>Status</th> -->
+                                 <th>Action</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <?php
+                                while ($row = $result->fetch_assoc()):
+                                ?>
+                                 <tr>
+                                     <td><?= htmlspecialchars($row['id']) ?></td>
+                                     <td><?= htmlspecialchars($row['full_name']) ?></td>
+                                     <td><?= htmlspecialchars($row['class']) ?></td>
+                                     <td>
+                                         <button
+                                             onclick="location.href='view_student.php?id=<?= htmlspecialchars($row['id']) ?>'"
+                                             class="btn btn-sm">👁️ View</button>
+                                     </td>
+                                 </tr>
+                         <?php
+                                endwhile;
+                            endif;
+                            ?>
+                         </tbody>
+                     </table>
                  </div>
-                 <div class="card">
-                     <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('addStudentModal')">➕ Add
-                         Student</button>
-                     <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('createClassModal')">➕ Create
-                         New Class</button>
+             </section>
+             <?php if ($teacher_result->num_rows > 0): ?>
 
-                 </div>
-                 <div style="display: none;" class="card">
-                     <button class="btn" onclick="addStudent()">➕ Add Student</button>
-
-                     <h3>🎯 Quick Stats</h3>
-                     <div style="margin-bottom: 1rem;">
-                         <strong>Grade 7:</strong> 6 classes (234 students)<br>
-                         <strong>Grade 8:</strong> 6 classes (228 students)<br>
-                         <strong>Grade 9:</strong> 5 classes (195 students)<br>
-                         <strong>Grade 10:</strong> 5 classes (187 students)<br>
-                         <strong>Grade 11:</strong> 5 classes (205 students)<br>
-                         <strong>Grade 12:</strong> 5 classes (198 students)
-                     </div>
-                 </div>
-             </div>
-             <?php if ($classes_result->num_rows > 0): ?>
-             <div class="card">
-                 <h3>📋 Class List</h3>
-                 <table class="table">
-                     <thead>
-                         <tr>
-                             <th>Class</th>
-                             <!-- <th>Students</th> -->
-
-                             <th>Class Teacher</th>
-                             <!-- <th>Room</th> -->
-                             <th>Actions</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <?php 
-                    while($classes_row = $classes_result->fetch_assoc()): 
-                    ?>
-                         <tr>
-                             <td><?= htmlspecialchars($classes_row['class_name']) ?></td>
-                             <td><?= htmlspecialchars($classes_row['class_teacher']) ?></td>
-                             <!-- <td>Room 201</td> -->
-                             <td>
-                                 <div class="action-buttons">
-                                     <button
-                                         onclick="location.href='view_class.php?class_name=<?= htmlspecialchars($classes_row['class_name']) ?>'"
-                                         class="btn btn-sm">👁️ View</button>
-                                     <!-- <button class="btn btn-sm">✏️ Edit</button> -->
-                                 </div>
-                             </td>
-                         </tr>
-                         <?php 
-                    endwhile;
-                    endif;
-                    ?>
-                     </tbody>
-                 </table>
-             </div>
-         </section>
-
-         <!-- Events Section -->
-         <section id="events" class="content-section">
-             <h2>📅 Events Management</h2>
-
-             <div class="card">
-                 <button class="btn" onclick="showModal('eventModal')" style="margin-bottom: 1rem;">➕ Create
-                     Event</button>
-
-                 <div class="dashboard-grid">
-                     <?php 
-           if($events_result->num_rows > 0): ?>
-                     <?php while($events_row = $events_result->fetch_assoc()): 
-                    ?>
+                 <!-- Teachers Section -->
+                 <section id="teachers" class="content-section">
+                     <h2>👨‍🏫 Teacher Management</h2>
                      <div class="card">
-                         <h3><?= htmlspecialchars ($events_row['event_name']) ?></h3>
-                         <p><strong>Date:</strong> <?= htmlspecialchars($events_row['event_date']) ?></p>
-                         <p><strong>Time:</strong> <?= htmlspecialchars($events_row['event_time'])?> </p>
-                         <p><strong>Participants:</strong> <?= htmlspecialchars($events_row['event_participants'])?></p>
-                         <div class="action-buttons" style="margin-top: 1rem;">
-                             <button class="btn btn-sm btn-danger" onclick="deleteEvent()">🗑️ Delete event</button>
-                             <button id="mark-as-done" class="btn btn-sm btn-primary" onclick="location.href='mark_event.php?event_name=<?= htmlspecialchars($events_row['event_name']) ?>';
+                         <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                             <button class="btn" onclick="showModal('addTeacherModal')">➕ Add Teacher</button>
+                             <input type="text" placeholder="🔍 Search teachers..." style="width: 300px; margin-left: auto;"
+                                 onkeyup="searchTable(this, 'teachersTable')">
+                         </div>
+
+                         <table class="table" id="teachersTable">
+                             <thead>
+                                 <tr>
+                                     <th>ID</th>
+                                     <th>Name</th>
+                                     <th>Subject</th>
+                                     <th>Class Teacher</th>
+                                     <th>Phone</th>
+                                     <!-- <th>Email</th> -->
+                                     <th>Actions</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <?php
+                                    while ($teacher_row = $teacher_result->fetch_assoc()):
+                                    ?>
+                                     <tr>
+                                         <td><?= htmlspecialchars($teacher_row['id']) ?></td>
+                                         <td><?= htmlspecialchars($teacher_row['full_name']) ?></td>
+                                         <td><?= isset($teacher_row['subject_specialization']) ? htmlspecialchars($teacher_row['subject_specialization']) : '';
+                                                ?></td>
+                                         <td><?= isset($teacher_row['class_assigned']) ? htmlspecialchars($teacher_row['class_assigned']) : 'Not Assigned' ?>
+                                         </td>
+
+                                         <td><?= isset($teacher_row['phone']) ? htmlspecialchars($teacher_row['phone']) : '' ?></td>
+
+                                         <td>
+                                             <div class="action-buttons">
+                                                 <button
+                                                     onclick="location.href='view_teacher.php?id=<?= htmlspecialchars($teacher_row['id']) ?>'"
+                                                     class="btn btn-sm">👁️ View</button>
+                                                 <!-- <button class="btn btn-sm">✏️ Edit</button> -->
+                                                 <!-- <button class="btn btn-sm btn-danger">🚫 Remove</button> -->
+                                             </div>
+                                         </td>
+                                     </tr>
+                             <?php
+                                    endwhile;
+                                endif;
+                                ?>
+                             </tbody>
+                         </table>
+                     </div>
+                 </section>
+
+                 <!-- Classes Section -->
+                 <section id="classes" class="content-section">
+                     <h2>🏛️ Class Management</h2>
+                     <div class="dashboard-grid">
+                         <div class="card">
+                             <h3>📚 Classes Overview</h3>
+                             <div style="margin-bottom: 1rem;">
+                                 <strong>Total Classes:</strong> <?= htmlspecialchars($classes_result->num_rows) ?><br>
+                                 <strong>Average Class Size:</strong> <?php echo round($total, 0); ?> students<br>
+
+                             </div>
+                         </div>
+                         <div class="card">
+                             <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('addStudentModal')">➕ Add
+                                 Student</button>
+                             <button style="margin-bottom: 1rem;" class="btn" onclick="showModal('createClassModal')">➕ Create
+                                 New Class</button>
+
+                         </div>
+                         <div style="display: none;" class="card">
+                             <button class="btn" onclick="addStudent()">➕ Add Student</button>
+
+                             <h3>🎯 Quick Stats</h3>
+                             <div style="margin-bottom: 1rem;">
+                                 <strong>Grade 7:</strong> 6 classes (234 students)<br>
+                                 <strong>Grade 8:</strong> 6 classes (228 students)<br>
+                                 <strong>Grade 9:</strong> 5 classes (195 students)<br>
+                                 <strong>Grade 10:</strong> 5 classes (187 students)<br>
+                                 <strong>Grade 11:</strong> 5 classes (205 students)<br>
+                                 <strong>Grade 12:</strong> 5 classes (198 students)
+                             </div>
+                         </div>
+                     </div>
+                     <?php if ($classes_result->num_rows > 0): ?>
+                         <div class="card">
+                             <h3>📋 Class List</h3>
+                             <table class="table">
+                                 <thead>
+                                     <tr>
+                                         <th>Class</th>
+                                         <!-- <th>Students</th> -->
+
+                                         <th>Class Teacher</th>
+                                         <!-- <th>Room</th> -->
+                                         <th>Actions</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <?php
+                                        while ($classes_row = $classes_result->fetch_assoc()):
+                                        ?>
+                                         <tr>
+                                             <td><?= htmlspecialchars($classes_row['class_name']) ?></td>
+                                             <td><?= htmlspecialchars($classes_row['class_teacher']) ?></td>
+                                             <!-- <td>Room 201</td> -->
+                                             <td>
+                                                 <div class="action-buttons">
+                                                     <button
+                                                         onclick="location.href='view_class.php?class_name=<?= htmlspecialchars($classes_row['class_name']) ?>'"
+                                                         class="btn btn-sm">👁️ View</button>
+                                                     <!-- <button class="btn btn-sm">✏️ Edit</button> -->
+                                                 </div>
+                                             </td>
+                                         </tr>
+                                 <?php
+                                        endwhile;
+                                    endif;
+                                    ?>
+                                 </tbody>
+                             </table>
+                         </div>
+                 </section>
+
+                 <!-- Events Section -->
+                 <section id="events" class="content-section">
+                     <h2>📅 Events Management</h2>
+
+                     <div class="card">
+                         <button class="btn" onclick="showModal('eventModal')" style="margin-bottom: 1rem;">➕ Create
+                             Event</button>
+
+                         <div class="dashboard-grid">
+                             <?php
+                                if ($events_result->num_rows > 0): ?>
+                                 <?php while ($events_row = $events_result->fetch_assoc()):
+                                    ?>
+                                     <div class="card">
+                                         <h3><?= htmlspecialchars($events_row['event_name']) ?></h3>
+                                         <p><strong>Date:</strong> <?= htmlspecialchars($events_row['event_date']) ?></p>
+                                         <p><strong>Time:</strong> <?= htmlspecialchars($events_row['event_time']) ?> </p>
+                                         <p><strong>Participants:</strong> <?= htmlspecialchars($events_row['event_participants']) ?></p>
+                                         <div class="action-buttons" style="margin-top: 1rem;">
+                                             <button class="btn btn-sm btn-danger" onclick="deleteEvent()">🗑️ Delete event</button>
+                                             <button id="mark-as-done" class="btn btn-sm btn-primary" onclick="location.href='mark_event.php?event_name=<?= htmlspecialchars($events_row['event_name']) ?>';
                             // change mark as done to marked as done #
                             document.getElementById('mark-as-done').addEventListener('click', () => this.id.textContent = 'Done ✅')
                             "> Mark as Done ✅</button>
+                                         </div>
+                                     </div>
+                             <?php
+                                    endwhile;
+                                endif; ?>
                          </div>
                      </div>
-                     <?php 
-endwhile;
-endif; ?>
-                 </div>
-             </div>
 
-         </section>
+                 </section>
 
-         <!-- Advertisements Section -->
-         <section id="advertisements" class="content-section">
-             <h2>📺 Advertisement Management</h2>
-             <div class="card">
-                 <button class="btn" onclick="showModal('adModal')" style="margin-bottom: 1rem;">➕ Create
-                     Advertisement</button>
+                 <!-- Advertisements Section -->
+                 <section id="advertisements" class="content-section">
+                     <h2>📺 Advertisement Management</h2>
+                     <div class="card">
+                         <button class="btn" onclick="showModal('adModal')" style="margin-bottom: 1rem;">➕ Create
+                             Advertisement</button>
 
-                 <div class="announcement-item">
-                     <div class="announcement-date">Active - Expires: June 30, 2025</div>
-                     <div class="announcement-title">🎓 Enrollment Open for 2025-2026 Academic Year</div>
-                     <p>Join Rukara Model School! We're now accepting applications for the new academic year. Limited
-                         seats available. Apply today!</p>
-                     <div class="action-buttons" style="margin-top: 1rem;">
-                         <button class="btn btn-sm">✏️ Edit</button>
-                         <button class="btn btn-sm btn-success">📈 Analytics</button>
-                         <button class="btn btn-sm btn-danger">⏹️ Stop</button>
+                         <div class="announcement-item">
+                             <div class="announcement-date">Active - Expires: June 30, 2025</div>
+                             <div class="announcement-title">🎓 Enrollment Open for 2025-2026 Academic Year</div>
+                             <p>Join Rukara Model School! We're now accepting applications for the new academic year. Limited
+                                 seats available. Apply today!</p>
+                             <div class="action-buttons" style="margin-top: 1rem;">
+                                 <button class="btn btn-sm">✏️ Edit</button>
+                                 <button class="btn btn-sm btn-success">📈 Analytics</button>
+                                 <button class="btn btn-sm btn-danger">⏹️ Stop</button>
+                             </div>
+                         </div>
+
+                         <div class="announcement-item">
+                             <div class="announcement-date">Active - Expires: July 15, 2025</div>
+                             <div class="announcement-title">👨‍🏫 Teaching Positions Available</div>
+                             <p>We're hiring qualified teachers for Mathematics, Science, and English. Excellent benefits and
+                                 competitive salary. Join our team!</p>
+                             <div class="action-buttons" style="margin-top: 1rem;">
+                                 <button class="btn btn-sm">✏️ Edit</button>
+                                 <button class="btn btn-sm btn-success">📈 Analytics</button>
+                                 <button class="btn btn-sm btn-danger">⏹️ Stop</button>
+                             </div>
+                         </div>
                      </div>
-                 </div>
+                 </section>
 
-                 <div class="announcement-item">
-                     <div class="announcement-date">Active - Expires: July 15, 2025</div>
-                     <div class="announcement-title">👨‍🏫 Teaching Positions Available</div>
-                     <p>We're hiring qualified teachers for Mathematics, Science, and English. Excellent benefits and
-                         competitive salary. Join our team!</p>
-                     <div class="action-buttons" style="margin-top: 1rem;">
-                         <button class="btn btn-sm">✏️ Edit</button>
-                         <button class="btn btn-sm btn-success">📈 Analytics</button>
-                         <button class="btn btn-sm btn-danger">⏹️ Stop</button>
+                 <!-- Reports Section -->
+                 <section id="reports" class="content-section">
+                     <h2>📈 Reports & Analytics</h2>
+                     <div class="dashboard-grid">
+                         <div class="card">
+                             <h3>📊 Academic Performance</h3>
+                             <p>Generate comprehensive academic reports</p>
+                             <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
+                         </div>
+
+                         <div class="card">
+                             <h3>👥 Attendance Reports</h3>
+                             <p>Track student and teacher attendance</p>
+                             <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
+                         </div>
+
+                         <div class="card">
+                             <h3>💰 Financial Reports</h3>
+                             <p>School fees and financial summaries</p>
+                             <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
+                         </div>
+
+                         <div class="card">
+                             <h3>📈 Growth Analytics</h3>
+                             <p>Student enrollment and school growth</p>
+                             <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
+                         </div>
                      </div>
-                 </div>
-             </div>
-         </section>
+                 </section>
 
-         <!-- Reports Section -->
-         <section id="reports" class="content-section">
-             <h2>📈 Reports & Analytics</h2>
-             <div class="dashboard-grid">
-                 <div class="card">
-                     <h3>📊 Academic Performance</h3>
-                     <p>Generate comprehensive academic reports</p>
-                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
-                 </div>
+                 <!-- Settings Section -->
+                 <section id="settings" class="content-section">
+                     <h2>⚙️ System Settings</h2>
+                     <div class="dashboard-grid">
+                         <div class="card">
+                             <h3>🏫 School Information</h3>
+                             <div class="form-group">
+                                 <label>School Name</label>
+                                 <input type="text" value="Rukara Model School">
+                             </div>
+                             <div class="form-group">
+                                 <label>Address</label>
+                                 <textarea>Kayonza, Rwanda</textarea>
+                             </div>
+                             <div class="form-group">
+                                 <label>Contact Phone</label>
+                                 <input type="tel" value="+250788244491 / +25079245452">
+                             </div>
+                             <button class="btn">💾 Save Changes</button>
+                         </div>
 
-                 <div class="card">
-                     <h3>👥 Attendance Reports</h3>
-                     <p>Track student and teacher attendance</p>
-                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
-                 </div>
-
-                 <div class="card">
-                     <h3>💰 Financial Reports</h3>
-                     <p>School fees and financial summaries</p>
-                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
-                 </div>
-
-                 <div class="card">
-                     <h3>📈 Growth Analytics</h3>
-                     <p>Student enrollment and school growth</p>
-                     <button class="btn" style="margin-top: 1rem;">📄 Generate Report</button>
-                 </div>
-             </div>
-         </section>
-
-         <!-- Settings Section -->
-         <section id="settings" class="content-section">
-             <h2>⚙️ System Settings</h2>
-             <div class="dashboard-grid">
-                 <div class="card">
-                     <h3>🏫 School Information</h3>
-                     <div class="form-group">
-                         <label>School Name</label>
-                         <input type="text" value="Rukara Model School">
+                         <div class="card">
+                             <h3>🎓 Academic Settings</h3>
+                             <div class="form-group">
+                                 <label>Current Academic Year</label>
+                                 <select>
+                                     <option>2024-2025</option>
+                                     <option selected>2025-2026</option>
+                                 </select>
+                             </div>
+                             <div class="form-group">
+                                 <label>Current Term</label>
+                                 <select>
+                                     <option>Term 1</option>
+                                     <option>Term 2</option>
+                                     <option selected>Term 3</option>
+                                 </select>
+                             </div>
+                             <button style="margin-bottom: 2em;" class="btn">💾 Save Settings</button>
+                             <button
+                                 style="background-color:linear-gradient(to right,rgb(0, 255, 47),rgb(225, 255, 0)); color: #fff;"
+                                 class="btn btn-primary" onclick="showModal('changePasswordModal')">🗝️Change your
+                                 password</button>
+                         </div>
                      </div>
-                     <div class="form-group">
-                         <label>Address</label>
-                         <textarea>Kayonza, Rwanda</textarea>
-                     </div>
-                     <div class="form-group">
-                         <label>Contact Phone</label>
-                         <input type="tel" value="+250788244491 / +25079245452">
-                     </div>
-                     <button class="btn">💾 Save Changes</button>
-                 </div>
-
-                 <div class="card">
-                     <h3>🎓 Academic Settings</h3>
-                     <div class="form-group">
-                         <label>Current Academic Year</label>
-                         <select>
-                             <option>2024-2025</option>
-                             <option selected>2025-2026</option>
-                         </select>
-                     </div>
-                     <div class="form-group">
-                         <label>Current Term</label>
-                         <select>
-                             <option>Term 1</option>
-                             <option>Term 2</option>
-                             <option selected>Term 3</option>
-                         </select>
-                     </div>
-                     <button style="margin-bottom: 2em;" class="btn">💾 Save Settings</button>
-                     <button
-                         style="background-color:linear-gradient(to right,rgb(0, 255, 47),rgb(225, 255, 0)); color: #fff;"
-                         class="btn btn-primary" onclick="showModal('changePasswordModal')">🗝️Change your
-                         password</button>
-                 </div>
-             </div>
-         </section>
+                 </section>
      </main>
      <!-- Modals -->
      <div id="createClassModal" class="modal">
@@ -967,16 +969,16 @@ endif; ?>
                  <div class="form-group">
                      <label>Class</label>
                      <?php if ($classes2_result->num_rows > 0): ?>
-                     <select name="class">
-                         <option value="" hidden>Select Class</option>
-                         <?php 
-                    while($classes2_row = $classes2_result->fetch_assoc()): 
-                    ?>
-                         <option value="<?= htmlspecialchars($classes2_row['class_name']) ?>">
-                             <?= htmlspecialchars($classes2_row['class_name']) ?></option>
-                         <?php endwhile; ?>
+                         <select name="class">
+                             <option value="" hidden>Select Class</option>
+                             <?php
+                                while ($classes2_row = $classes2_result->fetch_assoc()):
+                                ?>
+                                 <option value="<?= htmlspecialchars($classes2_row['class_name']) ?>">
+                                     <?= htmlspecialchars($classes2_row['class_name']) ?></option>
+                             <?php endwhile; ?>
 
-                     </select>
+                         </select>
                      <?php else: ?>
 
                      <?php endif; ?>

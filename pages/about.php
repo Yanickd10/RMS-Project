@@ -256,7 +256,7 @@ require_once '../config/security.php';
                 <!-- Update these staff cards -->
                 <?php
     $staff_members = [
-        ['name' => 'Dr. Barnabas Muyengwa', 'role' => 'Principal', 'image' => '/RMS-Project/assets/images/principal.jpg', 'contact'=>'09876543','twitter'=>'' , 'linkedin'=>'', 'description'=> 'Dr. Barnabas Muyengwa is an experienced educator passionate about lifelong learning. With a rich background in teacher development, he values mentoring in teacher professional growth and has widely published on the subject.' ],
+        ['name' => 'Dr. Barnabas Muyengwa', 'role' => 'Principal', 'image' => '/RMS-Project/assets/images/principal.jpg', 'contact'=>'0792045452','twitter'=>'modelrukara@gmail.com' , 'linkedin'=>'https://linkedin.com/in/dr-barnabas-b-muyengwa-41439b35', 'description'=> 'Dr. Barnabas Muyengwa is an experienced educator passionate about lifelong learning. With a rich background in teacher development, he values mentoring in teacher professional growth and has widely published on the subject.' ],
         ['name' => 'IYAMUREMYE Eric', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/eric.png', 'contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
         ['name' => 'Dr. Mutseekwa Christopher', 'role' => 'Director of Studies (Secondary)','image' => '/RMS-Project/assets/images/dos-chistoph.png', 'contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
         ['name' => 'Dr. Nyasha Cefas', 'role' => 'Director of Studies (Primary)','image' =>'/RMS-Project/assets/images/DOS-primary_i.jpg','contact'=>'','twitter'=>'' , 'linkedin'=>'', 'description'=>'' ],
@@ -276,7 +276,7 @@ require_once '../config/security.php';
         <div class="social-links">
             <a href="tel:+25' . htmlspecialchars($staff['contact']) . '" title="Call "' . htmlspecialchars($staff['name']) . '" target="_blank"><i class="bi bi-telephone-fill"></i>
 </a>
-            <a href="' . htmlspecialchars($staff['twitter']) . '" title="Twitter "' . htmlspecialchars($staff['name']) . ' on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:' . htmlspecialchars($staff['twitter']) . '" title="Email "' . htmlspecialchars($staff['name']) . ' on Twitter" target="_blank"><i class="fas fa-envelope"></i></a>
             <a title="LinkedIn "' . htmlspecialchars($staff['name']) . '" href="' . htmlspecialchars($staff['linkedin']) . '" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
@@ -289,7 +289,7 @@ require_once '../config/security.php';
     </main> 
      <?php secure_include('../includes/footer.php'); ?>  
     <?php secure_include('../includes/back-to-top.php'); ?>
-    <script src="assets/js/nav.js"></script>
-    <script src="../assets/js/smooth-scroll.js"></script>
+    <script src="assets/js/nav.js" defer></script>
+    <script src="../assets/js/smooth-scroll.js" defer></script>
 </body>
 </html>
