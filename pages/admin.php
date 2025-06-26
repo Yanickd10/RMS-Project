@@ -276,7 +276,6 @@ if ($total_result->num_rows > 0) {
              border-color: #667eea;
              box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
          }
-
          .btn {
              background: linear-gradient(135deg, #667eea, #764ba2);
              color: white;
@@ -288,7 +287,6 @@ if ($total_result->num_rows > 0) {
              cursor: pointer;
              transition: all 0.3s ease;
          }
-
          .btn:hover {
              transform: translateY(-2px);
              box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
