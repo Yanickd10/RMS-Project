@@ -1,0 +1,21 @@
+# Deny direct access to all files in includes directory
+<Files "*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Alternative method - deny access to PHP files specifically
+<FilesMatch "\.(php|inc)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Additional security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
