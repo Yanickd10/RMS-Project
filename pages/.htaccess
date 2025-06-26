@@ -1,5 +1,0 @@
-# Allow access to PHP files in pages directory
-<Files "*.php">
-    Order Allow,Deny
-    Allow from all
-</Files>
