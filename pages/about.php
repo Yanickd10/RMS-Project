@@ -191,13 +191,13 @@ require_once '../config/security.php';
                 pre-service teachers. <br>
                 <!-- 
                 Partners
-                1. Mineduc
-                2. World Bank
-                3. Kayonza District
-                4. Nesa
+                1. Mineduc ()
+                 ng.com/th/id/ODLS.42ada218-994c-481c-849b-04be5551f190?w=32&h=32&qlt=96&pcl=fffffa&o=6&cb=ircwebp1&pid=1.2)
+                3. Kayonza District (https://www.kayonza.gov.rw/index.php?eID=dumpFile&t=f&f=631&token=aa5d43591eeacf168a3adb6e888a05845b64dd81)
+                4. Nesa (https://www.nesa.gov.rw/index.php?eID=dumpFile&t=f&f=20171&token=d55d379a33b5706ae09a436d130df07d4f0b32bb)
                 5. Idebate
-                6. International Lab Schools
-                7. MINICT
+                6. International Lab Schools (https://static.wixstatic.com/media/e7c668_4aabb1e0c51849459e22fafd9766d1ab~mv2.png/v1/fill/w_147,h_158,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IALS%20logo%20white%20no%20effects.png)
+                7. MINICT (https://www.minict.gov.rw/index.php?eID=dumpFile&t=f&f=1141&token=688d2042f97d54e42e581d5d7b0f29b4295d2500)
                  -->
                 <!-- 
                 For students
@@ -205,6 +205,7 @@ require_once '../config/security.php';
                 2. Stem Program
                 3. Uploading their works
                 -->
+
                 <!-- 
                 For teacher
                 1. CPD sessions
@@ -272,8 +273,8 @@ require_once '../config/security.php';
     <div class="staff-info">
         <h3>' . htmlspecialchars($staff['name']) . '</h3>
         <p class="role">' . htmlspecialchars($staff['role']) . '</p>
-        <p class="description">' . htmlspecialchars($staff['description']) . '</p>
-        <div class="social-links">
+        <p style="display:none;" class="description">' . htmlspecialchars($staff['description']) . '</p>
+        <div   class="social-links">
             <a href="tel:+25' . htmlspecialchars($staff['contact']) . '" title="Call "' . htmlspecialchars($staff['name']) . '" target="_blank"><i class="bi bi-telephone-fill"></i>
 </a>
             <a href="mailto:' . htmlspecialchars($staff['twitter']) . '" title="Email "' . htmlspecialchars($staff['name']) . ' on Twitter" target="_blank"><i class="fas fa-envelope"></i></a>

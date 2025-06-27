@@ -264,7 +264,7 @@ $result = $conn->query($sql);
     }
 
     .community-partners {
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -273,6 +273,8 @@ $result = $conn->query($sql);
     }
 
     .community-partners h3 {
+        width: 50%;
+        margin: auto;
         text-align: center;
         background-color: #184e77;
         color: white;
@@ -291,12 +293,15 @@ $result = $conn->query($sql);
         font-size: 12px;
         color: #666;
     }
-
-    .partner-logos {
-        display: flex;
-        justify-content: space-evenly;
-    }
-
+        .partner-logos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    padding: 20px;
+}
     .partner-logo img {
         width: fit-content;
         max-width: 100%;
@@ -490,6 +495,9 @@ $result = $conn->query($sql);
         font-weight: bold;
         transition: background-color 0.3s;
         /* margin-top: 15px; */
+        
+        cursor: no-drop; 
+        display: none;
     }
 
     #cta-button:hover {
@@ -712,10 +720,8 @@ $result = $conn->query($sql);
         .community-partners {
             width: 100%;
         }
+ 
 
-        .partner-logos {
-            width: 100%;
-        }
 
         .main-container {
             /* background-color: cyan; */
@@ -790,9 +796,7 @@ $result = $conn->query($sql);
             width: 100%;
         }
 
-        .partner-logos {
-            width: 100%;
-        }
+   
 
         .news-container {
             height: fit-content;
@@ -984,42 +988,27 @@ $result = $conn->query($sql);
                         <h3>Our Partners</h3>
                     </div>
                     <div class="partner-logos">
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
+                        <div title="Rwanda Basic Education Board" class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
                                 src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
+                        <div title="University of Rwanda" class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
                                 src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                        <div title="Ministry of Education" class="partner-logo"> <img onclick="window.open('https://www.mineduc.gov.rw/')"
+                                src="https://machining-for-rwandas-future.de/wp-content/uploads/2022/08/republic_of_rwanda_education.png"
                                 alt="parterner logo"></div>
-                    </div>
-                    <div class="partner-logos" style="display: none;">
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                                      <div title="MINICT" class="partner-logo"> <img onclick="window.open('https://www.minict.gov.rw/')"
+                                src="https://th.bing.com/th/id/OIP.GkFh3QDRlQXXfxOqYVFxiwAAAA?r=0&w=332&h=366&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
-                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
+                        <div title="World Bank"  class="partner-logo"><img onclick="window.open('https://www.worldbank.org/ext/en/home')"
+                                src="https://atsolut.kz/upload/iblock/68b/68bd8e8a20a400ddac39ac9c36f07a73.png"
                                 alt="parterner logo"></div>
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
+                        <div title="NESA" class="partner-logo"> <img onclick="window.open('https://www.nesa.gov.rw/')"
+                                src="https://www.nesa.gov.rw/index.php?eID=dumpFile&t=f&f=20171&token=d55d379a33b5706ae09a436d130df07d4f0b32bb"
                                 alt="parterner logo"></div>
-
-                    </div>
-                    <div class="partner-logos" style="display: none;">
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
-                                alt="parterner logo"></div>
-                        <div class="partner-logo"><img onclick="window.open('https://ur.ac.rw/')"
-                                src="https://www.tertiaryinstitutions.com/images/universities/logos/university_of_rwanda_ur.png"
-                                alt="parterner logo"></div>
-                        <div class="partner-logo"> <img onclick="window.open('https://www.reb.gov.rw/home')"
-                                src="https://th.bing.com/th/id/OIP.AL8E7QpIJYXvaQuvkh1sxAHaHa?rs=1&pid=ImgDetMain"
-                                alt="parterner logo"></div>
-
-                    </div>
+                    </div> 
                 </div>
-                <button id="cta-button">Get involved</button><br>
+                <button disabled id="cta-button">Get involved</button><br>
                 <!-- <div id="form-div"></div> -->
                 <script>
                     document.getElementById("cta-button").addEventListener(
@@ -1122,7 +1111,7 @@ $result = $conn->query($sql);
     <!-- Right sidebar with News & Announcements -->
     <aside class="sidebar">
         <div class="search-container" id="searchContainer">
-            <div class="search-bar">
+            <div style="display: none;" class="search-bar">
                 <div class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
